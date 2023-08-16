@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Veterinary</title>
+</head>
+
+
+<body>
+    <header>
+        <nav class="nav">
+            <div class="nav-links">
+                <a href="#about">About Me</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+            </div>
+        </nav>
+    </header>
+    <a href="{% url 'dog_register' %}" class="btn btn-primary">Register Dog</a>
+
+    <div class="container">
+        {% for dog in dogs %}
+        <div class="dog-card">
+            <img src="{{ dog.image.url }}" alt="Image">
+            <div class="card-content">
+                <h2>{{ dog.name }}</h2>
+                <p>Age: {{ dog.age }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</body>
+</html>

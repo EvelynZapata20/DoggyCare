@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Doggy import views
+
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
+    path('vet_register/', views.vet_register, name='vet_register'),
+    path('vet_page/', views.vet_page, name='vet_page'),
+    path('dog_register/', views.dog_register, name='dog_register'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

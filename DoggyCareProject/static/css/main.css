@@ -1,0 +1,38 @@
+.nav {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.dog-card {
+        /* border: 1px solid #ccc; */
+        /* Eliminamos el borde */
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 21%;
+        margin: 20px;
+        float: left;
+    }
+
+.dog-card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%; /* Agregamos el border-radius para crear el círculo */
+        object-fit: cover; /* Ajustamos la imagen para cubrir el círculo */
+        display: block;
+        margin: 0 auto; /* Centramos la imagen en el círculo */
+    }
+
+.card-content {
+        padding: 15px;
+    }
+
+.card-content p {
+        margin-top: 0;
+    }
