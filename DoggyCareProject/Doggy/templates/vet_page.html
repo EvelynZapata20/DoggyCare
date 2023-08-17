@@ -1,24 +1,28 @@
 {% load static %}
 
-<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <title>Veterinary</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 
 <body>
     <header>
         <nav class="nav">
             <div class="nav-links">
-                <a href="#about">About Me</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
+                <a href="">MY ACCOUNT</a>
+                <a href="">MY PATIENTS</a>
+                <a href="">MY APPOINTMENTS</a>
             </div>
         </nav>
+
+        <div class="search-register">
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">Search</button>
+            </div>
+        
     </header>
-    <a href="{% url 'dog_register' %}" class="btn btn-primary">Register Dog</a>
+    <a href="{% url 'dog_register' %}" class="btn">Register Dog</a>
 
     <div class="container">
         {% for dog in dogs %}
@@ -26,11 +30,16 @@
             <img src="{{ dog.image.url }}" alt="Image">
             <div class="card-content">
                 <h2>{{ dog.name }}</h2>
-                <p>Age: {{ dog.age }}</p>
+                <p>Owner: {{ dog.owner }} </p>
+                <p>Name: {{ dog.name }} </p>
+                <p>Age: {{ dog.age }} </p>
+                <p>Breed: {{ dog.breed }} </p>
+                <p>Weight: {{ dog.weight }} </p>
+                <p>Gender: {{ dog.age }} </p>
+                <p>Vaccines: {{ dog.age }} </p>
             </div>
         </div>
         {% endfor %}
     </div>
-</body>
 </body>
 </html>
