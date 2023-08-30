@@ -1,0 +1,65 @@
+/* Reset default margin and padding for lists */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the header */
+header {
+    background-color: #bdd7ff;
+    color: #000000;
+    padding: 10px; /* Add padding to the header */
+}
+
+/* Style for the navigation bar */
+nav {
+    display: flex; /* Display the elements in a row */
+    justify-content: space-between; /* Space out the greeting and the tabs */
+    align-items: center; /* Center align items vertically */
+    font-family: Georgia, serif;
+}
+
+/* Style for the greeting */
+.greeting {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+/* Style for tabs */
+.tabs ul {
+    display: flex; /* Display the list items in a row */
+}
+
+.tabs li {
+    margin-left: 20px; /* Add spacing between list items */
+    font-size: 16px; /* Font size for tab links */
+}
+
+/* Style for navigation links */
+nav a {
+    color: #000000;
+    text-decoration: none; /* Remove underlines from links */
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+nav a:hover {
+    color: #f5f5f5; /* Change color on hover */
+}
+
+/* Style for the footer */
+footer {
+    background-color: #bdd7ff;
+    color: #000000;
+    text-align: center; 
+    padding: 10px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+}
+
+footer img {
+    width: 35px;
+    margin: 0 10px; 
+    vertical-align: middle;
+}

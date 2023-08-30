@@ -1,0 +1,101 @@
+main {
+    margin-top: 15px; /* Margen superior igual al de la barra de navegación */
+    margin-bottom: 15px; /* Margen inferior igual al de los botones */
+}
+
+/* Aplica margen a todos los elementos dentro de <main> */
+main > * {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.search-bar {
+    font-family: Georgia, serif;
+    display: flex;
+    align-items: center;
+    padding: 0 50px 0;
+}
+
+.form-control {
+    padding: 5px 10px;
+    margin-right: 15px;
+    font-size: 17px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.new-patient {
+    display: flex;
+    font-family: Georgia, serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    padding: 5px 10px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #86a7d4;
+}
+
+h1 {
+    font-size: 28px;
+    font-family: Georgia, serif;
+    text-align: center;
+    margin: 25px;
+}
+
+.dog-list {
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dog-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 20%;
+    margin: 20px;
+    float: left;
+    padding: auto;
+}
+
+.dog-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; 
+    object-fit: cover;
+    display: block;
+    margin: 0 auto; 
+}
+
+
+.dog-card h2 {
+    text-align: center;
+    margin: 5px;
+}
+
+
+.card-content p {
+    margin: 0 0 3px;
+    margin-left: 10px
+}
+
+.card-button {
+    padding: 5px;
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+    align-items: center; /* Centra horizontalmente */
+    gap: 10px; /* Espacio entre los botones */
+}

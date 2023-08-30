@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Vet Clinic{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block additional_styles %}
+        {% endblock additional_styles %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        {% block additional_scripts %}
+        {% endblock additional_scripts %}
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <div class="greeting">
+                    Hi, User
+                </div>
+                <div class="tabs">
+                    <ul>
+                        <li><a href="">MY ACCOUNT</a></li>
+                        <li><a href="">MY PATIENTS</a></li>
+                        <li><a href="">MY APPOINTMENTS</a></li>
+                    </ul>
+                </div>  
+            </nav>
+        </header>
+        
+        <main>
+            {% block content %}
+            {% endblock content%}
+        </main>
+    </body>
+
+    <footer>
+        <img src= "{% static 'img/logo.png' %}">
+        Provided by DoggyCare
+        <img src= "{% static 'img/logo.png' %}">
+    </footer>
+    
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Patients</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/patients.css' %}">
+    {% endblock additional_styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+   <main>
+        {% block content %}
+        <form action="" class="search-bar">
+            <input type="text" class="form-control" name="searchDog" placeholder="Search for...">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div class="new-patient">
+            <a href="{% url 'dog_register' %}" class="btn">New Patient</a>
+        </div>   
+
+        <h1>MY PATIENTS</h1>
+        
+        <div class="dog-list">
+            {% for dog in dogs %}
+            <div class="dog-card">
+                <img src="{{ dog.image.url }}" alt="Image">
+                <div class="card-content p-3 mx-2">
+                    <h2>{{ dog.name }}</h2>
+                    <p>Owner: {{ dog.owner }} </p>
+                    <p>Age: {{ dog.age }} </p>
+                    <p>Breed: {{ dog.breed }} </p>
+                    <p>Weight: {{ dog.weight }} </p>
+                    <p>Gender: {{ dog.gender }} </p>
+                    <p>Vaccines: {{ dog.vaccines }} </p>
+                    
+                    <div class="card-button">
+                        <a href="" class="btn">Recommendations</a>
+                        <a href="" class="btn">Medical Record</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock content %}
+    </main>
+
+</body>
+</html>
