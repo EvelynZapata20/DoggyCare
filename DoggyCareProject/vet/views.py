@@ -9,6 +9,9 @@ from django.db.models import Q
 
 # Create your views here.
 
+def recomendations(request):
+    return render(request, 'recomendations.html', {'recomendations': recomendations})
+
 def dog_register(request):
     if request.method == 'POST':
         form= DogRegisterForm(request.POST, request.FILES)
