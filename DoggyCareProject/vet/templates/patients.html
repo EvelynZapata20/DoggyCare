@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Patients</title>
+    <title>{% block title %} My Patients {% endblock %}</title>
     {% block additional_styles %}
     <link rel="stylesheet" href="{% static 'css/patients.css' %}">
     {% endblock additional_styles %}
@@ -30,7 +30,9 @@
         <div class="dog-list">
             {% for dog in dogs %}
             <div class="dog-card">
-                <img src="{{ dog.image.url }}" alt="Image">
+                <a href="{% url 'dog_profile' dog.id %}">
+                    <img src="{{ dog.image.url }}" alt="Image">
+                </a>
                 <div class="card-content p-3 mx-2">
                     <h2>{{ dog.name }}</h2>
                     <p>Owner: {{ dog.owner }} </p>

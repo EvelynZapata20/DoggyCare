@@ -1,0 +1,94 @@
+h1 {
+    font-size: 28px;
+    font-family: Georgia, serif;
+    text-align: center;
+    margin: 25px;
+}
+
+
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; 
+    object-fit: cover;
+    display: block;
+    margin: 0 auto; 
+}
+
+.image-form {
+    margin-left: 80px;
+    margin-top: 10px; 
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.column-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.column {
+        margin: 25px;
+        margin-bottom: 0px;
+        width: 30%;
+}
+
+
+.column label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.column input[type="text"],
+.column input[type="number"],
+.column input[type="file"] {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #BDD7FF;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.button-container {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+button:hover {
+    background-color: #86a7d4;
+}
+
+#cancel-button {
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+#cancel-button:hover {
+    background-color: #86a7d4;
+}
