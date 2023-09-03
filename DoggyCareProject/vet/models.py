@@ -11,6 +11,15 @@ class Dog(models.Model):
     weight= models.CharField(blank= False, max_length=10)
     gender= models.CharField(blank= False, max_length=10)
     vaccines= models.CharField(blank= False, max_length=30)
+
+class MedicalRecord(models.Model):
+    dog = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
+    date = models.DateField(blank = False)
+    appointmentType = models.CharField(blank= False, max_length=100)
+    symptoms = models.CharField(blank= False, max_length=100)
+    treatment = models.CharField(blank= False, max_length=100)
+    recomendations = models.CharField(blank= True, max_length=100)
+    
     
     def __str__(self):
         return self.name

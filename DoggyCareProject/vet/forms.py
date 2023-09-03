@@ -5,3 +5,8 @@ class DogRegisterForm(forms.ModelForm):
     class Meta:
         model= Dog
         fields= ['image', 'owner', 'name', 'breed', 'age', 'weight', 'gender']
+class MedicalRecordForm(forms.ModelForm):
+    class Meta:
+        model= MedicalRecord
+        fields= ['dog', 'date', 'appointmentType', 'symptoms', 'treatment', 'recomendations']
+        exclude=['dog']

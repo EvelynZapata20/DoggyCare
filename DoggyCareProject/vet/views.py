@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from .forms import *
 from .models import Dog
 from django.db.models import Q
+from django.urls import reverse
 
 # Create your views here.
 
@@ -34,6 +35,19 @@ def dog_register(request):
         form= DogRegisterForm()
     return render(request, 'dog_register.html', {'form': form})
 
+def new_record(request,dog_id):
+    dog = get_object_or_404(Dog, pk=dog_id)
+    if request.method == 'POST':
+        recordform = MedicalRecordForm(request.POST, request.FILES)
+        if recordform.is_valid():
+            recordform.instance.dog = dog
+            recordform.save()
+            return redirect(reverse('medical_record', args=[dog_id]))
+    else:
+        recordform = MedicalRecordForm()
+    return render(request, 'new_record.html',{'dog': dog, 'recordform': recordform})
+
+
 def patients(request):
     searchTerm = request.GET.get('searchDog')
     if searchTerm:
@@ -46,6 +60,21 @@ def patients(request):
         dogs = Dog.objects.all()
     
     return render(request, 'patients.html', {'dogs': dogs})
+
+def medical_record(request, dog_id):
+    dog = get_object_or_404(Dog, pk=dog_id)
+    searchTerm = request.GET.get('searchRecord')
+    if searchTerm:
+        medical_record = MedicalRecord.objects.filter(
+            Q(date__icontains=searchTerm) |
+            Q(symptoms__icontains=searchTerm) |
+            Q(appointmentType__icontains=searchTerm)|
+            Q(treatment__icontains=searchTerm),
+            dog=dog
+        )
+    else:
+        medical_record = MedicalRecord.objects.filter(dog=dog)
+    return render(request, 'medical_record.html', {'dog': dog, 'medical_records': medical_record})
 
 def home(request):
     return HttpResponse('Hello, World!')

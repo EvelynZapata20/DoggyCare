@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{dog.name}}'s Medical Record {% endblock %}</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/patients.css' %}">
+    {% endblock additional_styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+   <main>
+        {% block content %}
+
+        <h1>{{dog.name}}'s MEDICAL RECORD</h1>
+
+        <div class="img" style="text-align: center;">
+            <img src="{{ dog.image.url }}" alt="{{ dog.name }} Image" style="border-radius: 50%; width: 200px; height: 200px;">
+        </div>    
+        <div class="new-record" style="text-align: center;">
+            <a href="{% url 'new_record' dog_id=dog.id %}" class="btn">New Record</a>
+        </div>   
+        <div class="record-bar" style="text-align: center;">
+            <form action="" class="search-record-bar">
+                <input type="text" class="form-control" name="searchRecord" placeholder="Search record..." style="max-width: 70%; margin: 0;">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+            
+        <div class="row">
+            {% for record in medical_records %}
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2>{{ record.date }} Appointment</h2>
+                        <p>Appointment Type: {{ record.appointmentType }}</p>
+                        <p>Symptoms: {{ record.symptoms }}</p>
+                        <p>Treatment: {{ record.treatment }}</p>
+                        <p>Recommendations: {{ record.recomendations }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock content %}
+    </main>
+
+</body>
+</html>
