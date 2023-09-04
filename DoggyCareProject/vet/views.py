@@ -9,7 +9,6 @@ from django.db.models import Q
 from django.urls import reverse
 
 # Create your views here.
-
 def recomendations(request):
     return render(request, 'recomendations.html', {'recomendations': recomendations})
 
