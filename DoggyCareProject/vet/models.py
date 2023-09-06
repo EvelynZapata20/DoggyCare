@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+
 class Dog(models.Model):
     image= models.ImageField(upload_to='images/')
     id= models.AutoField(primary_key= True)
@@ -21,5 +22,21 @@ class MedicalRecord(models.Model):
     recomendations = models.CharField(blank= True, max_length=100)
     
     
+    def __str__(self):
+        return self.name
+
+class vaccination_card(models.Model):
+    id = models.AutoField(primary_key= True)
+    dogID = models.ForeignKey(Dog, null=True, blank=True, on_delete=models.CASCADE)
+    rabies = models.BooleanField("Rabies", default= False)
+    CanineDistemper = models.BooleanField("Canine Distemper", default= False)
+    Parvovirus = models.BooleanField("Parvovirus", default= False)
+    Adenovirus = models.BooleanField("Adenovirus(CAV-1)", default= False)
+    Adenovirus_2 = models.BooleanField("Adenovirus(CAV-2)", default= False)
+    Parainfluenza = models.BooleanField("Parainfluenza", default= False)
+    Bordetella = models.BooleanField("Bordetella", default= False)
+    LymeDisease = models.BooleanField("Lyme Disease", default= False)
+    CanineInfluenza = models.BooleanField("Canine Influenza", default= False)
+
     def __str__(self):
         return self.name

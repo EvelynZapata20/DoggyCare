@@ -9,8 +9,6 @@ from django.db.models import Q
 from django.urls import reverse
 
 # Create your views here.
-def recomendations(request):
-    return render(request, 'recomendations.html', {'recomendations': recomendations})
 
 def dog_profile(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
@@ -74,6 +72,22 @@ def medical_record(request, dog_id):
     else:
         medical_record = MedicalRecord.objects.filter(dog=dog)
     return render(request, 'medical_record.html', {'dog': dog, 'medical_records': medical_record})
+
+def vaccination_card(request, dog_id):
+    dog = get_object_or_404(Dog, pk=dog_id)
+    if request.method == 'POST':
+        form = vaccinationCardForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.dogID = dog
+            form.save()
+            return redirect(reverse('patients'))
+    else:
+        form = vaccinationCardForm()
+    return render(request, 'vaccination_card.html', {'vaccination_card': vaccination_card ,'form':form, 'dog':dog})
+
+def recomendations(request, dog_id):
+    dog = get_object_or_404(Dog, pk=dog_id)
+    return render(request, 'recomendations.html', {'dog': dog,'recomendations': recomendations})
 
 def home(request):
     return HttpResponse('Hello, World!')

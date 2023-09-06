@@ -10,3 +10,8 @@ class MedicalRecordForm(forms.ModelForm):
         model= MedicalRecord
         fields= ['dog', 'date', 'appointmentType', 'symptoms', 'treatment', 'recomendations']
         exclude=['dog']
+
+class vaccinationCardForm(forms.ModelForm):
+    class Meta:
+        model = vaccination_card
+        fields = "__all__"

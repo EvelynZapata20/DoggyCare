@@ -43,8 +43,9 @@
                     <p>Vaccines: {{ dog.vaccines }} </p>
                     
                     <div class="card-button">
-                        <a href="{% url 'recomendations' %}" class="btn">Recommendations</a>
+                        <a href="{% url 'recomendations' dog_id=dog.id %}" class="btn">Recommendations</a>
                         <a href="{% url 'medical_record' dog_id=dog.id %}" class="btn">Medical Record</a>
+                        <a href="{% url 'vaccination_card' dog_id=dog.id %}" class="btn">Vaccination card</a>
                     </div>
                 </div>
             </div>

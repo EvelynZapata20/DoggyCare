@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}New Patient{% endblock %}</title>
+    <title>{% block title %}Recomendations for {{dog.name}} {% endblock %}</title>
     {% block additional_styles %}
     <link rel="stylesheet" href="{% static 'css/dog_register.css' %}">
     {% endblock additional_styles %}
@@ -17,8 +17,8 @@
 <body>
     <main>
         {% block content %}
-        <h1>RECOMENDATIOS FOR {{dog.name}}</h1>
-        
+        <h1>Recomendations for {{dog.name}}</h1>
+        <img src="{{ dog.image.url }}" alt="{{ dog.name }} Image" style="border-radius: 50%; width: 500px; height: 500px;">
 
         {% endblock content %}
     </main>
