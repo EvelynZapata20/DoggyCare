@@ -18,18 +18,25 @@
     <main>
         {% block content %}
         <h1>Vaccination card {{ dog.name }}</h1>
-        <p>Rabies {{ vaccination_card.rabies }}</p>
-        <p>Canine Distemper {{ vaccination_card.CanineDistemper }}</p>
-        <p>Parvovirus {{ vaccination_card.Parvovirus }}</p>
-        <p>Adenovirus {{ vaccination_card.Adenovirus }}</p>
-        <p>Adenovirus-2 {{ vaccination_card.Adenovirus_2 }}</p>
-        <p>Parainfluenza {{ vaccination_card.Parainfluenza }}</p>
-        <p>Bordetella {{ vaccination_card.Bordetella }}</p>
-        <p>Lyme Disease {{ vaccination_card.LymeDisease }}</p>
-        <p>Canine Influenza {{ vaccination_card.CanineInfluenza }}</p>
-        <div class="card-button">
-            <a href="{% url 'vaccination_card_edit' vac_id=dog.vaccination_card_id %}" class="btn">Edit</a>
-        </div>
+        <form method="post" enctype="multipart/form-data" class="custom-form">
+            <div class="container",style="align-items: center;">
+                <div class="form-container">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="field">
+                        <labell>{{ field.label_tag }}</labell>
+                        {{ field }}
+                    </div>
+                    {% if field.name == 'dogID' %}
+                    
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="Confirm">
+                    <button type="submit" class="submit-button">Save</button>
+                </div>
+            </div>
+        </form>
         {% endblock content %}
     </main>
 </body>

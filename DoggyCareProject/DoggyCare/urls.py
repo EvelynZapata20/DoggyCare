@@ -30,6 +30,7 @@ urlpatterns = [
     path('dog_profile/<int:dog_id>/', views.dog_profile, name='dog_profile'),
     path('recomendations/<int:dog_id>/', views.recomendations, name='recomendations'),
     path('vaccination_card/<int:dog_id>/', views.vaccination_card, name='vaccination_card'),
+    path('vaccination_card_edit/<int:vac_id>/', views.vaccination_card_edit, name='vaccination_card_edit'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
