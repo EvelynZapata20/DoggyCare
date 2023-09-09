@@ -5,7 +5,6 @@ h1 {
     margin: 25px;
 }
 
-/* Estilos para el formulario */
 .custom-form {
     display: grid;
     grid-template-rows: auto auto 1fr;
@@ -17,7 +16,6 @@ h1 {
     justify-content: space-between;
 }
 
-/* Estilos para el contenedor de la imagen */
 .image-container {
     flex-basis: 30%;
     padding: 20px;
@@ -27,14 +25,12 @@ h1 {
     align-items: center;
 }
 
-/* Estilos para el icono de imagen no cargada */
 #selected-image {
     width: 100%;
     object-fit: cover;
     border-radius: 8px;
 }
 
-/* Estilos para el botón de selección de imagen */
 .image-container label {
     background-color: #BDD7FF;
     border: none;
