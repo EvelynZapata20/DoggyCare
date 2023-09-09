@@ -18,9 +18,22 @@
    <main>
         {% block content %}
         <form action="" class="search-bar">
-            <input type="text" class="form-control" name="searchDog" placeholder="Search for...">
+            <input type="text" class="form-control" name="searchTerm" placeholder="Search...">
+            <!-- Dropdown for the filters -->
+            <div class="search-filter">
+                <select class="form-control" name="filter">
+                    <option value="all">All</option>
+                    <option value="name">Name</option>
+                    <option value="owner">Owner</option>
+                    <option value="age">Age</option>
+                    <option value="breed">Breed</option>
+                    <option value="weight">Weight</option>
+                    <option value="gender">Gender</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
+
         <div class="new-patient">
             <a href="{% url 'dog_register' %}" class="btn">New Patient</a>
         </div>   
@@ -40,7 +53,6 @@
                     <p>Breed: {{ dog.breed }} </p>
                     <p>Weight: {{ dog.weight }} </p>
                     <p>Gender: {{ dog.gender }} </p>
-                    <p>Vaccines: {{ dog.vaccines }} </p>
                     
                     <div class="card-button">
                         <a href="{% url 'recomendations' dog_id=dog.id %}" class="btn">Recommendations</a>

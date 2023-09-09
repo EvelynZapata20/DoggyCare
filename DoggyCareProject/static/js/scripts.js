@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    // Obtener el campo de carga de imágenes y la etiqueta de la imagen seleccionada
+    // Get the field to upload a image and the selected image
     const imageInput = $('#id_image');
     const selectedImage = $('#selected-image');
 
-    // Escuchar el evento de cambio en el campo de carga de imágenes
+    // Create the event when the user selects a image
     imageInput.on('change', function() {
         const input = this;
         if (input.files && input.files[0]) {
@@ -17,3 +17,16 @@ $(document).ready(function() {
         }
     });
 })
+
+// Event for the delete button to show a confirmation message
+document.addEventListener("DOMContentLoaded", function () {
+    const deleteButton = document.getElementById("delete-button");
+    const deleteForm = document.getElementById("delete-form");
+
+    deleteButton.addEventListener("click", function () {
+        const confirmation = confirm("Are you sure you want to delete this dog?");
+        if (confirmation) {
+            deleteForm.submit();
+        }
+    });
+});

@@ -25,6 +25,11 @@ main > * {
     width: 100%;
 }
 
+.search-filter{
+    width: 10%;
+    margin-right: 15px;
+}
+
 .new-patient {
     display: flex;
     font-family: Georgia, serif;

@@ -20,7 +20,7 @@
         <main>
             {% block content %}
             <h1>DOG PROFILE</h1>
-            <img src="{{ dog.image.url }}" alt="{{ dog.name }} Image">
+            <img class= "dog-image" src="{{ dog.image.url }}" alt="{{ dog.name }} Image">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="image-container">
@@ -61,9 +61,15 @@
 
                 <div class="button-container">
                     <button type="submit">Save Changes</button>
+                    <button type="button" id="delete-button">Delete Profile</button>
                     <a id="cancel-button" href="{% url 'patients' %}">Cancel</a>
                 </div>
-            </form>
+           </form>
+
+           <form id="delete-form" method="post" action="{% url 'delete_dog' dog.id %}" style="display: none;">
+            {% csrf_token %}
+           </form>
+           
             {% endblock content %}
         </main>
     </body>
