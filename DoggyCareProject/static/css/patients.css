@@ -1,9 +1,9 @@
 main {
-    margin-top: 15px; /* Margen superior igual al de la barra de navegación */
-    margin-bottom: 15px; /* Margen inferior igual al de los botones */
+    margin-top: 15px; 
+    margin-bottom: 15px; 
 }
 
-/* Aplica margen a todos los elementos dentro de <main> */
+/* Applies margin to all elements within main */
 main > * {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -100,7 +100,7 @@ h1 {
 .card-button {
     padding: 5px;
     display: flex;
-    flex-direction: column; /* Coloca los elementos en columna */
-    align-items: center; /* Centra horizontalmente */
-    gap: 10px; /* Espacio entre los botones */
+    flex-direction: column;
+    align-items: center; 
+    gap: 10px; 
 }
