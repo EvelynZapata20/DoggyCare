@@ -28,6 +28,7 @@ class Dog(models.Model):
     gender= models.CharField(blank= False, max_length=10)
     vaccination_card = models.ForeignKey(vaccination_card, on_delete=models.CASCADE,null=True,blank = True)
 
+
 class MedicalRecord(models.Model):
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
     date = models.DateField(blank = False)

@@ -40,6 +40,18 @@ def dog_profile(request, dog_id):
         form = DogRegisterForm(instance=dog)
     return render(request, 'dog_profile.html', {'dog': dog, 'form': form})
 
+def edit_medical_record(request, dog_id, record_id):
+    dog = get_object_or_404(Dog, pk=dog_id)
+    record = get_object_or_404(MedicalRecord, pk=record_id)
+    if request.method == 'POST':
+        form = MedicalRecordForm(request.POST, request.FILES, instance=record)
+        if form.is_valid():
+            form.save()
+            return redirect('edit_medical_record', dog_id=dog.id, record_id=record.id)
+    else:
+        form = MedicalRecordForm(instance=record)
+    return render(request, 'edit_medical_record.html', {'dog': dog, 'form': form})
+
 # Register a new dog
 def dog_register(request):
     if request.method == 'POST':
@@ -94,15 +106,28 @@ def new_record(request,dog_id):
 
 def medical_record(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
-    searchTerm = request.GET.get('searchRecord')
-    if searchTerm:
-        medical_record = MedicalRecord.objects.filter(
-            Q(date__icontains=searchTerm) |
-            Q(symptoms__icontains=searchTerm) |
-            Q(appointmentType__icontains=searchTerm)|
-            Q(treatment__icontains=searchTerm),
+    filter_by = request.GET.get('filterRecord')
+    search_record_term = request.GET.get('searchRecord')
+    if search_record_term:
+        if filter_by == 'all':
+            medical_record = MedicalRecord.objects.filter(
+                Q(date__icontains=search_record_term) |
+            Q(symptoms__icontains=search_record_term) |
+            Q(appointmentType__icontains=search_record_term)|
+            Q(treatment__icontains=search_record_term) |
+            Q(recomendations__icontains=search_record_term),
             dog=dog
-        )
+            )
+        elif filter_by == 'date':
+            medical_record =  MedicalRecord.objects.filter(date__icontains=search_record_term,dog=dog)
+        elif filter_by == 'appointmentType':
+            medical_record =  MedicalRecord.objects.filter(appointmentType__icontains=search_record_term,dog=dog)
+        elif filter_by == 'symptoms':
+            medical_record =  MedicalRecord.objects.filter(symptoms__icontains=search_record_term,dog=dog)
+        elif filter_by == 'treatment':
+            medical_record =  MedicalRecord.objects.filter(treatment__icontains=search_record_term,dog=dog)
+        elif filter_by == 'recommendations':
+            medical_record =  MedicalRecord.objects.filter(recomendations__icontains=search_record_term,dog=dog)
     else:
         medical_record = MedicalRecord.objects.filter(dog=dog)
     return render(request, 'medical_record.html', {'dog': dog, 'medical_records': medical_record})

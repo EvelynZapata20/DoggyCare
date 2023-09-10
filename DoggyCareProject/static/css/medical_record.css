@@ -9,7 +9,8 @@ main > * {
     margin-bottom: 15px;
 }
 
-.search-bar {
+
+.search-record-bar {
     font-family: Georgia, serif;
     display: flex;
     align-items: center;
@@ -30,11 +31,17 @@ main > * {
     margin-right: 15px;
 }
 
-.new-patient {
+
+.new-record {
     display: flex;
     font-family: Georgia, serif;
     align-items: center;
     justify-content: center;
+}
+
+.search-filter{
+    width: 10%;
+    margin-right: 5px;
 }
 
 .btn {
@@ -57,46 +64,43 @@ h1 {
     font-family: Georgia, serif;
     text-align: center;
     margin: 25px;
+    text-transform: uppercase;
 }
 
-.dog-list {
+.records-list {
     padding: 0 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.dog-card {
+.record-card {
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 10px #bdd7ff;
     overflow: hidden;
-    width: 20%;
+    width: 80%;
     margin: 20px;
     float: left;
     padding: auto;
 }
 
+.record-card:hover {
 
-.dog-card img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; 
-    object-fit: cover;
-    display: block;
-    margin: 0 auto; 
+    box-shadow: 5px 5px 5px #bdd7ff;
+
 }
 
+.record-card .card-content{
+    padding: 15px;
+    text-align: center;
+}
 
-.dog-card h2 {
+.record-card h2 {
     text-align: center;
     margin: 5px;
 }
 
 
-.card-content p {
-    margin: 0 0 3px;
-    margin-left: 10px
-}
 
 .card-button {
     padding: 5px;
