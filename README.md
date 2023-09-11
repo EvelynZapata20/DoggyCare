@@ -19,16 +19,23 @@ To run DoggyCare:
    git clone https://github.com/EvelynZapata20/DoggyCare.git
 
 2. Navigate to the "DoggyCareProject" folder using a terminal:
+
+   ```shell
+   cd DoggyCare/DoggyCareProject
    
-  ```shell
-  cd DoggyCare/DoggyCareProject
+3. Launch the server:
 
-3. Launch the server:  
+   ```shell
+   python manage.py runserver
 
-  ```shell
-  python manage.py runserver
+4. Copy the local server's URL from the command prompt or terminal, it should resemble:
 
-4. Copy the local server's URL from the command prompt or terminal (it should resemble "http://127.0.0.1:8000/").
-5. In your preferred web browser, paste the copied URL, and append "patients" to the end, resulting in a URL like "http://127.0.0.1:8000/patients/".
+   ```shell
+   http://127.0.0.1:8000/
+   
+5. In your preferred web browser, paste the copied URL, and append "patients" to the end, resulting in a URL like:
+
+   ```shell
+   http://127.0.0.1:8000/patients
 
 You are now ready to enjoy DoggyCare!
