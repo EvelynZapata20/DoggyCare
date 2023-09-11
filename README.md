@@ -1,10 +1,25 @@
-# DoggyCare
-Doggy Care is an innovative website designed to cater to the needs of both dog owners and veterinarians. It serves as a valuable platform where dog owners and veterinary clinics can collaborate to ensure the optimal health and well-being of their beloved pets.
+# DOGGYCARE
+DoggyCare is an innovative web application that offers comprehensive health monitoring, tailored recommendations and appointment management, to enhance dog's well-being, creating a holistic solution for canine care.
 
-For dog owners, the registration process is simple, allowing them to provide basic contact information and link or associate their account with their dogs. This information forms the foundation for personalized health insights and predictions for each pet.
+## Requirements
+Before running the program, ensure the following [] are installed:
 
-Veterinary clinics play a crucial role in maintaining accurate and up-to-date records for each dog under their care. They are responsible for registering the dogs they treat or examine, including medical history, treatments, vaccinations, and any pertinent notes from the visits.
+- Python version 3.6 or higher (programming languaje)
+- django version 3.2.8Django (framework).
+- pillow (python library to []).
 
-Through advanced data analysis, Doggy Care generates predictions about a dog's health based on their medical history and similar cases. These predictions are presented in a clear and easy-to-understand format, providing both dog owners and veterinarians with valuable insights into potential health risks and preventive measures.
+We recommend using the Visual Studio Code environment for code exploration.
 
-Overall, Doggy Care aims to enhance the level of care for dogs by providing a comprehensive health monitoring service. By leveraging technology and predictive insights, the platform empowers dog owners and veterinary clinics to take proactive steps in ensuring the well-being and longevity of their furry companions.
+## Running the Program
+Follow these steps to run the program:
+
+- Clone the GitHub repository by executing the following command in a command prompt or terminal, specifying the desired folder for program storage:
+git clone https://github.com/EvelynZapata20/DoggyCare.git
+- Navigate to the "DoggyCareProject" folder using a command prompt or terminal:
+cd DoggyCare/DoggyCareProject
+- Launch the server by running the following command:
+python manage.py runserver
+- Copy the local server's URL from the command prompt or terminal (it should resemble "http://127.0.0.1:8000/").
+- In your preferred web browser, paste the copied URL, and append "patients" to the end, resulting in a URL like "http://127.0.0.1:8000/patients/".
+
+You are now ready to start using DoggyCare.
