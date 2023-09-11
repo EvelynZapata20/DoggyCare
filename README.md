@@ -13,11 +13,11 @@ We recommend using the Visual Studio Code environment for code exploration.
 ## Running the Program
 Follow these steps to run the program:
 
-- Clone the GitHub repository by executing the following command in a command prompt or terminal, specifying the desired folder for program storage:
+- Clone the GitHub repository by executing the following command in a command prompt or terminal, specifying the desired folder for program storage:  
 git clone https://github.com/EvelynZapata20/DoggyCare.git
-- Navigate to the "DoggyCareProject" folder using a command prompt or terminal:
+- Navigate to the "DoggyCareProject" folder using a command prompt or terminal:  
 cd DoggyCare/DoggyCareProject
-- Launch the server by running the following command:
+- Launch the server by running the following command:  
 python manage.py runserver
 - Copy the local server's URL from the command prompt or terminal (it should resemble "http://127.0.0.1:8000/").
 - In your preferred web browser, paste the copied URL, and append "patients" to the end, resulting in a URL like "http://127.0.0.1:8000/patients/".
