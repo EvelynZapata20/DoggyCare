@@ -40,6 +40,7 @@ def dog_profile(request, dog_id):
         form = DogRegisterForm(instance=dog)
     return render(request, 'dog_profile.html', {'dog': dog, 'form': form})
 
+#edit an existing medical record for any dog
 def edit_medical_record(request, dog_id, record_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     record = get_object_or_404(MedicalRecord, pk=record_id)
