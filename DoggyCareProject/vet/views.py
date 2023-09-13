@@ -27,18 +27,14 @@ def delete_dog(request, dog_id):
 # Edit the information of a dog
 def dog_profile(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
-    old_image = dog.image.path
     if request.method == 'POST':
         form = DogRegisterForm(request.POST, request.FILES, instance=dog)
         if form.is_valid():
-            # Delete the image file if it has been changed
-            new_image = form.cleaned_data.get('image')
-            if new_image and old_image and Path(old_image).exists():
-                Path(old_image).unlink() 
             form.save()
             return redirect('dog_profile', dog_id=dog.id)
     else:
         form = DogRegisterForm(instance=dog)
+
     return render(request, 'dog_profile.html', {'dog': dog, 'form': form})
 
 #edit an existing medical record for any dog
@@ -75,15 +71,15 @@ def patients(request):
     if search_term:
         if filter_by == 'all':
             dogs = Dog.objects.filter(
-                Q(name__icontains=search_term) |  Q(owner__icontains=search_term) | Q(age__icontains=search_term) |
+                Q(name__icontains=search_term) |  Q(owner__icontains=search_term) | Q(birthdate__icontains=search_term) |
                 Q(breed__icontains=search_term) | Q(weight__icontains=search_term) | Q(gender__icontains=search_term)
             )
         elif filter_by == 'name':
             dogs =  Dog.objects.filter(name__icontains=search_term)
         elif filter_by == 'owner':
             dogs =  Dog.objects.filter(owner__icontains=search_term)
-        elif filter_by == 'age':
-            dogs =  Dog.objects.filter(age__icontains=search_term)
+        elif filter_by == 'birthdate':
+            dogs =  Dog.objects.filter(birthdate__icontains=search_term)
         elif filter_by == 'breed':
             dogs =  Dog.objects.filter(breed__icontains=search_term)
         elif filter_by == 'weight':

@@ -4,7 +4,8 @@ from .models import *
 class DogRegisterForm(forms.ModelForm):
     class Meta:
         model= Dog
-        fields= ['image', 'owner', 'name', 'breed', 'age', 'weight', 'gender']
+        fields= ['image', 'owner', 'name', 'breed', 'birthdate', 'weight', 'gender']
+        
 class MedicalRecordForm(forms.ModelForm):
     class Meta:
         model= MedicalRecord

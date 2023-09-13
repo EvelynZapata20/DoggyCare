@@ -34,7 +34,11 @@
                         {% if field.name != 'image' %}
                         <div class="field">
                             <label>{{ field.label_tag }}</label>
+                            {% if field.name != 'birthdate' %}
                             {{ field }}
+                            {% else %}
+                            <input type="date" name="birthdate" required>
+                            {% endif %}
                         </div>
                         {% endif %}
                         {% endfor %}

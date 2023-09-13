@@ -23,7 +23,7 @@ class Dog(models.Model):
     owner= models.CharField(blank= False, max_length=100)
     name= models.CharField(blank= False, max_length=20)
     breed= models.CharField(blank= False, max_length=20)
-    age= models.CharField(blank= False, max_length=10)
+    birthdate= models.DateField(blank= False)
     weight= models.CharField(blank= False, max_length=10)
     gender= models.CharField(blank= False, max_length=10)
     vaccination_card = models.ForeignKey(vaccination_card, on_delete=models.CASCADE,null=True,blank = True)
