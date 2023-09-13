@@ -6,6 +6,8 @@ h1 {
 }
 
 
+/* Applies style the form */
+
 .custom-form {
     display: grid;
     grid-template-rows: auto auto 1fr;
@@ -56,6 +58,8 @@ h1 {
     border-bottom: 2px solid #000000;
 }
 
+/* Applies style to the buttons */
+
 .confirm{
     display: flex;
     align-items: center;
@@ -67,12 +71,36 @@ h1 {
 .submit-button {
     padding: 10px 20px;
     font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     background-color: #BDD7FF;
     color: #000000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 20px;
+}
+
+.submit-button:hover {
+    background-color: #86a7d4;
+}
+
+#cancel-button {
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+
+#cancel-button:hover {
+    background-color: #86a7d4;
 }
 
 

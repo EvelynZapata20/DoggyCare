@@ -6,6 +6,7 @@ from django.urls import reverse
 from .forms import *
 from .models import Dog
 from .models import vaccination_card as Vaccination
+import re
 
 
 # Create your views here.
@@ -93,6 +94,7 @@ def patients(request):
         dogs = Dog.objects.all()
     return render(request, 'patients.html', {'dogs': dogs})
 
+#create a new medical_record register for any dog
 def new_record(request,dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     if request.method == 'POST':
@@ -105,6 +107,7 @@ def new_record(request,dog_id):
         recordform = MedicalRecordForm()
     return render(request, 'new_record.html',{'dog': dog, 'recordform': recordform})
 
+#show the medical_record registers by different filters, in order from most recent to oldest
 def medical_record(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     filter_by = request.GET.get('filterRecord')
@@ -116,22 +119,27 @@ def medical_record(request, dog_id):
             Q(symptoms__icontains=search_record_term) |
             Q(appointmentType__icontains=search_record_term)|
             Q(treatment__icontains=search_record_term) |
-            Q(recomendations__icontains=search_record_term),
+            Q(recommendations__icontains=search_record_term),
             dog=dog
-            )
+            ).order_by('-date')
         elif filter_by == 'date':
-            medical_record =  MedicalRecord.objects.filter(date__icontains=search_record_term,dog=dog)
+            medical_record =  MedicalRecord.objects.filter(date__icontains=search_record_term,dog=dog).order_by('-date')
         elif filter_by == 'appointmentType':
-            medical_record =  MedicalRecord.objects.filter(appointmentType__icontains=search_record_term,dog=dog)
+            medical_record =  MedicalRecord.objects.filter(appointmentType__icontains=search_record_term,dog=dog).order_by('-date')
         elif filter_by == 'symptoms':
-            medical_record =  MedicalRecord.objects.filter(symptoms__icontains=search_record_term,dog=dog)
+            medical_record =  MedicalRecord.objects.filter(symptoms__icontains=search_record_term,dog=dog).order_by('-date')
         elif filter_by == 'treatment':
-            medical_record =  MedicalRecord.objects.filter(treatment__icontains=search_record_term,dog=dog)
+            medical_record =  MedicalRecord.objects.filter(treatment__icontains=search_record_term,dog=dog).order_by('-date')
         elif filter_by == 'recommendations':
-            medical_record =  MedicalRecord.objects.filter(recomendations__icontains=search_record_term,dog=dog)
+            medical_record =  MedicalRecord.objects.filter(recommendations__icontains=search_record_term,dog=dog).order_by('-date')
     else:
-        medical_record = MedicalRecord.objects.filter(dog=dog)
+        medical_record = MedicalRecord.objects.filter(dog=dog).order_by('-date')
     return render(request, 'medical_record.html', {'dog': dog, 'medical_records': medical_record})
+
+#show the appointments registers by different filters, in order from oldest to most recent
+def appointments(request):
+    
+    return render(request, 'appointments.html', {'appointments': appointments})
 
 def vaccination_card(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)

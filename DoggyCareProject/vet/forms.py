@@ -8,9 +8,19 @@ class DogRegisterForm(forms.ModelForm):
 class MedicalRecordForm(forms.ModelForm):
     class Meta:
         model= MedicalRecord
-        fields= ['dog', 'date', 'appointmentType', 'symptoms', 'treatment', 'recomendations']
+        fields= ['dog', 'date', 'appointmentType', 'symptoms', 'treatment', 'recommendations']
         exclude=['dog']
-
+        widgets = {
+            'date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD'}),
+        }
+class AppointmentForm(forms.ModelForm):
+    class Meta:
+        model= appointment
+        fields= ['date', 'time', 'appointment_type', 'dog_owner_id', 'vet_id','dog_id', 'clinic_id']
+        exclude=['dog_id']
+        widgets = {
+            'date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD'}),
+        }
 class vaccinationCardForm(forms.ModelForm):
     class Meta:
         model = vaccination_card

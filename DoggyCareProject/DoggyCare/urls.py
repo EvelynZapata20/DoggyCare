@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('patients/', views.patients, name='patients'),
+    path('appointments/', views.appointments, name='appointment'),
     path('medical_record/<int:dog_id>/', views.medical_record, name='medical_record'),
     path('dog_register/', views.dog_register, name='dog_register'),
     path('new_record/<int:dog_id>/', views.new_record, name='new_record'),

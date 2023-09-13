@@ -10,6 +10,8 @@ main > * {
 }
 
 
+/* Applies style to the search bar and filers*/
+
 .search-record-bar {
     font-family: Georgia, serif;
     display: flex;
@@ -26,21 +28,19 @@ main > * {
     width: 100%;
 }
 
-.search-filter{
-    width: 10%;
-    margin-right: 15px;
-}
-
+/* Applies style to the button */
 
 .new-record {
     display: flex;
     font-family: Georgia, serif;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
+
 .search-filter{
-    width: 10%;
+    width: 17%;
     margin-right: 5px;
 }
 
@@ -67,6 +67,8 @@ h1 {
     text-transform: uppercase;
 }
 
+/* Applies style to all elements of the medical record visualize */
+
 .records-list {
     padding: 0 10px;
     display: flex;
@@ -82,17 +84,22 @@ h1 {
     margin: 20px;
     float: left;
     padding: auto;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease; 
 }
 
 .record-card:hover {
-
-    box-shadow: 5px 5px 5px #bdd7ff;
-
+    box-shadow: 10px 10px 30px #bdd7ff;
+    transform: scale(1.05); 
 }
 
-.record-card .card-content{
+.record-card .card-content {
     padding: 15px;
     text-align: center;
+    word-wrap: break-word;
+    flex-grow: 1;
 }
 
 .record-card h2 {
@@ -101,11 +108,26 @@ h1 {
 }
 
 
+.button-container {
+    text-align: center;
+    height:20px;
+}
 
-.card-button {
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    gap: 10px; 
+.edit-button {
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px;
+    height: 20px;
+}
+
+
+.edit-button:hover {
+    background-color: #86a7d4;
 }

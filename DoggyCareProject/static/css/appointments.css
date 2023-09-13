@@ -1,0 +1,41 @@
+main {
+    margin-top: 15px; 
+    margin-bottom: 15px; 
+}
+
+/* Applies margin to all elements within main */
+main > * {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 28px;
+    font-family: Georgia, serif;
+    text-align: center;
+    margin: 25px;
+    text-transform: uppercase;
+}
+
+
+.schedule-appointment{
+    display: flex;
+    font-family: Georgia, serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    padding: 5px 10px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #86a7d4;
+}

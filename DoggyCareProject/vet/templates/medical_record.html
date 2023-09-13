@@ -4,6 +4,7 @@
 
 <html lang="en">
 <head>
+    <!-- Configuration of the page style with the css file -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {{dog.name}}'s Medical Record {% endblock %}</title>
@@ -16,6 +17,7 @@
 <body>
    <main>
         {% block content %}
+        <!-- Page to show the medicalRecord of a dog -->
 
         <h1>{{dog.name}}'s Medical Record</h1>
 
@@ -25,12 +27,13 @@
         <div class="new-record" style="text-align: center;">
             <a href="{% url 'new_record' dog_id=dog.id %}" class="btn">New Record</a>
         </div>
+        <!-- Creation of the search bar and the filters -->
         <form action="" class="search-record-bar">
             <input type="text" class="form-control" name="searchRecord" placeholder="Search record...">
             <div class="search-filter">
                 <select class="form-control" name="filterRecord">
                     <option value="all">All</option>
-                    <option value="date">Date</option>
+                    <option value="date">YY-MM-DD Date</option>
                     <option value="appointmentType">Appointment Type</option>
                     <option value="symptoms">Symptoms</option>
                     <option value="treatment">Treatment</option>
@@ -40,7 +43,7 @@
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
 
-            
+        <!-- show alll the records with its respective fields -->
         <div class="records-list">
             {% for record in medical_records %}
             <div class="record-card">
@@ -49,8 +52,11 @@
                     <p><strong>Appointment Type:</strong> {{ record.appointmentType }}</p>
                     <p><strong>Symptoms:</strong> {{ record.symptoms }}</p>
                     <p><strong>Treatment:</strong> {{ record.treatment }}</p>
-                    <p><strong>Recommendations:</strong> {{ record.recomendations }}</p>
-                    <a href="{% url 'edit_medical_record' dog_id=dog.id  record_id=record.id%}" class="Edit">Edit</a>
+                    <p><strong>Recommendations:</strong> {{ record.recommendations }}</p>
+
+                    <div class="button-container">
+                        <a href="{% url 'edit_medical_record' dog_id=dog.id  record_id=record.id%}" class="edit-button">Edit</a>
+                    </div>
                 </div>
 
             </div>

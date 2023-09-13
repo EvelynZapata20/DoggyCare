@@ -4,6 +4,7 @@
 {% load static %}
 
 <html lang="en">
+    <!-- Configuration of the page style with the css file -->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
         <main>
             {% block content %}
              <h1>EDIT MEDICAL RECORD</h1>
+             <!-- show all the medicalRecord fields with its current value  -->
              <form method="post" enctype="multipart/form-data" class="custom-form">
                 <div class="container"">
                     <div class="form-container">
@@ -32,6 +34,9 @@
                             <div class="field">
                                 {{ form.date.label_tag }}
                                 {{ form.date }}
+                                {% if form.date.errors %}
+                                    <p class="error">{{ form.date.errors }}</p>
+                                {% endif %}
                             </div>
 
                             <div class="field">
@@ -50,15 +55,16 @@
                             </div>
 
                             <div class="field">
-                                {{ form.recomendations.label_tag }}
-                                {{ form.recomendations }}
+                                {{ form.recommendations.label_tag }}
+                                {{ form.recommendations }}
                             </div>
                             
                         </div>
                     </div>
+                    <!-- Buttons to confirm changes and back to the last page -->
                     <div class="button-container">
                         <button type="submit">Save Changes</button>
-                        <a id="cancel-button" href="{% url 'medical_record' dog_id=dog.id %}">Cancel</a>
+                        <a id="cancel-button" href="{% url 'medical_record' dog_id=dog.id %}">Back</a>
                     </div>
                     
                 </div>

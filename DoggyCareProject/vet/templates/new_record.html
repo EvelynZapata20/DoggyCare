@@ -4,6 +4,7 @@
 
 <html lang="en">
 <head>
+    <!-- Configuration of the page style with the css file -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}New Record{% endblock %}</title>
@@ -16,6 +17,7 @@
 </head>
 <body>
     <main>
+        <!-- Access the form to create a new record for any dog with all of the required fields -->
         {% block content %}
         <h1>New Record for {{dog.name}}</h1>
         <form method="post" enctype="multipart/form-data" class="custom-form">
@@ -31,6 +33,9 @@
                         <div class="field">
                             <label>{{ field.label_tag }}</label>
                             {{ field }}
+                            {% if field.errors %}
+                                <p class="error">{{ field.errors }}</p>
+                            {% endif %}
                         </div>
                         {% endif%}
                         {% endfor %}
@@ -38,8 +43,10 @@
                 </div>
                 
             </div>
+            <!-- Buttons to confirm changes and back to the last page -->
             <div class="confirm">
                 <button type="submit" class="submit-button">Confirm</button>
+                <a id="cancel-button" href="{% url 'medical_record' dog_id=dog.id %}">Back</a>
             </div>
         </form>
         {% endblock content %}
