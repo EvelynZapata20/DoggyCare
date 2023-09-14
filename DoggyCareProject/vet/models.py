@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here, here are all the modes used in the vet app of rDoggyCare.
 
@@ -27,6 +28,14 @@ class Dog(models.Model):
     weight= models.CharField(blank= False, max_length=10)
     gender= models.CharField(blank= False, max_length=10)
     vaccination_card = models.ForeignKey(vaccination_card, on_delete=models.CASCADE,null=True,blank = True)
+
+    #This method calculate the age of the dog and return the age in months ex the dog has 1 year and 6 months, the function return 
+    # 18, this calculate with the actually date and the birthdate of the dog 
+    def calculate_age(self):
+        today = date.today()
+        delta = today - self.birthdate # Difference of time 
+        age = delta.days // 30  # Suppose all the months has 30 days
+        return age
 
 
 class MedicalRecord(models.Model):

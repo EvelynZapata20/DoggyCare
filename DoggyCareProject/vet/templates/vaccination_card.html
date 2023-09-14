@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Vaccination card{% endblock %}</title>
     {% block additional_styles %}
-    <link rel="stylesheet" href="{% static 'css/dog_register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vaccination_card.css' %}">
     {% endblock additional_styles %}
     {% block additional_scripts %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -17,16 +17,70 @@
 <body>
     <main>
         {% block content %}
-        <h1>Vaccination card {{ dog.name }}</h1>
-        <p>Rabies {{ vaccination_card.rabies }}</p>
-        <p>Canine Distemper {{ vaccination_card.CanineDistemper }}</p>
-        <p>Parvovirus {{ vaccination_card.Parvovirus }}</p>
-        <p>Adenovirus {{ vaccination_card.Adenovirus }}</p>
-        <p>Adenovirus-2 {{ vaccination_card.Adenovirus_2 }}</p>
-        <p>Parainfluenza {{ vaccination_card.Parainfluenza }}</p>
-        <p>Bordetella {{ vaccination_card.Bordetella }}</p>
-        <p>Lyme Disease {{ vaccination_card.LymeDisease }}</p>
-        <p>Canine Influenza {{ vaccination_card.CanineInfluenza }}</p>
+        <h1 style="margin:25">Vaccination card {{ dog.name }}</h1>
+        <div>
+            {%  if  vaccination_card.rabies  == True %}
+                <label>Rabies: Applied</label>
+            {% else %}
+                <label>Rabies: Not applied</label>
+            {% endif %}
+        </div>
+        <div>
+        {%  if  vaccination_card.CanineDistemper  == True %}
+            <label>Canine Distemper: Applied</label>
+        {% else %}
+            <label>Canine Distemper: Not applied</label>
+        {% endif %}
+        </div>
+        <div>
+        {%  if  vaccination_card.Parvovirus  == True %}
+            <label>Parvovirus: Applied</label>
+        {% else %}
+            <label>Parvovirus: Not applied</label>
+        {% endif %}
+        </div>
+        <div>
+        {%  if  vaccination_card.Adenovirus  == True %}
+            <label>Adenovirus: Applied</label>
+        {% else %}
+            <label>Adenovirus: Not applied</label>
+        {% endif %}
+        </div>
+        <div>
+        {%  if  vaccination_card.Adenovirus_2  == True %}
+            <label>Adenovirus-2: Applied</label>
+        {% else %}
+            <label>Adenovirus-2: Not applied</label>
+        {% endif %}
+        </div>
+        <div>
+        {%  if  vaccination_card.Parainfluenza  == True %}
+            <label>Parainfluenza: Applied</label>
+        {% else %}
+            <label>Parainfluenza: Not applied</label>
+        {% endif %}
+        </div>
+        <div>
+        {%  if  vaccination_card.Bordetella  == True %}
+            <label>Bordetella: Applied</label>
+        {% else %}
+            <label>Bordetella: Not applied</label>
+        {% endif %}
+        </div>
+        <div>
+        {%  if  vaccination_card.LymeDisease  == True %}
+            <label>Lyme Disease: Applied</label>
+        {% else %}
+            <label>Lyme Disease: Not applied</label>
+        {% endif %}
+        </div>
+        <div>
+        {%  if  vaccination_card.CanineInfluenza  == True %}
+            <label>Canine Influenza: Applied</label>
+        {% else %}
+            <label>Canine Influenza: Not applied</label>
+        {% endif %}
+        </div>
         <div class="card-button">
             <a href="{% url 'vaccination_card_edit' vac_id=dog.vaccination_card_id %}" class="btn">Edit</a>
         </div>

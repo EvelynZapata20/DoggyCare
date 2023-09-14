@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.urls import reverse
 from .forms import *
 from .models import Dog
-from .models import vaccination_card as Vaccination
+from .models import vaccination_card as vaccination
 import re
 
 
@@ -55,7 +55,7 @@ def dog_register(request):
     if request.method == 'POST':
         form= DogRegisterForm(request.POST, request.FILES)
         if form.is_valid():
-            new_vaccination_card = Vaccination()
+            new_vaccination_card = vaccination()
             new_vaccination_card.save()
             form.instance.vaccination_card = new_vaccination_card
             form.save()
@@ -139,11 +139,11 @@ def appointments(request):
 
 def vaccination_card(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
-    vaccination_card = get_object_or_404(Vaccination, pk=dog.vaccination_card_id)
+    vaccination_card = get_object_or_404(vaccination, pk=dog.vaccination_card_id)
     return render(request, 'vaccination_card.html', {'vaccination_card': vaccination_card , 'dog':dog})
 
 def vaccination_card_edit(request, vac_id):
-    vaccination_card = get_object_or_404(Vaccination, pk=vac_id)
+    vaccination_card = get_object_or_404(vaccination, pk=vac_id)
     if request.method == 'POST':
         form = vaccinationCardForm(request.POST, request.FILES, instance=vaccination_card)
         if form.is_valid():
@@ -153,9 +153,13 @@ def vaccination_card_edit(request, vac_id):
         form = vaccinationCardForm()
     return render(request, 'vaccination_card_edit.html', {'vaccination_card_edit': vaccination_card_edit ,'form':form,})
 
+# This function send the dog, vaccination card and the age of the dog for generate the recomendations for each dog
 def recomendations(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
-    return render(request, 'recomendations.html', {'dog': dog,'recomendations': recomendations})
+    vaccination_card = dog.vaccination_card_id
+    vac_card = get_object_or_404(vaccination, pk=vaccination_card)
+    age = dog.calculate_age()
+    return render(request, 'recomendations.html', {'dog': dog,'vac_card': vac_card, 'age': age,})
 
 def home(request):
     return HttpResponse('Hello, World!')

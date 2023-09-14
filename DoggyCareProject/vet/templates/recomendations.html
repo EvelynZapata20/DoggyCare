@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
 {% load static %}
 
 <html lang="en">
@@ -8,18 +7,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Recomendations for {{dog.name}} {% endblock %}</title>
     {% block additional_styles %}
-    <link rel="stylesheet" href="{% static 'css/dog_register.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/recomendations.css' %}">
     {% endblock additional_styles %}
     {% block additional_scripts %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     {% endblock additional_scripts %}
 </head>
 <body>
+    <script>
+        var vac_id = dog.vaccination_card_id
+    </script>
     <main>
         {% block content %}
-        <h1>Recomendations for {{dog.name}}</h1>
-        <img src="{{ dog.image.url }}" alt="{{ dog.name }} Image" style="border-radius: 50%; width: 500px; height: 500px;">
-
+             <!-- 2 columns for the image and the name of the dog, and the other for the recomendations -->
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <img src="{{ dog.image.url }}" alt="{{ dog.name }} Image" style="border-radius: 50%; width: 500px; height: 500px;" >
+                        <h1>Recomendations for {{dog.name}}</h1>
+                    </div>
+                    <div class="col">                       
+                        <!-- Recomendation rabies -->
+                        {% if vac_card.rabies == False %}
+                            {% if age > 3 %}
+                                <div class="row">
+                                    <div class="card" >
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog needs the rabies vaccine from 3 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% elif age >= 2 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the rabies vaccine rember take the appoitment during the 3 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Recomendation CanineDistemper -->
+                        {% if vac_card.CanineDistemper == False %}
+                            {% if age > 2 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog needs the canine distemper vaccine from 2 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% elif age >= 1 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the canine distemper vaccine rember take the appoitment during the 2 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Recomendation Parvovirus -->
+                        {% if vac_card.rabies == False %}
+                            {% if age > 2 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog needs the parvovirus vaccine from 2 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% elif age >= 1 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the parvovirus vaccine rember take the appoitment during the 2 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Recomendation Adenovirus -->
+                        {% if vac_card.rabies == False %}
+                            {% if age > 1 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog needs the adenovirus vaccine from 1 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the adenovirus vaccine rember take the appoitment during the 1 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Recomendation Adenovirus_2 -->
+                        {% if vac_card.Adenovirus_2 == False %}
+                            {% if age > 1 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog needs the adenovirus-2 vaccine from 1 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the adenovirus-2 vaccine rember take the appoitment during the 1 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Recomendation Parainfluenza -->
+                        {% if vac_card.Parainfluenza == False %}
+                            {% if age > 2 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog needs the parainfluenza vaccine from 2 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% elif age >= 1 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the parainfluenza vaccine rember take the appoitment during the 2 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Recomendation Bordetella -->
+                        {% if vac_card.Bordetella == False %}
+                            {% if age > 3 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog needs the bordetella vaccine from 3 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% elif age >= 2 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the bordetella vaccine rember take the appoitment during the 3 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Recomendation LymeDisease -->
+                        {% if vac_card.LymeDisease == False %}
+                            {% if age > 3 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog lyme disease the rabies vaccine from 3 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% elif age >= 2 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the lyme disease vaccine rember take the appoitment during the 3 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <!-- Recomendation CanineInfluenza -->
+                        {% if vac_card.CanineInfluenza == False %}
+                            {% if age > 4 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Remember that your dog needs the canine influenza vaccine from 4 months onwards.</p>
+                                    </div>
+                                </div>
+                            {% elif age >= 3 %}
+                                <div class="row">
+                                    <div class="card">
+                                        <h4>Vaccines</h4>
+                                        <p>Your dog need the canine influenza vaccine rember take the appoitment during the 4 months of age.</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}  
+                    </div>
+                </div>
+            </div>
         {% endblock content %}
     </main>
 </body>
