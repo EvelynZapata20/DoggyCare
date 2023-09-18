@@ -1,16 +1,10 @@
 main {
     margin-top: 15px; 
     margin-bottom: 15px; 
-}
-
-/* Applies margin to all elements within main */
-main > * {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    font-family: "Poppins", sans-serif;
 }
 
 .search-bar {
-    font-family: Georgia, serif;
     display: flex;
     align-items: center;
     padding: 0 50px 0;
@@ -32,7 +26,6 @@ main > * {
 
 .new-patient {
     display: flex;
-    font-family: Georgia, serif;
     align-items: center;
     justify-content: center;
 }
@@ -52,13 +45,6 @@ main > * {
     background-color: #86a7d4;
 }
 
-h1 {
-    font-size: 28px;
-    font-family: Georgia, serif;
-    text-align: center;
-    margin: 25px;
-}
-
 .dog-list {
     padding: 0 10px;
     display: flex;
@@ -68,7 +54,7 @@ h1 {
 
 .dog-card {
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 20%;
     margin: 20px;

@@ -17,6 +17,9 @@
 <body>
    <main>
         {% block content %}
+        
+        <h1>MY PATIENTS</h1>
+
         <form action="" class="search-bar">
             <input type="text" class="form-control" name="searchTerm" placeholder="Search...">
             <!-- Dropdown for the filters -->
@@ -37,8 +40,6 @@
         <div class="new-patient">
             <a href="{% url 'dog_register' %}" class="btn">New Patient</a>
         </div>   
-
-        <h1>MY PATIENTS</h1>
         
         <div class="dog-list">
             {% for dog in dogs %}

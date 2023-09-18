@@ -18,19 +18,28 @@
 
     <body>
         <header>
-            <nav>
-                <div class="greeting">
-                    Hi, User
+            <div class="container-top-bar">
+                <div class="top-bar">
+                    <img src="{% static 'img/logo.png' %}">
+                    <h1 class="name">DoggyCare</h1>
+                    <img src="{% static 'img/logo.png' %}">
                 </div>
-                <div class="tabs">
-                    <ul>
-                        <li><a href="">MY ACCOUNT</a></li>
-                        <li><a href="{% url 'patients' %}">MY PATIENTS</a></li>
-                        <li><a href="{% url 'appointment' %}">MY APPOINTMENTS</a></li>
-                        <li><a href="">NOTIFICATIONS</a></li>
-                    </ul>
-                </div>  
-            </nav>
+        </div>
+        <!-- Topbar End -->
+    
+        <nav class="nav-bar">
+            <div class="greeting">
+                <h3> Hi, User </h3>
+            </div>
+            <div class="tabs">
+                <ul>
+                    <li><a href="">Account</a></li>
+                    <li><a href="{% url 'patients' %}">Patients</a></li>
+                    <li><a href="{% url 'appointment' %}">Appointments</a></li>
+                    <li><a href="">Statistics</a></li>
+                </ul>
+            </div>  
+        </nav>
         </header>
         
         <main>
@@ -40,10 +49,8 @@
     </body>
 
     <footer>
-        <div class="footer-content">
-            <img class="footer-img" src= "{% static 'img/logo.png' %}">
-            Provided by DoggyCare
-            <img class="footer-img" src= "{% static 'img/logo.png' %}">
+        <div>
+            <p>&copy; 2023 DoggyCare - Todos los derechos reservados</p>
         </div>
     </footer>
     
