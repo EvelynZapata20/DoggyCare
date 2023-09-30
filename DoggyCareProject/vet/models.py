@@ -36,6 +36,9 @@ class Dog(models.Model):
         delta = today - self.birthdate # Difference of time 
         age = delta.days // 30  # Suppose all the months has 30 days
         return age
+    
+    def calculate_weigth(self,weigth):
+        return weigth
 
 
 class MedicalRecord(models.Model):
