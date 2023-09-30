@@ -29,6 +29,7 @@ class Dog(models.Model):
     gender= models.CharField(blank= False, max_length=10)
     vaccination_card = models.ForeignKey(vaccination_card, on_delete=models.CASCADE,null=True,blank = True)
     vet= models.ForeignKey('vet.Vet', on_delete=models.CASCADE,null=True, blank=True)
+    merge_1= models.BooleanField(default=False)
 
     #This method calculate the age of the dog and return the age in months ex the dog has 1 year and 6 months, the function return 
     # 18, this calculate with the actually date and the birthdate of the dog 
