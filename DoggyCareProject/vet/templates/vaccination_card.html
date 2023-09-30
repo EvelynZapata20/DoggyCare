@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
 {% load static %}
 
 <html lang="en">
@@ -17,72 +16,137 @@
 <body>
     <main>
         {% block content %}
-        <h1 style="margin:25">Vaccination card {{ dog.name }}</h1>
-        <div>
-            {%  if  vaccination_card.rabies  == True %}
-                <label>Rabies: Applied</label>
-            {% else %}
-                <label>Rabies: Not applied</label>
-            {% endif %}
+        <div class="container-vertical">
+            <div class="container-horizontal">
+                <div class="element">
+                    <img src="{% static 'img/logo.png' %}">
+                </div>
+                <div class="element">
+                    <p>Monovalent or bivalent vaccine</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+            </div>
         </div>
-        <div>
-        {%  if  vaccination_card.CanineDistemper  == True %}
-            <label>Canine Distemper: Applied</label>
-        {% else %}
-            <label>Canine Distemper: Not applied</label>
-        {% endif %}
+        <div class="container-vertical">
+            <div class="container-horizontal">
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+            </div>
         </div>
-        <div>
-        {%  if  vaccination_card.Parvovirus  == True %}
-            <label>Parvovirus: Applied</label>
-        {% else %}
-            <label>Parvovirus: Not applied</label>
-        {% endif %}
+        <div class="container-vertical">
+            <div class="container-horizontal">
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+            </div>
         </div>
-        <div>
-        {%  if  vaccination_card.Adenovirus  == True %}
-            <label>Adenovirus: Applied</label>
-        {% else %}
-            <label>Adenovirus: Not applied</label>
-        {% endif %}
+        <div class="container-vertical">
+            <div class="container-horizontal">
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+            </div>
         </div>
-        <div>
-        {%  if  vaccination_card.Adenovirus_2  == True %}
-            <label>Adenovirus-2: Applied</label>
-        {% else %}
-            <label>Adenovirus-2: Not applied</label>
-        {% endif %}
+        <div class="container-vertical">
+            <div class="container-horizontal">
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+            </div>
         </div>
-        <div>
-        {%  if  vaccination_card.Parainfluenza  == True %}
-            <label>Parainfluenza: Applied</label>
-        {% else %}
-            <label>Parainfluenza: Not applied</label>
-        {% endif %}
-        </div>
-        <div>
-        {%  if  vaccination_card.Bordetella  == True %}
-            <label>Bordetella: Applied</label>
-        {% else %}
-            <label>Bordetella: Not applied</label>
-        {% endif %}
-        </div>
-        <div>
-        {%  if  vaccination_card.LymeDisease  == True %}
-            <label>Lyme Disease: Applied</label>
-        {% else %}
-            <label>Lyme Disease: Not applied</label>
-        {% endif %}
-        </div>
-        <div>
-        {%  if  vaccination_card.CanineInfluenza  == True %}
-            <label>Canine Influenza: Applied</label>
-        {% else %}
-            <label>Canine Influenza: Not applied</label>
-        {% endif %}
-        </div>
-        <div class="card-button">
-            <a href="{% url 'vaccination_card_edit' vac_id=dog.vaccination_card_id %}" class="btn">Edit</a>
+        <div class="container-vertical">
+            <div class="container-horizontal">
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+                <div class="element">
+                    <p>Hola</p>
+                </div>
+            </div>
         </div>
         {% endblock content %}
     </main>
