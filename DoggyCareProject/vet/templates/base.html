@@ -4,10 +4,10 @@
 
 <html lang="en">
     <head>
-        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Vet Clinic{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{% static 'img/logo_tab.png' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% block additional_styles %}
         {% endblock additional_styles %}
@@ -29,7 +29,9 @@
     
         <nav class="nav-bar">
             <div class="greeting">
-                <h3> Hi, User </h3>
+                {% if user.is_authenticated %}
+                <h3>Hi, {{ user.username }}</h3>
+                {% endif %}
             </div>
             <div class="tabs">
                 <ul>
@@ -37,6 +39,7 @@
                     <li><a href="{% url 'patients' %}">Patients</a></li>
                     <li><a href="{% url 'appointment' %}">Appointments</a></li>
                     <li><a href="">Statistics</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
                 </ul>
             </div>  
         </nav>

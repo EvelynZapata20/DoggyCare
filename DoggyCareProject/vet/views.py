@@ -7,11 +7,15 @@ from .forms import *
 from .models import Dog
 from .models import vaccination_card as vaccination
 import re
+from accounts.decorators import vet_required
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
 # Delete a dog
+@login_required 
+@vet_required
 def delete_dog(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     if request.method == 'POST':
@@ -25,6 +29,8 @@ def delete_dog(request, dog_id):
     return render(request, 'dog_profile.html', {'dog': dog})
 
 # Edit the information of a dog
+@login_required 
+@vet_required
 def dog_profile(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     if request.method == 'POST':
@@ -38,6 +44,8 @@ def dog_profile(request, dog_id):
     return render(request, 'dog_profile.html', {'dog': dog, 'form': form})
 
 #edit an existing medical record for any dog
+@login_required 
+@vet_required
 def edit_medical_record(request, dog_id, record_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     record = get_object_or_404(MedicalRecord, pk=record_id)
@@ -51,10 +59,13 @@ def edit_medical_record(request, dog_id, record_id):
     return render(request, 'edit_medical_record.html', {'dog': dog, 'form': form})
 
 # Register a new dog
+@login_required 
+@vet_required
 def dog_register(request):
     if request.method == 'POST':
         form= DogRegisterForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.vet = request.user.vet
             new_vaccination_card = vaccination()
             new_vaccination_card.save()
             form.instance.vaccination_card = new_vaccination_card
@@ -65,12 +76,14 @@ def dog_register(request):
     return render(request, 'dog_register.html', {'form': form})
 
 # Show the list of dogs taking into account the search term and filters
+@login_required 
+@vet_required
 def patients(request):
     search_term = request.GET.get('searchTerm')
     filter_by = request.GET.get('filter')
     if search_term:
         if filter_by == 'all':
-            dogs = Dog.objects.filter(
+            dogs = Dog.objects.filter(vet=request.user.vet |
                 Q(name__icontains=search_term) |  Q(owner__icontains=search_term) | Q(birthdate__icontains=search_term) |
                 Q(breed__icontains=search_term) | Q(weight__icontains=search_term) | Q(gender__icontains=search_term)
             )
@@ -87,10 +100,12 @@ def patients(request):
         elif filter_by == 'gender':
             dogs =  Dog.objects.filter(gender__icontains=search_term)   
     else:
-        dogs = Dog.objects.all()
+        dogs = Dog.objects.filter(vet=request.user.vet)
     return render(request, 'patients.html', {'dogs': dogs})
 
 #create a new medical_record register for any dog
+@login_required 
+@vet_required
 def new_record(request,dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     if request.method == 'POST':
@@ -104,6 +119,8 @@ def new_record(request,dog_id):
     return render(request, 'new_record.html',{'dog': dog, 'recordform': recordform})
 
 #show the medical_record registers by different filters, in order from most recent to oldest
+@login_required 
+@vet_required
 def medical_record(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     filter_by = request.GET.get('filterRecord')
@@ -133,15 +150,20 @@ def medical_record(request, dog_id):
     return render(request, 'medical_record.html', {'dog': dog, 'medical_records': medical_record})
 
 #show the appointments registers by different filters, in order from oldest to most recent
+@login_required 
+@vet_required
 def appointments(request):
-    
     return render(request, 'appointments.html', {'appointments': appointments})
 
+@login_required 
+@vet_required
 def vaccination_card(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     vaccination_card = get_object_or_404(vaccination, pk=dog.vaccination_card_id)
     return render(request, 'vaccination_card.html', {'vaccination_card': vaccination_card , 'dog':dog})
 
+@login_required 
+@vet_required
 def vaccination_card_edit(request, vac_id):
     vaccination_card = get_object_or_404(vaccination, pk=vac_id)
     if request.method == 'POST':
@@ -154,12 +176,11 @@ def vaccination_card_edit(request, vac_id):
     return render(request, 'vaccination_card_edit.html', {'vaccination_card_edit': vaccination_card_edit ,'form':form,})
 
 # This function send the dog, vaccination card and the age of the dog for generate the recomendations for each dog
+@login_required 
+@vet_required
 def recomendations(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     vaccination_card = dog.vaccination_card_id
     vac_card = get_object_or_404(vaccination, pk=vaccination_card)
     age = dog.calculate_age()
     return render(request, 'recomendations.html', {'dog': dog,'vac_card': vac_card, 'age': age,})
-
-def home(request):
-    return HttpResponse('Hello, World!')
