@@ -1,1 +1,71 @@
-<a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DoggyCare</title>
+
+        <link rel="stylesheet" href="{% static 'css/accounts/home.css' %}">
+        <link rel="stylesheet" href="{% static 'css/accounts/all.min.css' %}">
+
+    </head>
+
+    <body>
+        <!-- Page Header -->
+        <header>
+            <!-- Icon Container -->
+            <div class="container-top-bar">
+                <div class="top-bar">
+                    <a href={% url 'home' %}>
+                        <img src="{% static 'img/logo.png' %}" alt="Logo">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <nav class="nav-bar">
+                <div class="tabs">
+                    <ul>
+                        <li><a href="#about">About Us</a>
+                    </ul>
+                </div>  
+            </nav>
+
+        </header>
+
+        <!-- Page Main -->
+        <main>
+            <section class="home">
+                <div class="home-main">
+                    <p class="home-main-text">
+                        Healthy Paws <br>
+                        Happy Dogs
+                    </p>
+                    <a class="home-main-btn" href={% url 'login' %}>Login</a>
+                </div>
+            </section>
+
+
+            <section id="about" class="about">
+                <div>
+                <h1>About Us</h1>
+                <div class="about-me">
+                    <img src="" alt="Imagen">
+                    <div class=" about-me-text">
+                        <p> 
+                            lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2023 DoggyCare. All rights reserved.</p>
+        </footer>
+    </body>
+</html>

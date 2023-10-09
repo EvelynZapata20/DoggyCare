@@ -12,8 +12,6 @@ def validate_minor(value):
     
 class breed(models.Model):
     name= models.CharField(blank= False, max_length=40)
-    max_size= models.IntegerField(blank= False)
-    life_expectancy= models.IntegerField(blank= False)
 
     def __str__(self):
         return self.name
