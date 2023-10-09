@@ -5,6 +5,14 @@ h1 {
     margin: 25px;
 }
 
+h2 {
+    font-size: 24px; /* Cambia el tamaño de la fuente */
+    color: #333; /* Cambia el color del texto */
+    font-weight: bold; /* Cambia la negrita del texto */
+    margin-bottom: 10px; /* Agrega un margen inferior */
+    text-align: center;
+  }
+
 /* Applies style to the form */
 
 
@@ -20,6 +28,8 @@ h1 {
     display: flex;
     justify-content: space-between;
     padding: 2%;
+    background-color: rgba(189, 215, 255, 0.3);
+    border: 2px solid #bdd7ff;
 }
 
 .img {
@@ -38,6 +48,7 @@ h1 {
 
 .field {
     margin-bottom: 26px;
+    
 }
 
 .field label {
@@ -45,6 +56,8 @@ h1 {
     font-size: 16px;
     color: #000000;
     margin-bottom: 5px;
+    font-family:"Century Gothic";
+    font-weight: bold;
 }
 
 .field input {
@@ -54,10 +67,14 @@ h1 {
     width: 100%;
     border-bottom: 1px solid #000000;
     padding-bottom: 5px;
+    font-family:"Century Gothic";
+    border: 2px solid #bdd7ff;
+    border-radius: 4px;
+    height: 30px;
 }
 
 .field input:focus {
-    border-bottom: 2px solid #000000;
+    border: 3px solid #03689e;
 }
 
 

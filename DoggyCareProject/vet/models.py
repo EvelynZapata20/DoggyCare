@@ -7,8 +7,7 @@ from django.core.exceptions import ValidationError
 # Create your models here, here are all the modes used in the vet app of rDoggyCare.
 
 def validate_minor(value):
-    if not datetime.now() > value.birthdate:
-        raise ValidationError('La fecha de nacimiento del perro debe ser anterior')
+    pass
     
 class breed(models.Model):
     name= models.CharField(blank= False, max_length=40)

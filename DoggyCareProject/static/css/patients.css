@@ -3,6 +3,11 @@ main {
     margin-bottom: 15px; 
     font-family: "Poppins", sans-serif;
 }
+h2 {
+    font-size: 1.5rem;
+    color: #212121;
+    text-align: center;
+  }
 
 .search-bar {
     display: flex;
@@ -25,6 +30,7 @@ main {
 }
 
 .new-patient {
+    padding-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +48,7 @@ main {
 }
 
 .btn:hover {
-    background-color: #86a7d4;
+    background-color: rgb(134, 167, 213);
 }
 
 .dog-list {
@@ -54,12 +60,18 @@ main {
 
 .dog-card {
     border-radius: 8px;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 20px #86a7d566;
     overflow: hidden;
     width: 20%;
     margin: 20px;
     float: left;
     padding: auto;
+    transition: transform 0.3s ease; 
+}
+
+.dog-card:hover {
+    box-shadow: 10px 10px 30px #86a7d566;
+    transform: scale(1.05); 
 }
 
 
@@ -69,7 +81,8 @@ main {
     border-radius: 50%; 
     object-fit: cover;
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
+    margin-top: 10px;
 }
 
 
@@ -81,7 +94,9 @@ main {
 
 .card-content p {
     margin: 0 0 3px;
-    margin-left: 10px
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
 }
 
 .card-button {
