@@ -6,11 +6,12 @@ h1 {
 }
 
 h2 {
-    font-size: 24px; /* Cambia el tamaño de la fuente */
-    color: #333; /* Cambia el color del texto */
-    font-weight: bold; /* Cambia la negrita del texto */
-    margin-bottom: 10px; /* Agrega un margen inferior */
+    font-size: 24px; 
+    color: #333;
+    font-weight: bold; 
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: auto;
   }
 
 /* Applies style to the form */
@@ -23,99 +24,161 @@ h2 {
     grid-template-columns: 2;
 }
 
-.form-container {
-    grid-row: 1/3;
-    display: flex;
-    justify-content: space-between;
-    padding: 2%;
-    background-color: rgba(189, 215, 255, 0.3);
-    border: 2px solid #bdd7ff;
-}
 
-.img {
-    flex-basis: 20%;
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 10%;
-}
-
-.fields-container {
-    width: 50%;
-    float: right;
-    margin-right: 5%;
-}
-
-.field {
-    margin-bottom: 26px;
+@media screen and (max-width: 2000px) {
+    .form-container {
+        margin-top: -5px;
+        grid-row: 1/3;
+        padding: 2%;
+        background-color: rgba(189, 215, 255, 0.3);
+        border: 2px solid rgb(189, 215, 255);
+        width: 100%;
+        max-width: 1500px;
+        min-height: 200px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+    .column {
+        flex: 1;
+      }
+      .img {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        object-fit: cover;
+    }
     
-}
+    .fields-container {
+        width: 50%;
+        float: right;
+        margin-right: 5%;
+    }
+    
+    .field {
+        margin-bottom: 26px;
+        position: relative;
+        width: 100%;
+        max-width: 785px;
+    }
+    .icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        font-size: 20px;
+        color: #333;
+    }
 
-.field label {
-    display: block;
-    font-size: 16px;
-    color: #000000;
-    margin-bottom: 5px;
-    font-family:"Century Gothic";
-    font-weight: bold;
-}
+    textarea {
+        max-width: 1700px;
+        width: 100%;
+        max-height: 80px; 
+        resize: none;
+        border: 2px solid #bdd7ff;
+        font-size: 16px;
+        font-family:"Century Gothic";
+        padding-left: 30px;
+        
+    }
+    textarea:focus {
+        border: 3px solid #03689e;
+        outline: none;
+    }
 
-.field input {
-    border: none;
-    outline: none;
-    font-size: 16px;
-    width: 100%;
-    border-bottom: 1px solid #000000;
-    padding-bottom: 5px;
-    font-family:"Century Gothic";
-    border: 2px solid #bdd7ff;
-    border-radius: 4px;
-    height: 30px;
-}
+    .field label {
+        display: block;
+        font-size: 16px;
+        color: #000000;
+        margin-bottom: 5px;
+        font-family:"Century Gothic";
+        font-weight: bold;
+        
+    }
+    
+    .field input {
+        outline: none;
+        font-size: 16px;
+        padding-bottom: 5px;
+        font-family:"Century Gothic";
+        border: 2px solid #bdd7ff;
+        border-radius: 4px;
+        height: 30px;
+        padding-left: 30px;
+        width: 100%;
+        padding-top: 3px;
+    }
+    
+    .field input:focus {
+        border: 3px solid #03689e;
+    }
 
-.field input:focus {
-    border: 3px solid #03689e;
-}
+    .appointment-type-field {
+        outline: none;
+        padding-top: 3px;
+        font-size: 16px;
+        padding-bottom: 5px;
+        font-family: "Century Gothic";
+        border: 2px solid #bdd7ff;
+        border-radius: 4px;
+        height: 40px;
+        padding-left: 30px;
+        max-width: 785px;
+        width: 785px;
+    }
+
+    .appointment-type-field:focus {
+        border: 3px solid #03689e;
+        outline: none;
+    }
+    
+    
+    /* Applies style to the buttons */
+    
+    .button-container {
+        text-align: center;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 17px;
+        text-decoration: none;
+        background-color: #BDD7FF;
+        color: #000000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 20px;
+    }
+    
+    button:hover {
+        background-color: #86a7d4;
+    }
+    
+    #cancel-button {
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        background-color: #BDD7FF;
+        color: #000000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 20px;
+    }
+    
+    
+    #cancel-button:hover {
+        background-color: #86a7d4;
+    }
+  }
 
 
-/* Applies style to the buttons */
-
-.button-container {
-    text-align: center;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 17px;
-    text-decoration: none;
-    background-color: #BDD7FF;
-    color: #000000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 20px;
-}
-
-button:hover {
-    background-color: #86a7d4;
-}
-
-#cancel-button {
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    background-color: #BDD7FF;
-    color: #000000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 20px;
-}
 
 
-#cancel-button:hover {
-    background-color: #86a7d4;
-}
 
 

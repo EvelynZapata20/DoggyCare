@@ -66,7 +66,9 @@ h2 {
     margin: 20px;
     float: left;
     padding: auto;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
+    background-color: rgba(189, 215, 255, 0.3);
+    border: 2px solid rgb(189, 215, 255);
 }
 
 .dog-card:hover {
