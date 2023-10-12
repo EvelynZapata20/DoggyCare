@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 from datetime import date
 from accounts.models import Vet, Owner
 from django.core.exceptions import ValidationError
@@ -7,8 +6,8 @@ from django.core.exceptions import ValidationError
 # Create your models here, here are all the modes used in the vet app of rDoggyCare.
 
 def validate_minor(value):
-    if not datetime.now() > value.birthdate:
-        raise ValidationError('La fecha de nacimiento del perro debe ser anterior')
+    if value >= date.today():
+        raise ValidationError('The dog birthdate must be in the past.')
     
 class breed(models.Model):
     name= models.CharField(blank= False, max_length=40)
@@ -46,7 +45,7 @@ class Dog(models.Model):
     weight= models.FloatField(blank= False)
     gender= models.CharField(blank= False, max_length=10, choices=GENDER_CHOICES)
     vaccination_card = models.ForeignKey(vaccination_card, on_delete=models.CASCADE,null=True,blank = True)
-    vet= models.ForeignKey(Vet, on_delete=models.CASCADE,null=True, blank=True)
+    vet= models.ForeignKey(Vet, on_delete=models.CASCADE)
 
     #This method calculate the age of the dog and return the age in months ex the dog has 1 year and 6 months, the function return 
     # 18, this calculate with the actually date and the birthdate of the dog 

@@ -25,13 +25,13 @@
                 {% csrf_token %}
                 <div class="image-container">
                     <div class="image-form">
-                        {{ form.image.label_tag }}
-                        {{ form.image }}
+                        {{ form.image.url }}
+                        {{ form.image}}
                     </div>
                 </div>
                                     
                 <div class="column-container">
-                    <div class="column">
+                    <div class="column-select">
                         {{ form.owner.label_tag }}
                         {{ form.owner }}
                     </div>
@@ -39,7 +39,7 @@
                         {{ form.name.label_tag }}
                         {{ form.name }}
                     </div>
-                    <div class="column">
+                    <div class="column-select">
                         {{ form.breed.label_tag }}
                         {{ form.breed }}
                     </div>
@@ -53,7 +53,7 @@
                         {{ form.weight.label_tag }}
                         {{ form.weight }}
                     </div>
-                    <div class="column">
+                    <div class="column-select">
                         {{ form.gender.label_tag }}
                         {{ form.gender }}
                     </div>

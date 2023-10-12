@@ -1,5 +1,133 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrarse</button>
-</form>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE, edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/accounts/vet_signup.css' %}">
+    <title>Vet Signup</title>
+    <link rel="icon" type="image/png" href="{% static 'img/logo_tab.png' %}">
+</head>
+<body>
+    <div class="signup">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Logo"> <br>
+        </a>
+        <h1>Signup as Vet</h1>
+        <form method="post" class="signup-container">
+            {% csrf_token %}
+            <div class="signup-column">
+                <div class="form-group">
+                    <label for="id_username" class="signup-label">Username:</label>
+                    {% if form.username.errors %}
+                        <div class="error">
+                            {{ form.username.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="text" name="username" id="id_username" class="signup-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_email" class="signup-label">Email:</label>
+                    {% if form.email.errors %}
+                        <div class="error">
+                            {{ form.email.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="email" name="email" id="id_email" class="signup-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_password1" class="signup-label">Password:</label>
+                    {% if form.password1.errors %}
+                        <div class="error">
+                            {{ form.password1.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="password" name="password1" id="id_password1" class="signup-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_password2" class="signup-label">Confirm Password:</label>
+                    {% if form.password2.errors %}
+                        <div class="error">
+                            {{ form.password2.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="password" name="password2" id="id_password2" class="signup-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_identification" class="signup-label">Identification Document:</label>
+                    {% if form.identification.errors %}
+                        <div class="error">
+                            {{ form.identification.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="text" name="identification" id="id_identification" class="signup-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_name" class="signup-label">Full Name:</label>
+                    {% if form.name.errors %}
+                        <div class="error">
+                            {{ form.name.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="text" name="name" id="id_name" class="signup-input" required>
+                </div>
+            </div>
+            <div class="signup-column">
+                <div class="form-group">
+                    <label for="id_birthdate" class="signup-label">Birthdate:</label>
+                    {% if form.birthdate.errors %}
+                        <div class="error">
+                            {{ form.birthdate.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="date" name="birthdate" id="id_birthdate" class="signup-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_telephone" class="signup-label">Telephone:</label>
+                    {% if form.telephone.errors %}
+                        <div class="error">
+                            {{ form.telephone.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="text" name="telephone" id="id_telephone" class="signup-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_specialty" class="signup-label">Specialty:</label>
+                    {% if form.specialty.errors %}
+                        <div class="error">
+                            {{ form.specialty.errors }}
+                        </div>
+                    {% endif %}
+                    <select name="specialty" id="id_specialty" class="signup-input" required>
+                        {% for choice in form.specialty.field.choices %}
+                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="id_experience" class="signup-label">Years of Experience:</label>
+                    {% if form.experience.errors %}
+                        <div class="error">
+                            {{ form.experience.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="number" name="experience" id="id_experience" class="signup-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_clinic" class="signup-label">Clinic:</label>
+                    {% if form.clinic.errors %}
+                        <div class="error">
+                            {{ form.clinic.errors }}
+                        </div>
+                    {% endif %}
+                    <input type="text" name="clinic" id="id_clinic" class="signup-input" required>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="signup-button">Signup</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

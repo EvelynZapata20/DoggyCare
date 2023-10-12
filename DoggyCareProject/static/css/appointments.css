@@ -11,7 +11,6 @@ main > * {
 
 h1 {
     font-size: 28px;
-    font-family: Georgia, serif;
     text-align: center;
     margin: 25px;
     text-transform: uppercase;
@@ -20,7 +19,6 @@ h1 {
 
 .schedule-appointment{
     display: flex;
-    font-family: Georgia, serif;
     align-items: center;
     justify-content: center;
 }

@@ -1,54 +1,61 @@
+/* Modificando el estilo del título h1 */
 h1 {
     font-size: 28px;
-    font-family: Georgia, serif;
     text-align: center;
-    margin: 25px;
 }
 
-
-.dog-image{
+/* Modificando el estilo de la imagen del perro .dog-image */
+.dog-image {
     width: 200px;
     height: 200px;
-    border-radius: 50%; 
+    border-radius: 50%;
     object-fit: cover;
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
+/* Modificando el estilo del formulario de la imagen .image-form */
 .image-form {
     margin-left: 80px;
-    margin-top: 10px; 
+    margin-top: 10px;
 }
 
+/* Modificando el estilo del contenedor de la imagen .image-container */
 .image-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
 }
 
-
+/* Modificando el estilo del contenedor de columnas .column-container */
 .column-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around; /* Cambiado de center a space-around */
     width: 100%;
 }
 
-.column {
-    margin: 25px;
-    margin-bottom: 0px;
+/* Modificando el estilo de las columnas .column */
+.column,
+.column-select {
+    margin: 0 10px; /* Cambiado el margen para mayor separación */
     width: 30%;
+    margin-top: 15px;
 }
 
-
-.column label {
+/* Modificando el estilo de las etiquetas en las columnas */
+.column label,
+.column-select label {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
+/* Modificando el estilo de los campos de entrada en las columnas */
 .column input[type="text"],
 .column input[type="number"],
-.column input[type="file"] {
+.column input[type="file"],
+.column-select select {
     font-size: 16px;
     padding: 5px;
     border: 1px solid #BDD7FF;
@@ -56,11 +63,13 @@ h1 {
     width: 100%;
 }
 
+/* Modificando el estilo de los botones en el contenedor .button-container */
 .button-container {
     text-align: center;
 }
 
-button {
+/* Modificando el estilo de los botones */
+button, #cancel-button {
     padding: 10px 20px;
     font-size: 17px;
     text-decoration: none;
@@ -72,23 +81,7 @@ button {
     margin: 20px;
 }
 
-button:hover {
-    background-color: #86a7d4;
-}
-
-#cancel-button {
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    background-color: #BDD7FF;
-    color: #000000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 20px;
-}
-
-#cancel-button:hover {
+/* Modificando el estilo de los botones al pasar el mouse sobre ellos */
+button:hover, #cancel-button:hover {
     background-color: #86a7d4;
 }

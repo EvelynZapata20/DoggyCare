@@ -64,7 +64,7 @@ h2{
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #bdd7ff;
+    background-color: #e0c5a2;
     display:flex;
     flex-wrap: wrap;
     align-items: center;
@@ -110,7 +110,7 @@ h2{
 }
 
 footer {
-    background-color: #03689e; 
+    background-color: rgb(145, 115, 75);
     color: #fff; 
     padding: 2px 0; 
     text-align:center;

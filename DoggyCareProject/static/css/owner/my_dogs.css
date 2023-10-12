@@ -42,7 +42,7 @@ main {
     padding: 5px 10px;
     font-size: 17px;
     text-decoration: none;
-    background-color: #BDD7FF;
+    background-color: #e0c5a2;
     color: #000000;
     border: none;
     border-radius: 5px;
@@ -50,7 +50,7 @@ main {
 }
 
 .btn:hover {
-    background-color: #86a7d4;
+    background-color: rgb(182, 149, 105);
 }
 
 .dog-list {
@@ -79,10 +79,6 @@ main {
     object-fit: cover;
     display: block;
     margin: 0 auto; 
-}
-
-.dog-card img:hover {
-    transform: scale(1.2); 
 }
 
 .dog-card h2 {

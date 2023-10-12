@@ -43,7 +43,7 @@ class owner_signup(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('home')
+        return redirect('my_dogs')
     
 
 class login_view(LoginView):
@@ -58,6 +58,6 @@ class login_view(LoginView):
             if user.is_vet:
                 return reverse('patients')
             elif user.is_owner:
-                return reverse('home')
+                return reverse('my_dogs')
         else:
             return reverse('login')
