@@ -64,7 +64,7 @@ h2{
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #bdd7ff;
+    background-color: rgb(189, 215, 255);
     display:flex;
     flex-wrap: wrap;
     align-items: center;
