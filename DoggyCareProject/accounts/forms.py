@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import transaction
 from .models import User, Vet, Owner, validate_numeric, clinic_info, treatment
+from .models import User, Vet, Owner, validate_numeric, validate_age
 from django import forms
 
 class vet_signup_form(UserCreationForm):
@@ -10,9 +11,9 @@ class vet_signup_form(UserCreationForm):
 
     identification = forms.CharField(widget=forms.TextInput(), validators=[validate_numeric])
     name = forms.CharField(widget=forms.TextInput())
-    birthdate = forms.DateField()
+    birthdate = forms.DateField(validators=[validate_age])
     telephone = forms.CharField(widget=forms.TextInput(), validators=[validate_numeric])
-    speciality = forms.CharField(widget=forms.TextInput())
+    specialty = forms.ChoiceField(widget=forms.TextInput(), choices= Vet.SPECIALTY_CHOICES)
     experience = forms.IntegerField()
     clinic = forms.CharField(widget=forms.TextInput())
 
@@ -26,7 +27,7 @@ class vet_signup_form(UserCreationForm):
         user.is_vet = True
         if commit:
             user.save()
-        vet = Vet.objects.create(user=user, identification=self.cleaned_data.get('identification'), name=self.cleaned_data.get('name'), birthdate=self.cleaned_data.get('birthdate'), telephone=self.cleaned_data.get('telephone'), speciality=self.cleaned_data.get('speciality'), experience=self.cleaned_data.get('experience'), clinic=self.cleaned_data.get('clinic'))
+        vet = Vet.objects.create(user=user, identification=self.cleaned_data.get('identification'), name=self.cleaned_data.get('name'), birthdate=self.cleaned_data.get('birthdate'), telephone=self.cleaned_data.get('telephone'), specialty=self.cleaned_data.get('specialty'), experience=self.cleaned_data.get('experience'), clinic=self.cleaned_data.get('clinic'))
         return user
 
 class clinicRegisterForm(forms.ModelForm):
@@ -51,7 +52,7 @@ class owner_signup_form(UserCreationForm):
 
     identification = forms.CharField(widget=forms.TextInput(), validators=[validate_numeric])
     name = forms.CharField(widget=forms.TextInput())
-    birthdate = forms.DateField()
+    birthdate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), validators=[validate_age])
     telephone = forms.CharField(widget=forms.TextInput(), validators=[validate_numeric])
     address = forms.CharField(widget=forms.TextInput())
 

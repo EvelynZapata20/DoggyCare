@@ -72,6 +72,19 @@ h1 {
     border-bottom: 2px solid #000000;
 }
 
+.field select {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 5px;
+}
+
+.field select:focus {
+    border-bottom: 2px solid #000000;
+}
+
 .register {
     grid-row: 3;
     display: flex;

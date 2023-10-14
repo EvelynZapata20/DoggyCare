@@ -1,5 +1,112 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrarse</button>
-</form>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/accounts/owner_signup.css' %}">
+    <title>Owner Signup</title>
+    <link rel="icon" type="image/png" href="{% static 'img/logo_tab.png' %}">
+</head>
+<body>
+    <div class="signup">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Logo"> <br>
+        </a>
+        <h1>Signup as Owner</h1>
+        <form method="post" class="signup-container">
+            {% csrf_token %}
+            <div class="signup-column">
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">Username:</label>
+                    {% if form.username.errors %}
+                        <div class="error">
+                            {{ form.username.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">Email:</label>
+                    {% if form.email.errors %}
+                        <div class="error">
+                            {{ form.email.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}">Password:</label>
+                    {% if form.password1.errors %}
+                        <div class="error">
+                            {{ form.password1.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+                    {% if form.password2.errors %}
+                        <div class="error">
+                            {{ form.password2.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.password2 }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.identification.id_for_label }}">Identification Document:</label>
+                    {% if form.identification.errors %}
+                        <div class="error">
+                            {{ form.identification.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.identification }}
+                </div>
+            </div>
+            <div class="signup-column">
+                <div class="form-group">
+                    <label for="{{ form.name.id_for_label }}">Full Name:</label>
+                    {% if form.name.errors %}
+                        <div class="error">
+                            {{ form.name.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.birthdate.id_for_label }}">Birthdate:</label>
+                    {% if form.birthdate.errors %}
+                        <div class="error">
+                            {{ form.birthdate.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.birthdate }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.telephone.id_for_label }}">Telephone:</label>
+                    {% if form.telephone.errors %}
+                        <div class="error">
+                            {{ form.telephone.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.telephone }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.address.id_for_label }}">Address:</label>
+                    {% if form.address.errors %}
+                        <div class="error">
+                            {{ form.address.errors }}
+                        </div>
+                    {% endif %}
+                    {{ form.address }}
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="signup-button">Signup</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Owner{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{% static 'img/logo_tab.png' %}">
+        <link rel="stylesheet" href="{% static 'css/owner/base_o.css' %}">
+        {% block additional_styles %}
+        {% endblock additional_styles %}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        {% block additional_scripts %}
+        {% endblock additional_scripts %}
+    </head>
+
+    <body>
+        <header>
+            <div class="container-top-bar">
+                <div class="top-bar">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'img/logo.png' %}" alt="Logo">
+                    </a>
+                </div>
+        </div>
+        <!-- Topbar End -->
+    
+        <nav class="nav-bar">
+            <div class="greeting">
+                {% if user.is_authenticated %}
+                <h3>Hi, {{ user.username }}</h3>
+                {% endif %}
+            </div>
+            <div class="tabs">
+                <ul>
+                    <li><a href="">Account</a></li>
+                    <li><a href="{% url 'my_dogs' %}">Dogs</a></li>
+                    <li><a href="">Appointments</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </div>  
+        </nav>
+        </header>
+        
+        <main>
+            {% block content %}
+            {% endblock content%}
+        </main>
+    </body>
+
+    <footer>
+        <div>
+            <p>&copy; 2023 DoggyCare - Todos los derechos reservados</p>
+        </div>
+    </footer>
+    
+</html>

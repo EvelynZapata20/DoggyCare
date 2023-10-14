@@ -1,6 +1,5 @@
 from pathlib import Path
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
 from django.db.models import Q
 from django.urls import reverse
 from .forms import *
@@ -10,6 +9,7 @@ from accounts.forms import *
 from .models import vaccination_card as vaccination
 import re
 from accounts.decorators import custom_permission_required, vet_required
+from accounts.decorators import vet_required
 from django.contrib.auth.decorators import login_required
 
 
@@ -129,26 +129,30 @@ def dog_register(request):
 def patients(request):
     search_term = request.GET.get('searchTerm')
     filter_by = request.GET.get('filter')
+    dogs = Dog.objects.filter(vet=request.user.vet)
     if search_term:
         if filter_by == 'all':
-            dogs = Dog.objects.filter(vet=request.user.vet |
-                Q(name__icontains=search_term) |  Q(owner__icontains=search_term) | Q(birthdate__icontains=search_term) |
-                Q(breed__icontains=search_term) | Q(weight__icontains=search_term) | Q(gender__icontains=search_term)
+            dogs = dogs.filter(
+                Q(name__icontains=search_term) | 
+                Q(owner__name__icontains=search_term) |
+                Q(birthdate__icontains=search_term) | 
+                Q(breed__name__icontains=search_term) | 
+                Q(weight__icontains=search_term) | 
+                Q(gender__icontains=search_term)
             )
         elif filter_by == 'name':
-            dogs =  Dog.objects.filter(name__icontains=search_term)
+            dogs = dogs.filter(name__icontains=search_term)
         elif filter_by == 'owner':
-            dogs =  Dog.objects.filter(owner__icontains=search_term)
+            dogs = dogs.filter(owner__name__icontains=search_term)
         elif filter_by == 'birthdate':
-            dogs =  Dog.objects.filter(birthdate__icontains=search_term)
+            dogs = dogs.filter(birthdate__icontains=search_term)
         elif filter_by == 'breed':
-            dogs =  Dog.objects.filter(breed__icontains=search_term)
+            dogs = dogs.filter(breed__name__icontains=search_term)
         elif filter_by == 'weight':
-            dogs =  Dog.objects.filter(weight__icontains=search_term)
+            dogs = dogs.filter(weight__icontains=search_term)
         elif filter_by == 'gender':
-            dogs =  Dog.objects.filter(gender__icontains=search_term)   
-    else:
-        dogs = Dog.objects.filter(vet=request.user.vet)
+            dogs = dogs.filter(gender__icontains=search_term)
+
     return render(request, 'patients.html', {'dogs': dogs})
 
 

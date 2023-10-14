@@ -9,6 +9,13 @@ h2 {
     text-align: center;
   }
 
+
+.title {
+    text-align: center;
+    align-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
 .search-bar {
     display: flex;
     align-items: center;
@@ -30,7 +37,7 @@ h2 {
 }
 
 .new-patient {
-    padding-top: 20px;
+    margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,6 +85,7 @@ h2 {
 
 
 .dog-card img {
+    padding: 10px;
     width: 150px;
     height: 150px;
     border-radius: 50%; 
@@ -87,12 +95,14 @@ h2 {
     margin-top: 10px;
 }
 
+.dog-card img:hover {
+    transform: scale(1.2); 
+}
 
 .dog-card h2 {
     text-align: center;
     margin: 5px;
 }
-
 
 .card-content p {
     margin: 0 0 3px;

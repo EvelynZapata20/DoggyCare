@@ -33,11 +33,20 @@
                         {% for field in form %}
                         {% if field.name != 'image' %}
                         <div class="field">
-                            <label>{{ field.label_tag }}</label>
-                            {% if field.name != 'birthdate' %}
-                            {{ field }}
+                            {% if field.name == 'weight' %}
+                                <label>Kilogram Weight</label>
                             {% else %}
-                            <input type="date" name="birthdate" required>
+                                <label>{{ field.label_tag }}</label>
+                            {% endif %}
+                            {% if field.name != 'birthdate' %}
+                                {{ field }}
+                            {% else %}
+                                {% if form.birthdate.errors %}
+                                    <div class="error">
+                                        {{ form.birthdate.errors }}
+                                    </div>
+                                {% endif %}
+                                <input type="date" name="birthdate" required>
                             {% endif %}
                         </div>
                         {% endif %}

@@ -30,10 +30,10 @@ body {
 }
 
 .top-bar img{
-    height: 50px;
+    height: 62px;
     margin-left: 20px;
     margin-right: 20px;
-    margin-top: 8px;
+    margin-top: 1px;
 }
 
 .name{
@@ -48,6 +48,14 @@ h3{
     font-size: 1.5rem;
     color: #212121;
   }
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
 
 .nav-bar {
     margin-top: 5.5%; 
