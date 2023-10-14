@@ -42,19 +42,26 @@
         <div class="dog-list">
             {% for dog in dogs %}
             <div class="dog-card">
-                <a href="{% url 'dog_profile' dog.id %}">
                     <img src="{{ dog.image.url }}" alt="Image">
                 </a>
                 <div class="card-content p-3 mx-2">
                     <h2>{{ dog.name }}</h2>
                     <p>Vet: {{ dog.vet.name }} </p>
+                    {% for clinic in clinics %}
+                        {% if clinic.id == dog.vet.clinic %}
+                            <p>Clinic: 
+                                <a href="{% url 'all_clinics' %}?searchClinic={{ clinic.name }}&filterClinic=all" target="_blank" style="color: black;">{{ clinic.name }}</a>
+                            </p>
+                        {% endif %}
+                    {% endfor %}
                     <p>Birthdate: {{ dog.birthdate }} </p>
                     <p>Breed: {{ dog.breed }} </p>
-                    <p>Weight: {{ dog.weight }} </p>
+                    <p>Weight: {{ dog.weight }} Kg</p>
                     <p>Gender: {{ dog.gender }} </p>
                     
                     <div class="card-button">
                         <a href="" class="btn">Recommendations</a>
+                        <a href="{% url 'medical_record_o' dog_id=dog.id %}" class="btn">Medical Record</a>
                     </div>
                 </div>
             </div>

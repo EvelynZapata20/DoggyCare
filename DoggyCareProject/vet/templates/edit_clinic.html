@@ -56,6 +56,17 @@
                             </div>
 
                             <div class="field">
+                                <label for="{{ form.place.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </label>
+                                <span style="font-weight: bold; font-family:Century Gothic; font-size: 0.8vw;">Neighborhood or Sector:</span>
+                                {{ form.place }}
+                                {% if form.place.errors %}
+                                    <p class="error">{{ form.place.errors }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="field">
                                 <label for="{{ form.phone.id_for_label }}" class="icon">
                                     <i class="fa-solid fa-phone-volume"></i>
                                 </label>

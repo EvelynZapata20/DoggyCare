@@ -62,12 +62,20 @@ main {
 
 .dog-card {
     border-radius: 8px;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 20px rgb(182, 149, 105);
     overflow: hidden;
     width: 20%;
     margin: 20px;
     float: left;
     padding: auto;
+    transition: transform 0.3s ease;
+    background-color: rgb(182, 149, 105, 0.3);
+    border: 2px solid #e0c5a2;
+}
+
+.dog-card:hover {
+    box-shadow: 10px 10px 30px rgb(182, 149, 105);
+    transform: scale(1.05); 
 }
 
 
@@ -78,7 +86,12 @@ main {
     border-radius: 50%; 
     object-fit: cover;
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.dog-card img:hover {
+    transform: scale(1.2); 
 }
 
 .dog-card h2 {
@@ -88,7 +101,9 @@ main {
 
 .card-content p {
     margin: 0 0 3px;
-    margin-left: 10px
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
 }
 
 .card-button {

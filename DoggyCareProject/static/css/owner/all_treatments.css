@@ -1,0 +1,223 @@
+main {
+    margin-top: 15px; 
+    margin-bottom: 15px;
+    margin: auto;
+}
+
+
+/* Applies margin to all elements within main */
+main > * {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+h2 {
+    font-size: 24px; 
+    color: #333;
+    font-weight: bold; 
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: auto;
+    margin-bottom: 20px;
+  }
+
+
+.all {
+    text-align: center;
+    align-items: center;
+}
+
+/* Applies style to the search bar and filers*/
+
+.search-treatment-bar {
+    font-family: Georgia, serif;
+    display: flex;
+    align-items: center;
+    padding: 0 50px 0;
+    width: 80%;
+    margin: auto;
+}
+
+.search_group{
+    align-items: center;
+    margin: auto;
+    width: 80%;
+    position: relative;
+}
+
+.form-control {
+    padding: 5px 10px;
+    font-size: 17px;
+    border-radius: 5px;
+    width: 100%;
+    font-family:"Century Gothic";
+    border: 2px solid #e0c5a2;
+    border-radius: 4px;
+    padding-left: 40px;
+}
+
+.btn-primary{
+    margin: auto;
+    padding-left: 0.1vw;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #e0c5a2;
+}
+
+
+.form-control:focus{
+    border: 3px solid rgb(145, 115, 75);
+    outline: none;
+}
+
+.fa-magnifying-glass{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    font-size: 20px;
+    color: #333;
+    transform: translateX(-10px);
+    transform: translateY(-10px);
+}
+
+/* Applies style to the button */
+
+.treatments-buttons {
+    display: flex;
+    font-family: Georgia, serif;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    padding-bottom: 15px;
+}
+
+.btn-cln{
+    padding: 5px 10px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #e0c5a2;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+.btn-cln:hover {
+    background-color: rgb(145, 115, 75);
+}
+
+
+.fa-circle-chevron-up{
+    position: fixed;
+    bottom: 20px;
+    right: 4rem;
+    width: 2rem;
+    font-size: 50px;
+}
+
+.fa-circle-chevron-up:hover{
+    transform: scale(1.50);
+    transform: translateY(-10%);
+}
+
+
+
+.btn {
+    padding: 5px 10px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #e0c5a2;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: rgb(145, 115, 75);
+}
+
+
+
+/* Applies style to all elements of the medical record visualize */
+
+.treatment-list {
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.treatment-card {
+    border-radius: 8px;
+    box-shadow: 0px 1px 10px #e0c5a2;
+    background-color: rgba(145, 115, 75, 0.3);
+    border: 2px solid #e0c5a2;
+    overflow: hidden;
+    width: 70%;
+    margin: 20px;
+    float: left;
+    padding: auto;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    
+}
+
+span{
+    font-size: 24px; 
+    color: #000000;
+    font-weight: bold; 
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: auto;
+}
+
+.treatment-card:hover {
+    box-shadow: 10px 10px 30px #e0c5a2;
+    transform: scale(1.05); 
+}
+
+.treatment-card .card-content {
+    padding: 15px;
+    text-align: left;
+    word-wrap: break-word;
+    flex-grow: 1;
+    font-family:"Century Gothic";
+}
+
+
+.button-container {
+    text-align: center;
+    height:20px;
+}
+
+.edit-button {
+    padding: 10px 20px;
+    padding-bottom: 10px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: rgb(145, 115, 75);
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px;
+    height: 20px;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+
+.edit-button:hover {
+    background-color: rgb(145, 115, 75);
+}

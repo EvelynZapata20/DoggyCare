@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'base_o.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <!-- Configuration of the page style with the css file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Clinic Treatments {% endblock %}</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/owner/clinic_treatments.css' %}">
+    <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+    {% endblock additional_styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+
+</head>
+
+<body>
+   <main>
+    {% block content %}
+    <div class="all"  id="start">
+    <h2>{{ clinic.name }} treatments</h2>
+    <form action="" class="search-treatment-bar">
+        
+        <div class="search_group">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="form-control" name="searchTreatment" placeholder="Search treatment by name...">
+        </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div class="treatment-list">
+            {% for treatment in treatments %}
+            {% if treatment.aviability %}
+            <div class="treatment-card">
+                <div class="card-content p-3 mx-2">
+                    <span>{{ treatment.name }}</span>
+                    <p><i class="fa-solid fa-comment" style=></i><strong> Description:</strong> {{ treatment.description }}</p>
+                    <p><i class="fa-solid fa-stopwatch"></i><strong> Duration:</strong> {{ treatment.duration }}</p>
+                    <p> <i class="fa-solid fa-hand-holding-dollar"></i><strong> Price:</strong> {{ treatment.price }} </p>
+                    <p><i class="fa-solid fa-check-double"></i><strong> Availability:</strong> 
+                    {% if treatment.aviability %}
+                        Available
+                    {% else %}
+                        Not available
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            
+        </div>
+        <a href="#start" id="go-up-button"><i class="fa-solid fa-circle-chevron-up fa-bounce" style="color: #e0c5a2;; text-shadow: 4px;"></i></a>
+    </div>
+{% endblock content %}
+    </main>
+
+</body>
+</html>

@@ -11,6 +11,9 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.views import LoginView
+from vet.models import *
+from vet.forms import *
+from django.db.models import Q
 
 def home(request):
     return render(request, 'home.html')

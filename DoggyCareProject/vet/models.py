@@ -40,7 +40,7 @@ class Dog(models.Model):
     id= models.AutoField(primary_key= True)
     owner= models.ForeignKey(Owner, on_delete=models.CASCADE)
     name= models.CharField(blank= False, max_length=20)
-    breed= models.ForeignKey(breed, on_delete=models.CASCADE,null=True, blank=True)
+    breed= models.CharField(blank= False, max_length=50)
     birthdate= models.DateField(blank= False, validators=[validate_minor])
     weight= models.FloatField(blank= False)
     gender= models.CharField(blank= False, max_length=10, choices=GENDER_CHOICES)

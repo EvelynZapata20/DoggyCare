@@ -33,7 +33,7 @@ class vet_signup_form(UserCreationForm):
 class clinicRegisterForm(forms.ModelForm):
     class Meta:
         model= clinic_info
-        fields= ['name', 'address', 'phone', 'description', 'opening_hours', 'rating', 'image', 'vet']
+        fields= ['name', 'address', 'place', 'phone', 'description', 'opening_hours', 'rating', 'image', 'vet']
 
 class treatmentRegisterForm(forms.ModelForm):
     class Meta:
