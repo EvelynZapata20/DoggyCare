@@ -13,47 +13,37 @@ main > * {
 
 
 h2 {
-    font-family: "Poppins";
     font-size: 24px; 
     color: #333;
     font-weight: bold; 
     text-align: center;
     margin-top: 20px;
     margin-bottom: auto;
+    margin-bottom: 20px;
   }
 
 
 .all {
     text-align: center;
     align-items: center;
-
-}
-
-.img {
-    align-items: center;
-    margin: 0 auto;
-    object-fit: cover;
-    padding-bottom: 10px;
 }
 
 /* Applies style to the search bar and filers*/
 
-.search-record-bar {
+.search-treatment-bar {
     font-family: Georgia, serif;
     display: flex;
     align-items: center;
     padding: 0 50px 0;
     width: 80%;
     margin: auto;
-    
 }
 
 .search_group{
     align-items: center;
     margin: auto;
-    width: 70%;
+    width: 80%;
     position: relative;
-    padding-right: 20px;
 }
 
 .form-control {
@@ -66,6 +56,18 @@ h2 {
     border-radius: 4px;
     padding-left: 40px;
 }
+
+.btn-primary{
+    margin: auto;
+    padding-left: 0.1vw;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #86a7d4;
+}
+
 
 .form-control:focus{
     border: 3px solid #03689e;
@@ -84,7 +86,7 @@ h2 {
 
 /* Applies style to the button */
 
-.new-record {
+.treatments-buttons {
     display: flex;
     font-family: Georgia, serif;
     align-items: center;
@@ -93,23 +95,23 @@ h2 {
     padding-bottom: 15px;
 }
 
-
-.search-filter{
-    position: relative;
-    width: 17%;
-    margin-right: 5px;
-
-}
-
-.fa-arrow-down-wide-short{
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    font-size: 20px;
+.btn-cln{
+    padding: 5px 10px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: rgb(189, 215, 255);
     color: #000000;
-    transform: translateX(-10px);
-    transform: translateY(-10px);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family:"Century Gothic";
+    font-weight: bold;
 }
+
+.btn-cln:hover {
+    background-color: #86a7d4;
+}
+
 
 .fa-circle-chevron-up{
     position: fixed;
@@ -147,14 +149,14 @@ h2 {
 
 /* Applies style to all elements of the medical record visualize */
 
-.records-list {
+.treatment-list {
     padding: 0 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.record-card {
+.treatment-card {
     border-radius: 8px;
     box-shadow: 0px 1px 10px #bdd7ff;
     background-color: rgba(189, 215, 255, 0.3);
@@ -168,7 +170,6 @@ h2 {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
-    font-family:"Century Gothic";
     
 }
 
@@ -181,20 +182,24 @@ span{
     margin-bottom: auto;
 }
 
-.record-card:hover {
+.treatment-card:hover {
     box-shadow: 10px 10px 30px #bdd7ff;
     transform: scale(1.05); 
 }
 
-.record-card .card-content {
+.treatment-card .card-content {
     padding: 15px;
-    text-align: center;
+    text-align: left;
     word-wrap: break-word;
     flex-grow: 1;
     font-family:"Century Gothic";
 }
 
 
+.button-container {
+    text-align: center;
+    height:20px;
+}
 
 .edit-button {
     padding: 10px 20px;

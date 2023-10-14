@@ -22,7 +22,7 @@ class Vet(models.Model):
     telephone = models.CharField(max_length=15, validators=[validate_numeric])
     speciality = models.CharField(max_length=100)
     experience = models.PositiveIntegerField()
-    clinic = models.CharField(max_length=50)
+    clinic = models.IntegerField()
     
 
 class Owner(models.Model):
@@ -32,6 +32,35 @@ class Owner(models.Model):
     birthdate = models.DateField()
     telephone = models.CharField(max_length=15, validators=[validate_numeric])
     address = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
+
+class clinic_info(models.Model):
+    id = models.AutoField(primary_key= True)
+    name = models.CharField(blank= False, max_length=50)
+    address = models.CharField(blank= False, max_length=50)
+    phone = models.CharField(blank= False, max_length=50)
+    description = models.TextField(blank= False, max_length=300)
+    opening_hours = models.CharField(blank= False, max_length=200)
+    rating = models.FloatField(blank= False)
+    image= models.ImageField(upload_to='images/')
+    vet = models.ForeignKey(Vet, on_delete=models.CASCADE,null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class treatment(models.Model):
+    id = models.AutoField(primary_key= True)
+    name = models.CharField(blank= False, max_length=50)
+    description = models.TextField(blank= False, max_length=300)
+    duration = models.CharField(blank= False, max_length=100)
+    price = models.CharField(blank= False, max_length=30)
+    aviability = models.BooleanField(default=False)
+    clinic_id = models.ForeignKey(clinic_info, on_delete=models.CASCADE,null=True, blank=True)
 
     def __str__(self):
         return self.name

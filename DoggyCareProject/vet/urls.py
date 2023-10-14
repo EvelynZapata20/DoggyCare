@@ -13,4 +13,10 @@ urlpatterns = [
     path('recomendations/<int:dog_id>/', views.recomendations, name='recomendations'),
     path('vaccination_card/<int:dog_id>/', views.vaccination_card, name='vaccination_card'),
     path('vaccination_card_edit/<int:vac_id>/', views.vaccination_card_edit, name='vaccination_card_edit'),
+    path('show_clinic/', views.show_clinic, name='show_clinic'),
+    path('treatments/<int:clinic_id>', views.treatments, name='treatments'),
+    path('new_treatment/<int:clinic_id>', views.new_treatment, name='new_treatment'),
+    path('edit_treatment/<int:clinic_id>/<int:treatment_id>/', views.edit_treatment, name='edit_treatment'),
+    path('delete_treatment/<int:treatment_id>/', views.delete_treatment, name='delete_treatment'),
+    path('edit_clinic/<int:clinic_id>/', views.edit_clinic, name='edit_clinic'),
 ]

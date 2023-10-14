@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const deleteForm = document.getElementById("delete-form");
 
     deleteButton.addEventListener("click", function () {
-        const confirmation = confirm("Are you sure you want to delete this dog?");
+        const confirmation = confirm("Are you sure you want to delete this?");
         if (confirmation) {
             deleteForm.submit();
         }

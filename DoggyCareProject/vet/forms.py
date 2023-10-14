@@ -82,7 +82,7 @@ class MedicalRecordForm(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'type': 'date', 'max': fecha_actual, 'min': '2000-01-01'}),
             'recommendations': forms.Textarea(),
-            'appointmentType': forms.Select(choices=APPOINTMENT_CHOICES, attrs={'class': 'appointment-type-field'}),  # Opciones de selección
+            'appointmentType': forms.Select(choices=APPOINTMENT_CHOICES, attrs={'class': 'appointment-type-field'}),
         }
 class AppointmentForm(forms.ModelForm):
     class Meta:

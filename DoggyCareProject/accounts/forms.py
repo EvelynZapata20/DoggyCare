@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import transaction
-from .models import User, Vet, Owner, validate_numeric
+from .models import User, Vet, Owner, validate_numeric, clinic_info, treatment
 from django import forms
 
 class vet_signup_form(UserCreationForm):
@@ -28,7 +28,22 @@ class vet_signup_form(UserCreationForm):
             user.save()
         vet = Vet.objects.create(user=user, identification=self.cleaned_data.get('identification'), name=self.cleaned_data.get('name'), birthdate=self.cleaned_data.get('birthdate'), telephone=self.cleaned_data.get('telephone'), speciality=self.cleaned_data.get('speciality'), experience=self.cleaned_data.get('experience'), clinic=self.cleaned_data.get('clinic'))
         return user
-    
+
+class clinicRegisterForm(forms.ModelForm):
+    class Meta:
+        model= clinic_info
+        fields= ['name', 'address', 'phone', 'description', 'opening_hours', 'rating', 'image', 'vet']
+
+class treatmentRegisterForm(forms.ModelForm):
+    class Meta:
+        model= treatment
+        fields= ['name', 'description', 'duration', 'price', 'aviability', 'clinic_id']
+        exclude = ['clinic_id']
+        widgets = {
+            'aviability': forms.CheckboxInput(attrs={'class': 'check-box'}),
+        }
+
+
 class owner_signup_form(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput())
     password1 = forms.CharField(widget=forms.PasswordInput())
@@ -56,4 +71,7 @@ class owner_signup_form(UserCreationForm):
 class login_form(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput())
     password = forms.CharField(widget=forms.PasswordInput())
+
+
+
 

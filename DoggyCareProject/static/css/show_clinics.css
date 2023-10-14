@@ -1,0 +1,101 @@
+h2 {
+    font-size: 24px; 
+    color: #333;
+    font-weight: bold; 
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: auto;
+  }
+
+
+.title-inside{
+    font-size: 30px; 
+    color: #333;
+    font-weight: bold; 
+    text-align: center;
+    font-size: 1.5vw;
+  }
+.all{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+    max-width: 80%; 
+    width: 100%; 
+    height: 40vw;
+    margin: auto;
+}
+
+.clinic_image{
+    height: 30vw;
+    box-shadow: #333;
+    
+}
+
+.img{
+    border-radius: 10%;
+    width: 17vw;
+    height: 15vw;
+    object-fit: cover;
+    border: 2px solid #bdd7ff;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+.clinic_container {
+    display: flex;
+    background-color: rgba(189, 215, 255, 0.3);
+    border: 3px solid rgb(189, 215, 255);
+    width: 100%;
+    max-width: 1500px;
+    height: 80%;
+    max-height: 1000px;
+    justify-content: center; 
+    font-family:"Century Gothic";
+}
+
+.left-column {
+    flex: 1; 
+    padding: 10px; 
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.right-column {
+    flex: 1; 
+    padding: 10px;
+    margin: auto;
+    
+}
+.info{
+    font-size: 1.2vw;
+}
+
+
+.clinic-buttons {
+    margin-top: 10px;
+    margin: auto;
+    padding-top: 5%;
+}
+
+
+.btn-cln {
+    padding: 0.8vw 2vw;
+    
+    font-size: 0.9vw;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px;
+    height: 20px;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+
+.btn-cln:hover {
+    background-color: #86a7d4;
+}

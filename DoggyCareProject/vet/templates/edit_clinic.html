@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+    <!-- Configuration of the page style with the css file -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} EDIT CLINIC {% endblock %}</title>
+        {% block additional_styles %}
+        <link rel="stylesheet" href="{% static 'css/edit_clinic.css' %}">
+        <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+        {% endblock additional_styles %}
+        
+    </head>
+
+    <body>
+        <main>
+            {% block content %}
+            <div class = "all">
+                
+             <h2>{{ clinic.name }}</h2>
+             <form method="post" enctype="multipart/form-data" class="custom-form">
+                
+                    <div class="form-container">
+                        {% csrf_token %}
+                        <div class="fields-container">
+                                <img class= "clinic-img" src="{{ clinic.image.url }}" style="border-radius: 30%; width: 30vw; max-width: 30%; height: 10vw; border: 8px solid rgb(189, 215, 255); box-shadow: 0px 1px 10px #bdd7ff;">
+                            <div class="field">
+                                <div class="image-form">
+                                    {{ form.image }}
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="{{ form.name.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-house-chimney-medical"></i>
+                                </label>
+                                {{ form.name.label_tag }}
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                    <p class="error">{{ form.name.errors }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="field">
+                                <label for="{{ form.address.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </label>
+                                {{ form.address.label_tag }}
+                                {{ form.address }}
+                                {% if form.address.errors %}
+                                    <p class="error">{{ form.address.errors }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="field">
+                                <label for="{{ form.phone.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-phone-volume"></i>
+                                </label>
+                                {{ form.phone.label_tag }}
+                                {{ form.phone }}
+                                {% if form.phone.errors %}
+                                    <p class="error">{{ form.phone.errors }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="field">
+                                <label for="{{ form.description.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-comment" style="transform: translateY(-30px);"></i>
+                                </label>
+                                {{ form.description.label_tag }}
+                                {{ form.description }}
+                                {% if form.description.errors %}
+                                    <p class="error">{{ form.description.errors }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="field">
+                                <label for="{{ form.opening_hours.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-stopwatch"></i>
+                                </label>
+                                {{ form.opening_hours.label_tag }}
+                                {{ form.opening_hours }}
+                                {% if form.opening_hours.errors %}
+                                    <p class="error">{{ form.opening_hours.errors }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="field">
+                                <label for="{{ form.rating.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-ranking-star"></i>
+                                </label>
+                                {{ form.rating.label_tag }}
+                                {{ form.rating }}
+                                {% if form.rating.errors %}
+                                    <p class="error">{{ form.rating.errors }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Buttons to confirm changes and back to the last page -->
+                    <div class="button-container">
+                        <a id="cancel-button" href="{% url 'show_clinic' %}">Back</a>
+                        <button type="submit">Save Changes</button>
+                    </div>
+                    
+             </form>
+
+            </div>
+                
+
+
+            
+            {% endblock content %}
+        </main>
+        
+    </body>
+</html>
+    
+    

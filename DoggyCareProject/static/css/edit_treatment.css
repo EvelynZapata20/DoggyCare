@@ -1,3 +1,10 @@
+h1 {
+    font-size: 28px;
+    font-family: Georgia, serif;
+    text-align: center;
+    margin: 25px;
+}
+
 h2 {
     font-size: 24px; 
     color: #333;
@@ -5,25 +12,18 @@ h2 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: auto;
-    padding-bottom: 5px;
   }
 
-.title-inside{
-    font-size: 24px; 
-    color: #333;
-    font-weight: bold; 
-    text-align: center;
-    margin-bottom: auto;
-    padding-bottom: 5px;
-}
+/* Applies style to the form */
 
-/* Applies style the form */
 
 .custom-form {
+    padding: 3%;
     display: grid;
     grid-template-rows: auto auto 1fr;
     grid-template-columns: 2;
 }
+
 
 .form-container {
     margin-top: -5px;
@@ -31,8 +31,8 @@ h2 {
     padding: 2%;
     background-color: rgba(189, 215, 255, 0.3);
     border: 2px solid rgb(189, 215, 255);
-    width: 100%;
-    max-width: 1500px;
+    width: 60%;
+    max-width: 900px;
     min-height: 200px;
     display: flex;
     flex-wrap: wrap;
@@ -44,8 +44,8 @@ h2 {
 
 .column {
     flex: 1;
-  }
-.img {
+    }
+    .img {
     padding: 20px;
     flex-direction: column;
     align-items: center;
@@ -53,9 +53,8 @@ h2 {
     object-fit: cover;
 }
 
-
 .fields-container {
-    width: 50%;
+    width: 80%;
     float: right;
     margin-right: 5%;
 }
@@ -65,6 +64,19 @@ h2 {
     position: relative;
     width: 100%;
     max-width: 785px;
+}
+.icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    font-size: 20px;
+    color: #333;
+}
+span{
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    align-content: center;
 }
 
 textarea {
@@ -110,43 +122,14 @@ textarea:focus {
     border: 3px solid #03689e;
 }
 
-.appointment-type-field {
-    outline: none;
-    padding-top: 3px;
-    font-size: 16px;
-    padding-bottom: 5px;
-    font-family: "Century Gothic";
-    border: 2px solid #bdd7ff;
-    border-radius: 4px;
-    height: 40px;
-    padding-left: 30px;
-    max-width: 785px;
-    width: 785px;
-}
-
-.appointment-type-field:focus {
-    border: 3px solid #03689e;
-    outline: none;
-}
-
-.icon {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    font-size: 20px;
-    color: #333;
-}
 
 /* Applies style to the buttons */
 
-.confirm{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+.button-container {
+    text-align: center;
 }
 
-.submit-button {
+button {
     padding: 10px 20px;
     font-size: 17px;
     text-decoration: none;
@@ -160,7 +143,7 @@ textarea:focus {
     font-weight: bold;
 }
 
-.submit-button:hover {
+button:hover {
     background-color: #86a7d4;
 }
 
@@ -182,5 +165,10 @@ textarea:focus {
 #cancel-button:hover {
     background-color: #86a7d4;
 }
+
+
+
+
+
 
 

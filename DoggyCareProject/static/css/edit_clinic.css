@@ -1,9 +1,3 @@
-h1 {
-    font-size: 28px;
-    font-family: Georgia, serif;
-    text-align: center;
-    margin: 25px;
-}
 
 h2 {
     font-size: 24px; 
@@ -32,8 +26,8 @@ h2 {
         padding: 2%;
         background-color: rgba(189, 215, 255, 0.3);
         border: 2px solid rgb(189, 215, 255);
-        width: 100%;
-        max-width: 1500px;
+        width: 60%;
+        max-width: 1300px;
         min-height: 200px;
         display: flex;
         flex-wrap: wrap;
@@ -54,9 +48,31 @@ h2 {
     }
     
     .fields-container {
-        width: 50%;
+        width: 70%;
         float: right;
         margin-right: 5%;
+    }
+
+
+    
+    .image-form input[type="file"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .clinic-img{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%; 
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        border: 8px solid rgb(189, 215, 255);
     }
     
     .field {
@@ -116,24 +132,6 @@ h2 {
         border: 3px solid #03689e;
     }
 
-    .appointment-type-field {
-        outline: none;
-        padding-top: 3px;
-        font-size: 16px;
-        padding-bottom: 5px;
-        font-family: "Century Gothic";
-        border: 2px solid #bdd7ff;
-        border-radius: 4px;
-        height: 40px;
-        padding-left: 30px;
-        max-width: 785px;
-        width: 785px;
-    }
-
-    .appointment-type-field:focus {
-        border: 3px solid #03689e;
-        outline: none;
-    }
     
     
     /* Applies style to the buttons */
@@ -144,6 +142,7 @@ h2 {
     
     button {
         padding: 10px 20px;
+        font-family:"Century Gothic";
         font-size: 17px;
         text-decoration: none;
         background-color: #BDD7FF;
@@ -152,7 +151,6 @@ h2 {
         border-radius: 5px;
         cursor: pointer;
         margin: 20px;
-        font-family:"Century Gothic";
         font-weight: bold;
     }
     

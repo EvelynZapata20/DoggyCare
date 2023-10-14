@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <!-- Configuration of the page style with the css file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Your Clinic {% endblock %}</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/show_clinics.css' %}">
+    <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+    {% endblock additional_styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+
+</head>
+
+<body>
+   <main>
+    {% block content %}
+    <h2>My Clinic</h2>
+    <div class="all">
+        <div class="clinic_container">
+            <div class="left-column">
+                <p class="title-inside">{{ clinics.name }}</p>
+                <div class="clinic_image">
+                    <img class="img" src="{{ clinics.image.url }}" alt="Image">
+                    <div class="clinic-buttons">
+                        <a href="{% url 'treatments' clinic_id=clinics.id %}" class="btn-cln">View Treatments</a>
+                        {% if user_has_permission %}
+                            <a href="{% url 'edit_clinic' clinic_id=clinics.id %}" class="btn-cln">Edit clinic</a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="right-column">
+                <p class="title-inside">Information</p>
+                <div class="clinic_info">
+                    <p class="info" style="padding-left: 10%;"><i class="fa-solid fa-map-location-dot"></i><strong>   Address:</strong> {{ clinics.address }}</p>
+                    <p class="info" style="padding-left: 10%;"> <i class="fa-solid fa-phone-volume"></i><strong>   Phone:</strong> {{ clinics.phone }}</p>
+                    <p class="info description" style="padding-left: 10%;"><i class="fa-solid fa-comment"></i><strong>   Description:</strong> {{ clinics.description }}</p>
+                    <p class="info" style="padding-left: 10%;"><i class="fa-solid fa-stopwatch"></i><strong>   Service hours:</strong> {{ clinics.opening_hours }}</p>
+                    <p class="info" style="padding-left: 10%;"><i class="fa-solid fa-ranking-star"></i><strong>   Rating:</strong> {{ clinics.rating }} <i class="fa-solid fa-star" style="color: #e9cd1c;"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+    </main>
+
+</body>
+</html>

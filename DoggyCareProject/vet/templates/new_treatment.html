@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <!-- Configuration of the page style with the css file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}New Record{% endblock %}</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/new_treatment.css' %}">
+    <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+    {% endblock additional_styles %}
+</head>
+<body>
+    <main>
+        <!-- Access the form to create a new record for any dog with all of the required fields -->
+        {% block content %}
+        <h2>New treatment for {{clinics.name}}</h2>
+        <form method="post" enctype="multipart/form-data" class="custom-form">
+            <div class="container"">
+                <div class="form-container">
+                    {% csrf_token %}
+                    <div class="fields-container">
+                        <div class="field">
+                            <label for="{{ form.name.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-shield-dog"></i>
+                            </label>
+                            <label>{{ recordform.name.label_tag }}</label>
+                            {{recordform.name}}
+                            {% if recordform.name.errors %}
+                                <p class="error">{{ recordform.name.errors }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="field">
+                            <label for="{{ form.description.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-comment" style="transform: translateY(-30px);""></i>
+                            </label>
+                            <label>{{ recordform.description.label_tag }}</label>
+                            {{recordform.description}}
+                            {% if recordform.description.errors %}
+                                <p class="error">{{ recordform.description.errors }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="field">
+                            <label for="{{ form.duration.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-stopwatch"></i>
+                            </label>
+                            <label>{{ recordform.duration.label_tag }}</label>
+                            {{recordform.duration}}
+                            {% if recordform.duration.errors %}
+                                <p class="error">{{ recordform.duration.errors }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="field">
+                            <label for="{{ form.price.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </label>
+                            <label>{{ recordform.price.label_tag }}</label>
+                            {{recordform.price}}
+                            {% if recordform.price.errors %}
+                                <p class="error">{{ recordform.price.errors }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="field", style="text-align: center;">
+                            <label>Is the treatment available?</label>
+                                {{recordform.aviability}}
+                            {% if recordform.aviability.errors %}
+                                <p class="error">{{ recordform.aviability.errors }}</p>
+                            {% endif %}
+                        </div>   
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons to confirm changes and back to the last page -->
+            <div class="confirm">
+                <a id="cancel-button" href="{% url 'treatments' clinic_id=clinics.id %}">Back</a>
+                <button type="submit" class="submit-button">Confirm</button>
+            </div>
+
+        </form>
+        {% endblock content %}
+    </main>
+</body>
+</html>

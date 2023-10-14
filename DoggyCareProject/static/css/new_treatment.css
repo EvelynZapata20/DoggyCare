@@ -8,15 +8,6 @@ h2 {
     padding-bottom: 5px;
   }
 
-.title-inside{
-    font-size: 24px; 
-    color: #333;
-    font-weight: bold; 
-    text-align: center;
-    margin-bottom: auto;
-    padding-bottom: 5px;
-}
-
 /* Applies style the form */
 
 .custom-form {
@@ -31,8 +22,8 @@ h2 {
     padding: 2%;
     background-color: rgba(189, 215, 255, 0.3);
     border: 2px solid rgb(189, 215, 255);
-    width: 100%;
-    max-width: 1500px;
+    width: 60%;
+    max-width: 900px;
     min-height: 200px;
     display: flex;
     flex-wrap: wrap;
@@ -45,18 +36,10 @@ h2 {
 .column {
     flex: 1;
   }
-.img {
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    object-fit: cover;
-}
 
 
 .fields-container {
-    width: 50%;
-    float: right;
+    width: 80%;
     margin-right: 5%;
 }
 
@@ -64,7 +47,7 @@ h2 {
     margin-bottom: 26px;
     position: relative;
     width: 100%;
-    max-width: 785px;
+    max-width: 800px;
 }
 
 textarea {
@@ -83,6 +66,9 @@ textarea:focus {
     outline: none;
 }
 
+
+
+
 .field label {
     display: block;
     font-size: 16px;
@@ -90,7 +76,6 @@ textarea:focus {
     margin-bottom: 5px;
     font-family:"Century Gothic";
     font-weight: bold;
-    
 }
 
 .field input {
@@ -110,25 +95,6 @@ textarea:focus {
     border: 3px solid #03689e;
 }
 
-.appointment-type-field {
-    outline: none;
-    padding-top: 3px;
-    font-size: 16px;
-    padding-bottom: 5px;
-    font-family: "Century Gothic";
-    border: 2px solid #bdd7ff;
-    border-radius: 4px;
-    height: 40px;
-    padding-left: 30px;
-    max-width: 785px;
-    width: 785px;
-}
-
-.appointment-type-field:focus {
-    border: 3px solid #03689e;
-    outline: none;
-}
-
 .icon {
     position: absolute;
     left: 10px;
@@ -136,6 +102,7 @@ textarea:focus {
     font-size: 20px;
     color: #333;
 }
+
 
 /* Applies style to the buttons */
 

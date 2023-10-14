@@ -5,9 +5,11 @@ from django.db.models import Q
 from django.urls import reverse
 from .forms import *
 from .models import Dog
+from accounts.models import Vet, clinic_info
+from accounts.forms import *
 from .models import vaccination_card as vaccination
 import re
-from accounts.decorators import vet_required
+from accounts.decorators import custom_permission_required, vet_required
 from django.contrib.auth.decorators import login_required
 
 
@@ -28,6 +30,20 @@ def delete_dog(request, dog_id):
         return redirect('patients')
     return render(request, 'dog_profile.html', {'dog': dog})
 
+@login_required 
+@vet_required
+def delete_treatment(request, treatment_id):
+    if request.user.is_authenticated:
+        vet = Vet.objects.get(user=request.user)
+        clinic_id = vet.clinic
+    else:
+        clinic = None
+    treatment_ = get_object_or_404(treatment, pk=treatment_id)
+    if request.method == 'POST':
+        treatment_.delete()
+        return redirect('treatments', clinic_id=clinic_id)
+    return render(request, 'edit_treatment.html', {'treatment': treatment_})
+
 # Edit the information of a dog
 @login_required 
 @vet_required
@@ -43,6 +59,22 @@ def dog_profile(request, dog_id):
 
     return render(request, 'dog_profile.html', {'dog': dog, 'form': form})
 
+
+@login_required 
+@vet_required
+@custom_permission_required('can_manage')
+def edit_clinic(request, clinic_id):
+    clinic = get_object_or_404(clinic_info, pk=clinic_id)
+    if request.method == 'POST':
+        form = clinicRegisterForm(request.POST, request.FILES, instance=clinic)
+        if form.is_valid():
+            form.save()
+            return redirect('edit_clinic', clinic_id=clinic.id)
+    else:
+        form = clinicRegisterForm(instance=clinic)
+
+    return render(request, 'edit_clinic.html', {'clinic': clinic, 'form': form})
+
 #edit an existing medical record for any dog
 @login_required 
 @vet_required
@@ -57,6 +89,22 @@ def edit_medical_record(request, dog_id, record_id):
     else:
         form = MedicalRecordForm(instance=record)
     return render(request, 'edit_medical_record.html', {'dog': dog, 'form': form})
+
+
+@login_required 
+@vet_required
+@custom_permission_required('can_manage')
+def edit_treatment(request, clinic_id, treatment_id):
+    clinic = get_object_or_404(clinic_info, pk=clinic_id)
+    treatment_ = get_object_or_404(treatment, pk=treatment_id)
+    if request.method == 'POST':
+        form = treatmentRegisterForm(request.POST, request.FILES, instance=treatment_)
+        if form.is_valid():
+            form.save()
+            return redirect('edit_treatment', clinic_id=clinic.id, treatment_id=treatment_.id)
+    else:
+        form = treatmentRegisterForm(instance=treatment_)
+    return render(request, 'edit_treatment.html', {'clinic': clinic, 'treatment': treatment_, 'form': form})
 
 # Register a new dog
 @login_required 
@@ -103,6 +151,20 @@ def patients(request):
         dogs = Dog.objects.filter(vet=request.user.vet)
     return render(request, 'patients.html', {'dogs': dogs})
 
+
+# Show the clinic of each vet
+@login_required 
+@vet_required
+def show_clinic(request):
+    user_has_permission = request.user.has_perm("accounts.can_manage")
+    if request.user.is_authenticated:
+        vet = Vet.objects.get(user=request.user)
+        clinic_id = vet.clinic
+        clinic = clinic_info.objects.filter(id=clinic_id).first()
+    else:
+        clinic = None
+    return render(request, 'show_clinics.html', {'clinics': clinic, 'user_has_permission': user_has_permission})
+
 #create a new medical_record register for any dog
 @login_required 
 @vet_required
@@ -117,6 +179,20 @@ def new_record(request,dog_id):
     else:
         recordform = MedicalRecordForm()
     return render(request, 'new_record.html',{'dog': dog, 'recordform': recordform})
+
+@login_required 
+@vet_required
+def new_treatment(request,clinic_id):
+    clinic = get_object_or_404(clinic_info, pk=clinic_id)
+    if request.method == 'POST':
+        recordform = treatmentRegisterForm(request.POST, request.FILES)
+        if recordform.is_valid():
+            recordform.instance.clinic_id = clinic
+            recordform.save()
+            return redirect(reverse('treatments', args=[clinic_id]))
+    else:
+        recordform = treatmentRegisterForm()
+    return render(request, 'new_treatment.html',{'clinics': clinic, 'recordform': recordform})
 
 #show the medical_record registers by different filters, in order from most recent to oldest
 @login_required 
@@ -148,6 +224,21 @@ def medical_record(request, dog_id):
     else:
         medical_record = MedicalRecord.objects.filter(dog=dog).order_by('-date')
     return render(request, 'medical_record.html', {'dog': dog, 'medical_records': medical_record})
+
+@login_required 
+@vet_required
+def treatments(request, clinic_id):
+    clinic = get_object_or_404(clinic_info, pk=clinic_id)
+    search_record_term = request.GET.get('searchTreatment')
+    user_has_permission = request.user.has_perm("accounts.can_manage")
+    if search_record_term:
+        treatments = treatment.objects.filter(
+        Q(name__icontains=search_record_term),
+        clinic_id=clinic
+        )
+    else:
+        treatments = treatment.objects.filter(clinic_id=clinic)
+    return render(request, 'treatments.html', {'clinics': clinic, 'treatments': treatments, 'user_has_permission': user_has_permission})
 
 #show the appointments registers by different filters, in order from oldest to most recent
 @login_required 
