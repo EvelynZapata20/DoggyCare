@@ -170,7 +170,7 @@ def show_clinic(request):
     return render(request, 'show_clinics.html', {'clinics': clinic, 'user_has_permission': user_has_permission})
 
 #create a new medical_record register for any dog
-@login_required 
+@login_required
 @vet_required
 def new_record(request,dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
