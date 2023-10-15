@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import date
-from accounts.models import Vet, Owner
+from accounts.models import *
 from django.core.exceptions import ValidationError
 
 # Create your models here, here are all the modes used in the vet app of rDoggyCare.
@@ -74,13 +74,25 @@ class appointment(models.Model):
     date = models.DateField(blank = False)
     time = models.TimeField(blank=False)
     appointment_type = models.CharField(blank= False, max_length=20)
-    dog_owner_id = models.CharField(blank= False, max_length=50)
-    vet_id = models.CharField(blank= False, max_length=50)
-    dog_id = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
-    clinic_id = models.CharField(blank= False, max_length=50)
+    dog_owner_id = models.ForeignKey(Owner, on_delete=models.CASCADE,null=True, blank=True)
+    vet_id = models.ForeignKey(Vet, on_delete=models.CASCADE,null=True, blank=True)
+    dog = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
+    clinic_id = models.ForeignKey(clinic_info, on_delete=models.CASCADE,null=True, blank=True)
 
     
     
     def __str__(self):
         return self.name
+
+
+#class news(models.Model):
+#    date = models.DateField(blank = False)
+#    time = models.TimeField(blank=False)
+#    body = models.CharField(blank= False, max_length=400)
+#    vet = models.ForeignKey(Vet, on_delete=models.CASCADE,null=True, blank=True)
+#    header = models.CharField(blank= False, max_length=50)    
+#    
+#    def __str__(self):
+#        return self.name
+
 

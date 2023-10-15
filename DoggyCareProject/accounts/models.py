@@ -45,7 +45,7 @@ class Vet(models.Model):
     identification = models.CharField(max_length=10, validators=[validate_numeric])
     name = models.CharField(max_length=50)
     birthdate = models.DateField(validators=[validate_age])
-    telephone = models.CharField(max_length=15, validators=[validate_numeric])
+    telephone = models.CharField(max_length=50, validators=[validate_numeric])
     specialty = models.CharField(max_length=100, choices=SPECIALTY_CHOICES)
     experience = models.PositiveIntegerField()
     clinic = models.IntegerField()
@@ -56,7 +56,7 @@ class Owner(models.Model):
     identification = models.CharField(max_length=10, validators=[validate_numeric])
     name = models.CharField(max_length=50)
     birthdate = models.DateField(validators=[validate_age])
-    telephone = models.CharField(max_length=15, validators=[validate_numeric])
+    telephone = models.CharField(max_length=50, validators=[validate_numeric])
     address = models.CharField(max_length=50)
 
     def __str__(self):
