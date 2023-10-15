@@ -115,14 +115,20 @@
                     <input type="number" name="experience" id="id_experience" class="signup-input" required>
                 </div>
                 <div class="form-group">
-                    <label for="id_clinic" class="signup-label">Clinic:</label>
+                    <label for="{{ form.clinic.id_for_label }}" class="signup-label">Clinic:</label>
+                    <select name="{{ form.clinic.name }}" id="{{ form.clinic.id_for_label }}" class="signup-input">
+                        <option value="" selected="selected">Select a Clinic</option>
+                        {% for clinic in form.clinic.field.queryset %}
+                            <option value="{{ clinic.id }}">{{ clinic.name }}</option>
+                        {% endfor %}
+                    </select>
                     {% if form.clinic.errors %}
                         <div class="error">
                             {{ form.clinic.errors }}
                         </div>
                     {% endif %}
-                    <input type="text" name="clinic" id="id_clinic" class="signup-input" required>
                 </div>
+                
             </div>
             <div class="button-container">
                 <button type="submit" class="signup-button">Signup</button>

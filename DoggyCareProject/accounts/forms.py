@@ -15,7 +15,7 @@ class vet_signup_form(UserCreationForm):
     telephone = forms.CharField(widget=forms.TextInput(), validators=[validate_numeric])
     specialty = forms.ChoiceField(widget=forms.TextInput(), choices= Vet.SPECIALTY_CHOICES)
     experience = forms.IntegerField()
-    clinic = forms.CharField(widget=forms.TextInput())
+    clinic = forms.ModelChoiceField(queryset=clinic_info.objects.all(), widget=forms.Select)
 
     class Meta(UserCreationForm.Meta):
         model = User
