@@ -29,12 +29,6 @@ h2 {
 
 }
 
-.img {
-    align-items: center;
-    margin: 0 auto;
-    object-fit: cover;
-    padding-bottom: 10px;
-}
 
 /* Applies style to the search bar and filers*/
 
@@ -100,7 +94,7 @@ h2 {
     margin-right: 5px;
 
 }
-
+/*icon*/
 .fa-arrow-down-wide-short{
     position: absolute;
     left: 10px;
@@ -110,7 +104,7 @@ h2 {
     transform: translateX(-10px);
     transform: translateY(-10px);
 }
-
+/*icon*/
 .fa-circle-chevron-up{
     position: fixed;
     bottom: 20px;
@@ -118,7 +112,7 @@ h2 {
     width: 2rem;
     font-size: 50px;
 }
-
+/*icon*/
 .fa-circle-chevron-up:hover{
     transform: scale(1.50);
     transform: translateY(-10%);

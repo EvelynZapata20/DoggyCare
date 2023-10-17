@@ -30,11 +30,13 @@ class vet_signup_form(UserCreationForm):
         vet = Vet.objects.create(user=user, identification=self.cleaned_data.get('identification'), name=self.cleaned_data.get('name'), birthdate=self.cleaned_data.get('birthdate'), telephone=self.cleaned_data.get('telephone'), specialty=self.cleaned_data.get('specialty'), experience=self.cleaned_data.get('experience'), clinic=self.cleaned_data.get('clinic'))
         return user
 
+#form for the clinics register
 class clinicRegisterForm(forms.ModelForm):
     class Meta:
         model= clinic_info
         fields= ['name', 'address', 'place', 'phone', 'description', 'opening_hours', 'rating', 'image', 'vet']
 
+#form for the treatment register
 class treatmentRegisterForm(forms.ModelForm):
     class Meta:
         model= treatment

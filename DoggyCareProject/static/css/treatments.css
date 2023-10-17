@@ -11,7 +11,7 @@ main > * {
     margin-bottom: 15px;
 }
 
-
+/*subtitles style*/
 h2 {
     font-size: 24px; 
     color: #333;
@@ -22,6 +22,7 @@ h2 {
     margin-bottom: 20px;
   }
 
+/*all content general style*/
 
 .all {
     text-align: center;
@@ -73,7 +74,7 @@ h2 {
     border: 3px solid #03689e;
     outline: none;
 }
-
+/*icon*/
 .fa-magnifying-glass{
     position: absolute;
     left: 10px;

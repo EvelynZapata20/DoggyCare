@@ -1,4 +1,4 @@
-
+/*subtitles style*/
 
 h2 {
     font-size: 24px; 
@@ -20,6 +20,8 @@ h2 {
     text-align: center;
     font-size: 1.5vw;
   }
+
+/*style for al the content in general*/
 .all{
     display: flex;
     justify-content: center;
@@ -31,6 +33,7 @@ h2 {
     margin: auto;
 }
 
+/*style for the search bar*/
 .search-clinic-bar {
     font-family: Georgia, serif;
     display: flex;
@@ -65,6 +68,7 @@ h2 {
     outline: none;
 }
 
+/*icon*/
 .fa-magnifying-glass{
     position: absolute;
     left: 10px;
@@ -81,7 +85,7 @@ h2 {
     margin-right: 5px;
 
 }
-
+/*icon*/
 .fa-arrow-down-wide-short{
     position: absolute;
     left: 10px;
@@ -91,7 +95,7 @@ h2 {
     transform: translateX(-10px);
     transform: translateY(-10px);
 }
-
+/*icon*/
 .fa-circle-chevron-up{
     position: fixed;
     bottom: 20px;
@@ -99,12 +103,12 @@ h2 {
     width: 2rem;
     font-size: 50px;
 }
-
+/*icon*/
 .fa-circle-chevron-up:hover{
     transform: scale(1.50);
     transform: translateY(-10%);
 }
-
+/*image style*/
 .img-c{
     border-radius: 5%;
     width: 100%;
@@ -113,7 +117,7 @@ h2 {
     border: 2px solid #e0c5a2;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 }
-
+/*buttons style*/
 .clinic-buttons {
     margin-top: 10px;
     margin: auto;
@@ -142,7 +146,7 @@ h2 {
     background-color: rgb(145, 115, 75);
 }
 
-
+/*cinics list and card style*/
 .clinics-list {
     padding: 0 10px;
     display: flex;

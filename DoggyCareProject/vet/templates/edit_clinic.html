@@ -11,6 +11,7 @@
         <title>{% block title %} EDIT CLINIC {% endblock %}</title>
         {% block additional_styles %}
         <link rel="stylesheet" href="{% static 'css/edit_clinic.css' %}">
+        <!--font awesome for icons-->
         <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
         {% endblock additional_styles %}
         
@@ -23,7 +24,8 @@
                 
              <h2>{{ clinic.name }}</h2>
              <form method="post" enctype="multipart/form-data" class="custom-form">
-                
+                <!--container for clinics info-->
+                <!--each field contains data from the clinic-->
                     <div class="form-container">
                         {% csrf_token %}
                         <div class="fields-container">
@@ -59,7 +61,7 @@
                                 <label for="{{ form.place.id_for_label }}" class="icon">
                                     <i class="fa-solid fa-location-dot"></i>
                                 </label>
-                                <span style="font-weight: bold; font-family:Century Gothic; font-size: 0.8vw;">Neighborhood or Sector:</span>
+                                <span style="font-weight: bold; font-family:Century Gothic; font-size: 16px;">Neighborhood or Sector:</span>
                                 {{ form.place }}
                                 {% if form.place.errors %}
                                     <p class="error">{{ form.place.errors }}</p>

@@ -112,7 +112,7 @@ h2 {
     background-color: rgb(145, 115, 75);
 }
 
-
+/*icon*/
 .fa-circle-chevron-up{
     position: fixed;
     bottom: 20px;
@@ -120,14 +120,14 @@ h2 {
     width: 2rem;
     font-size: 50px;
 }
-
+/*icon*/
 .fa-circle-chevron-up:hover{
     transform: scale(1.50);
     transform: translateY(-10%);
 }
 
 
-
+/*buttons style*/
 .btn {
     padding: 5px 10px;
     font-size: 17px;
@@ -147,7 +147,7 @@ h2 {
 
 
 
-/* Applies style to all elements of the medical record visualize */
+/* Applies style to all elements of the treatments visualize */
 
 .treatment-list {
     padding: 0 10px;

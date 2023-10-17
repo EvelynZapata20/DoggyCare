@@ -10,6 +10,7 @@
     <title>{% block title %} Treatments {% endblock %}</title>
     {% block additional_styles %}
     <link rel="stylesheet" href="{% static 'css/owner/clinic_treatments.css' %}">
+    <!--fontawesome for icons-->
     <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
     {% endblock additional_styles %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -23,14 +24,15 @@
     <div class="all"  id="start">
     <h2>Treatments</h2>
     <form action="" class="search-treatment-bar">
-        
+        <!--search bar config-->
         <div class="search_group">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" class="form-control" name="searchTreatment" placeholder="Search treatment by name...">
         </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
-
+            <!--show all the treatments with its most important info-->
+            <!--using bootstrap cards-->
         <div class="treatment-list">
             {% for treatment in treatments %}
             {% if treatment.aviability %}
@@ -40,6 +42,7 @@
                     <p>
                         <i class="fa-solid fa-house-chimney-medical"></i>
                         <strong> Clinic:</strong>
+                        <!--redirect the user to the clinic where the treatment is from-->
                         <a href="{% url 'all_clinics' %}?searchClinic={{ treatment.clinic_id.name }}&filterClinic=all" target="_blank" style="color: black;">{{ treatment.clinic_id.name }}</a>
                     </p>
                                                         <p><i class="fa-solid fa-comment" style=></i><strong> Description:</strong> {{ treatment.description }}</p>
@@ -58,6 +61,7 @@
             {% endfor %}
             
         </div>
+        <!--button to go up un the page-->
         <a href="#start" id="go-up-button"><i class="fa-solid fa-circle-chevron-up fa-bounce" style="color: #e0c5a2;; text-shadow: 4px;"></i></a>
     </div>
 {% endblock content %}

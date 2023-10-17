@@ -6,11 +6,11 @@ class DogRegisterForm(forms.ModelForm):
         model= Dog
         fields= ['image', 'owner', 'name', 'breed', 'birthdate', 'weight', 'gender']
         
-
+#medical record form for the dogs
 class MedicalRecordForm(forms.ModelForm):
     class Meta:
         fecha_actual = date.today().strftime('%Y-%m-%d')
-
+        #types of medical attentions for dogs
         APPOINTMENT_CHOICES = [
         ('allergy evaluation', 'Allergy evaluation'),
         ('annual health exam', 'Annual health exam'),

@@ -1,3 +1,5 @@
+/*subtitles style*/
+
 h2 {
     font-size: 24px; 
     color: #333;
@@ -15,6 +17,8 @@ h2 {
     text-align: center;
     font-size: 1.5vw;
   }
+
+/*all content general style*/
 .all{
     display: flex;
     justify-content: center;
@@ -39,7 +43,7 @@ h2 {
     border: 2px solid #bdd7ff;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 }
-
+/*configure content and info about the clinics*/
 .clinic_container {
     display: flex;
     background-color: rgba(189, 215, 255, 0.3);
@@ -69,7 +73,7 @@ h2 {
 .info{
     font-size: 1.2vw;
 }
-
+/*buttons style*/
 
 .clinic-buttons {
     margin-top: 10px;

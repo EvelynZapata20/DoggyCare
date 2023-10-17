@@ -40,6 +40,7 @@ def my_dogs(request):
     return render(request, 'my_dogs.html', {'dogs': dogs, 'clinics':clinics})
 
 
+#show the clinics registers to the owners, in order by rating
 @login_required 
 @owner_required
 def all_clinics(request):
@@ -59,7 +60,7 @@ def all_clinics(request):
     
     return render(request, 'all_clinics.html', {'clinics': clinics})
 
-
+#show the treatments registers to the owners, showed by clinic
 @login_required 
 @owner_required
 def clinic_treatments(request, clinic_id):
@@ -74,6 +75,8 @@ def clinic_treatments(request, clinic_id):
         treatments = treatment.objects.filter(clinic_id=clinic)
     return render(request, 'clinic_treatments.html', {'clinic': clinic, 'treatments': treatments})
 
+
+#show the treatments registers to the owners
 @login_required 
 @owner_required
 def all_treatments(request):
@@ -86,6 +89,7 @@ def all_treatments(request):
     return render(request, 'all_treatments.html', {'treatments': treatments})
 
 
+#show the gog medical record to the owner
 def medical_record_o(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     filter_by = request.GET.get('filterRecord')

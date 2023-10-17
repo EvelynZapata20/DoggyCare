@@ -56,7 +56,7 @@ class Dog(models.Model):
         return age
     
 
-
+#define the class medical record with its respective fields
 class MedicalRecord(models.Model):
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
     date = models.DateField(blank = False)

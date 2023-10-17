@@ -18,7 +18,7 @@ h2 {
     grid-template-columns: 2;
 }
 
-
+/*configure content to fit the screen*/
 @media screen and (max-width: 2000px) {
     .form-container {
         margin-top: -5px;
@@ -46,6 +46,7 @@ h2 {
         margin: 0 auto;
         object-fit: cover;
     }
+    /*fields forms style*/
     
     .fields-container {
         width: 70%;

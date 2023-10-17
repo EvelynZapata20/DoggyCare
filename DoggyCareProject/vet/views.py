@@ -30,8 +30,10 @@ def delete_dog(request, dog_id):
         return redirect('patients')
     return render(request, 'dog_profile.html', {'dog': dog})
 
+#view for delete any treatment, only if the vet has the can_manage permission
 @login_required 
 @vet_required
+@custom_permission_required('can_manage')
 def delete_treatment(request, treatment_id):
     if request.user.is_authenticated:
         vet = Vet.objects.get(user=request.user)
@@ -59,7 +61,7 @@ def dog_profile(request, dog_id):
 
     return render(request, 'dog_profile.html', {'dog': dog, 'form': form})
 
-
+#view for the edit clinic function, only for the vets with can_manage permission
 @login_required 
 @vet_required
 @custom_permission_required('can_manage')
@@ -90,7 +92,7 @@ def edit_medical_record(request, dog_id, record_id):
         form = MedicalRecordForm(instance=record)
     return render(request, 'edit_medical_record.html', {'dog': dog, 'form': form})
 
-
+#view for the edit treatment function, only for the vets with can_manage permission
 @login_required 
 @vet_required
 @custom_permission_required('can_manage')
@@ -184,8 +186,10 @@ def new_record(request,dog_id):
         recordform = MedicalRecordForm()
     return render(request, 'new_record.html',{'dog': dog, 'recordform': recordform})
 
+#create a new treatment register for any clinic, only for the vets with can_manage permission
 @login_required 
 @vet_required
+@custom_permission_required('can_manage')
 def new_treatment(request,clinic_id):
     clinic = get_object_or_404(clinic_info, pk=clinic_id)
     if request.method == 'POST':
@@ -229,6 +233,7 @@ def medical_record(request, dog_id):
         medical_record = MedicalRecord.objects.filter(dog=dog).order_by('-date')
     return render(request, 'medical_record.html', {'dog': dog, 'medical_records': medical_record})
 
+#show the treatments registers for the vets
 @login_required 
 @vet_required
 def treatments(request, clinic_id):

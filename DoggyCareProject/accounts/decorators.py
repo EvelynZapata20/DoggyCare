@@ -33,15 +33,17 @@ def owner_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, login
         return actual_decorator(function)
     return actual_decorator
 
-
+#decorator to set permission of admin vets
 def custom_permission_required(perm_name):
     def decorator(view_func):
         @wraps(view_func)
         def _wrapped_view(request, *args, **kwargs):
             full_perm_name = f"accounts.{perm_name}"
+            #Verify that the request user has the permission added to his account
             if request.user.has_perm(full_perm_name):
                 return view_func(request, *args, **kwargs)
             else:
+                #redirects to a basic error page because dont have permissions
                 return HttpResponseForbidden("You're not supposed to be here, you don't have the necessary permissions")
         return _wrapped_view
     return decorator

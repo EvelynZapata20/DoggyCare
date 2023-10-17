@@ -25,8 +25,9 @@
         <h1>{{dog.name}}'s Medical Record</h1>
 
         <div class="img">
-            <img src="{{ dog.image.url }}" alt="{{ dog.name }} Image" style="border-radius: 50%; width: 200px; height: 180px; border: 8px solid rgb(189, 215, 255); box-shadow: 0px 1px 10px #bdd7ff;">
-        </div>    
+            <img src="{{ dog.image.url }}" alt="{{ dog.name }} Image" style="border-radius: 50%; width: 200px; height: 180px; object-fit: cover; border: 8px solid rgb(189, 215, 255); box-shadow: 0px 1px 10px #bdd7ff;">
+          </div>
+            
         <div class="new-record" style="text-align: center;">
             <a href="{% url 'new_record' dog_id=dog.id %}" class="btn">New Record</a>
         </div>
@@ -77,6 +78,7 @@
             {% endfor %}
             
         </div>
+        <!--button to go up un the page-->
         <a href="#start" id="go-up-button"><i class="fa-solid fa-circle-chevron-up fa-bounce" style="color: #bdd7ff; text-shadow: 4px;"></i></a>
     </div>
         {% endblock content %}
