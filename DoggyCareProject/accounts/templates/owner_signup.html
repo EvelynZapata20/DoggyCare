@@ -15,8 +15,11 @@
             <img src="{% static 'img/logo.png' %}" alt="Logo"> <br>
         </a>
         <h1>Signup as Owner</h1>
+        <!-- Form for the owner register -->
         <form method="post" class="signup-container">
+            <!-- Security token -->
             {% csrf_token %}
+            <!-- Fields for the owner register with exception messages -->
             <div class="signup-column">
                 <div class="form-group">
                     <label for="{{ form.username.id_for_label }}">Username:</label>
@@ -102,6 +105,7 @@
                     {{ form.address }}
                 </div>
             </div>
+            <!-- Button for the owner register -->
             <div class="button-container">
                 <button type="submit" class="signup-button">Signup</button>
             </div>

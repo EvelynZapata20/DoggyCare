@@ -15,8 +15,11 @@
             <img src="{% static 'img/logo.png' %}" alt="Logo"> <br>
         </a>
         <h1>Signup as Vet</h1>
+        <!-- Form for the vet register -->
         <form method="post" class="signup-container">
+            <!-- Security token -->
             {% csrf_token %}
+            <!-- Fields for the vet register with exception messages -->
             <div class="signup-column">
                 <div class="form-group">
                     <label for="id_username" class="signup-label">Username:</label>
@@ -114,11 +117,12 @@
                     {% endif %}
                     <input type="number" name="experience" id="id_experience" class="signup-input" required>
                 </div>
+
                 <div class="form-group">
                     <label for="{{ form.clinic.id_for_label }}" class="signup-label">Clinic:</label>
                     <select name="{{ form.clinic.name }}" id="{{ form.clinic.id_for_label }}" class="signup-input">
                         <option value="" selected="selected">Select a Clinic</option>
-                        {% for clinic in form.clinic.field.queryset %}
+                        {% for clinic in clinics %}
                             <option value="{{ clinic.id }}">{{ clinic.name }}</option>
                         {% endfor %}
                     </select>
@@ -128,7 +132,8 @@
                         </div>
                     {% endif %}
                 </div>
-                
+                                
+            <!-- Button for the vet register --> 
             </div>
             <div class="button-container">
                 <button type="submit" class="signup-button">Signup</button>

@@ -17,11 +17,15 @@
             <img src="{% static 'img/logo.png' %}" alt="Logo"> <br><br>
         </a>
         <h1>Login</h1> 
+        <!-- Form for the login -->
         <form action="{% url 'login' %}" method="POST">
+            <!-- Security token -->
             {% csrf_token %}
+            <!-- Display all the field in the form -->
             {{ form.as_p }}
             <input type="submit" value="Login" class="login-button">
         </form> <br><br>
+        <!-- Link to the signup pages -->
         <p>Not yet registered?</p>
         <a href="{% url 'vet_signup' %}" class="vet-signup-button">Signup as Vet</a>
         <a href="{% url 'owner_signup' %}" class="owner-signup-button">Signup as Owner</a>

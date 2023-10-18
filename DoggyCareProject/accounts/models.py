@@ -3,24 +3,27 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractUser
 from datetime import date
 
+# Create your models here.
 
+# User model
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     is_vet = models.BooleanField(default=False)
     is_owner = models.BooleanField(default=False)
 
+# validate numeric fields
 def validate_numeric(value):
     if not value.isdigit():
         raise ValidationError('This field must be numeric.')
     
-    
+# validate that the user is at least 18 years old
 def validate_age(value):
     today = date.today()
     age = today.year - value.year - ((today.month, today.day) < (value.month, value.day))
     if age < 18:
         raise ValidationError("You must be at least 18 years old.")
 
-
+# Vet model
 class Vet(models.Model):
     SPECIALTY_CHOICES = (
         ('General Medicine', 'General Medicine'),
@@ -50,7 +53,7 @@ class Vet(models.Model):
     experience = models.PositiveIntegerField()
     clinic = models.IntegerField()
     
-
+# Owner model
 class Owner(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='owner')
     identification = models.CharField(max_length=10, validators=[validate_numeric])
