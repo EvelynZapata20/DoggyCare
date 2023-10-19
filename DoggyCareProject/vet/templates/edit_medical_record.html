@@ -25,7 +25,7 @@
              <!-- show all the medicalRecord fields with its current value  -->
              <form method="post" enctype="multipart/form-data" class="custom-form">
                 
-                    <div class="form-container">
+                    <div id="form-container">
                         {% csrf_token %}
                         <div class="img">
                             <h2>{{dog.name}}</h2>

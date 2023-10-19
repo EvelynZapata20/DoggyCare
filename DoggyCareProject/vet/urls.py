@@ -19,4 +19,5 @@ urlpatterns = [
     path('edit_treatment/<int:clinic_id>/<int:treatment_id>/', views.edit_treatment, name='edit_treatment'),
     path('delete_treatment/<int:treatment_id>/', views.delete_treatment, name='delete_treatment'),
     path('edit_clinic/<int:clinic_id>/', views.edit_clinic, name='edit_clinic'),
+    path('statics/', views.statistics, name='statistics'),
 ]

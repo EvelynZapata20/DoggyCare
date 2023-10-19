@@ -1,22 +1,10 @@
  @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext");
 
-h1 {
-  font-size: 28px;
-  font-family: Georgia, serif;
-  text-align: center;
-  margin: 25px;
-}
 
 
 
 /* code of the card for recomendations*/
 
-* {
-  padding: 0;
-  margin: 25px;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
 
 
 .card {
@@ -49,5 +37,13 @@ h1 {
 
 
 .card p{
-    padding: 10px 0;
+    padding: 10px ;
+}
+
+.container{
+  height:100px ;
+}
+
+.lastcontainer{
+  height: 1500px;
 }

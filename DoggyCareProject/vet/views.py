@@ -11,7 +11,7 @@ import re
 from accounts.decorators import custom_permission_required, vet_required
 from accounts.decorators import vet_required
 from django.contrib.auth.decorators import login_required
-
+import json
 
 # Create your views here.
 
@@ -284,3 +284,28 @@ def recomendations(request, dog_id):
     vac_card = get_object_or_404(vaccination, pk=vaccination_card)
     age = dog.calculate_age()
     return render(request, 'recomendations.html', {'dog': dog,'vac_card': vac_card, 'age': age,})
+
+# This function send the vet to the Data analizing of the service
+@login_required 
+@vet_required
+def statistics(request):
+    dogs = Dog.objects.filter(vet=request.user.vet)
+    dogCode = []
+    for dog in dogs:
+        dogCode.append(dog.id)
+    MedicalRecords = MedicalRecord.objects.filter(dog__in = dogCode)
+    Types = []
+    for Type in MedicalRecords:
+        Types.append(Type.appointmentType)
+    count = {}
+
+    for Type in Types:
+        if Type in count:
+            count[Type] += 1
+        else:
+            count[Type] = 1
+    labels = list(count.keys())
+    values = list(count.values())
+    labelsJSON = json.dumps(labels)
+    valuesJSON = json.dumps(values)
+    return render(request, 'statistics.html', {'dogs': dogs, 'labels' : labelsJSON, 'values' : valuesJSON  })

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Configuration of the page style with the css file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización de datos con ChartJS</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300" rel="stylesheet" />
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/vet/statistics.css' %}">
+    {% endblock additional_styles %}
+</head>
+
+<body>
+    {% block content %}
+    <main>
+        <figure>
+            <h2>Type of appointments</h2>
+            <div class="container">
+                <canvas id="modelsChart"></canvas>
+            </div>
+    </main>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+    <!-- The script for generate the modelChar  -->
+    <script>
+        Chart.defaults.color = '#000000'
+
+        const printCharts = () => {
+            
+            renderModelsChart()
+
+
+        }
+
+        // Generate the colors with opacity
+        const getDataColors = opacity => {
+            const colors = ['#7448c2', '#21c0d7', '#d99e2b', '#cd3a81', '#9c99cc', '#e14eca', '#ffffff', '#ff0000', '#d6ff00', '#0038ff']
+            return colors.map(color => opacity ? `${color + opacity}` : color)
+        }
+
+
+        // create the model that show the data
+        const renderModelsChart = () => {
+            
+            const data = {
+                labels: label,
+                datasets: [{
+                    data: values,
+                    borderColor: getDataColors(),
+                    backgroundColor: getDataColors(20)
+                }]
+            }
+
+            const options = {
+                plugins: {
+                    legend: { position: 'left'},
+                }
+            }
+            
+            new Chart('modelsChart',{type: 'doughnut',data, options})
+        }
+        var label =  JSON.parse('{{ labels|escapejs }}');
+        var values = JSON.parse('{{ values|escapejs }}')
+        printCharts()
+    </script>
+    {% endblock content %}
+</body>
+
+</html>
