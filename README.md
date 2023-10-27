@@ -13,29 +13,28 @@ We recommend using the Visual Studio Code environment for code exploration.
 ## Running the Program
 To run DoggyCare:
 
-1. Clone the GitHub repository by executing this command in a terminal, specifying your desired program storage folder:
+1. Fork the original DoggyCare repository to your GitHub account by clicking the "Fork" button on the top right of this repository .
+ 
+2. Clone your forked repository by executing this command in a terminal, specifying your desired program storage folder:
 
    ```shell
-   git clone https://github.com/EvelynZapata20/DoggyCare.git
+   git clone https://github.com/YourGitHubUsername/DoggyCare.git
 
-2. Navigate to the "DoggyCareProject" folder using a terminal:
+3. Navigate to the "DoggyCareProject" folder using a terminal:
 
    ```shell
    cd DoggyCare/DoggyCareProject
    
-3. Launch the server:
+4. Launch the server:
 
    ```shell
    python manage.py runserver
 
-4. Copy the local server's URL from the command prompt or terminal, it should resemble:
+5. Copy the local server's URL from the command prompt or terminal, it should resemble:
 
    ```shell
    http://127.0.0.1:8000/
    
-5. In your preferred web browser, paste the copied URL, and append "patients" to the end, resulting in a URL like:
-
-   ```shell
-   http://127.0.0.1:8000/patients
+6. In your preferred web browser, paste the copied URL
 
 You are now ready to enjoy DoggyCare!
