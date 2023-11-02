@@ -7,7 +7,7 @@
     <!-- Configuration of the page style with the css file -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización de datos con ChartJS</title>
+    <title>{% block title %} Statistics {% endblock %}</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300" rel="stylesheet" />
     {% block additional_styles %}
     <link rel="stylesheet" href="{% static 'css/vet/statistics.css' %}">
@@ -18,7 +18,7 @@
     {% block content %}
     <main>
         <figure>
-            <h2>Type of appointments</h2>
+            <h2>Type of Appointments</h2>
             <div class="container">
                 <canvas id="modelsChart"></canvas>
             </div>

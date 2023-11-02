@@ -1,0 +1,97 @@
+.container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.my-account-form {
+    width: 85%;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.row-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.row,
+.row-select,
+.row-date,
+.form-group {
+    margin: 0 10px;
+    width: 30%;
+    margin-top: 15px;
+    flex: 1;
+    max-width: 30%;
+}
+
+.row label,
+.row-select label,
+.row-date label,
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    text-transform: capitalize;
+}
+
+.row input[type="text"],
+.row input[type="number"],
+.row input[type="file"],
+.row-date input[type="date"],
+.row-select select,
+.form-group input {
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid rgb(145, 115, 75);
+    border-radius: 5px;
+    width: 100%;
+}
+
+.button-container {
+    text-align: center;
+}
+
+button,
+#cancel-button {
+    padding: 10px 20px;
+    font-size: 17px;
+    text-decoration: none;
+    border: 1px solid rgb(116, 87, 50);
+    background-color: #e0c5a2;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+button:hover,
+#cancel-button:hover {
+    background-color: rgb(145, 115, 75);
+}
+
+.password-change-form {
+    background-color: rgba(161, 99, 17, 0.233);
+    border: 2px solid rgb(116, 87, 50);
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

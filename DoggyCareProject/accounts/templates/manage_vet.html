@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} My Account {% endblock %}</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/accounts/manage_vet.css' %}">
+    <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+    {% endblock additional_styles %}
+</head>
+
+<body>
+   <main>
+        {% block content %}
+
+        <div class= "container">
+
+            <div class= "my-account-form">
+                <h1>My Account</h1>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row-container">
+                        <div class="row">
+                            <label for="identification">Identification:</label>
+                            <input type="text" id="identification" name="identification" value="{{ form.instance.identification }}" required>
+                        </div>
+                        
+                        <div class="row">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" value="{{ form.instance.name }}">
+                        </div>
+                        
+                        <div class="row-date">
+                            <label for="birthdate">Birthdate:</label>
+                            {{ form.birthdate}}
+                        </div>
+
+                        </div>
+                        
+                        <div class="row-container">
+                            <div class="row">
+                                <label for="telephone">Telephone:</label>
+                                <input type="text" id="telephone" name="telephone" value="{{ form.instance.telephone }}" required>
+                            </div>
+                        
+                            <div class="row-select">
+                                <label for="specialty">Specialty:</label>
+                                {{ form.specialty}}
+                            </div>
+                        
+                            <div class="row">
+                                <label for="experience">Experience (Years):</label>
+                                {{ form.experience }}
+                            </div>
+                        </div>
+                        
+                
+                    <div class="button-container">
+                        <button type="submit" name="update_account">Save Changes</button>
+                        <a id="cancel-button" href="{% url 'patients' %}">Back</a>
+                    </div>
+                </form>
+            </div>
+        
+            <div class="password-change-form">
+                <h2>Change Password</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row-container">
+                        <div class="form-group">
+                            {{ form2.old_password.label_tag }}
+                            {{ form2.old_password }}
+                            {{ form2.old_password.errors }}
+                        </div>
+                        <div class="form-group">
+                            {{ form2.new_password1.label_tag }}
+                            {{ form2.new_password1 }}
+                            {{ form2.new_password1.errors }}
+                        </div>
+                        <div class="form-group">
+                            {{ form2.new_password2.label_tag }}
+                            {{ form2.new_password2 }}
+                            {{ form2.new_password2.errors }}
+                        </div>
+                    </div>
+                    <button type="submit" name="change_password">Change Password</button>
+                </form>
+            </div>
+        </div>
+        
+    {% endblock content %}
+    </main>
+</body>
+</html>

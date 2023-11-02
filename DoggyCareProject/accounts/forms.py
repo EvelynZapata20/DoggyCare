@@ -1,8 +1,9 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import transaction
-from .models import User, Vet, Owner, validate_numeric, clinic_info, treatment
+from .models import User, Vet, Owner, validate_numeric, validate_age, clinic_info, treatment
 from .models import User, Vet, Owner, validate_numeric, validate_age
 from django import forms
+from django.contrib.auth.forms import PasswordChangeForm
 
 #form for the vet register
 class vet_signup_form(UserCreationForm):
@@ -88,5 +89,20 @@ class login_form(AuthenticationForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
 
+# form for the vet update
+class vet_update_form(forms.ModelForm):
+    class Meta:
+        model= Vet
+        fields= ['identification', 'name', 'birthdate', 'telephone', 'specialty', 'experience']
+        widgets = {
+            'birthdate': forms.DateInput(attrs={'type': 'date'}),
+        }
 
-
+# form for the owner data update
+class owner_update_form(forms.ModelForm):
+    class Meta:
+        model= Owner
+        fields= ['identification', 'name', 'birthdate', 'telephone', 'address']
+        widgets = {
+            'birthdate': forms.DateInput(attrs={'type': 'date'}),
+        }

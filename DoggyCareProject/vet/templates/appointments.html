@@ -7,7 +7,7 @@
     <!-- Configuration of the page style with the css file -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {{dog.name}}'s Medical Record {% endblock %}</title>
+    <title>{% block title %} My Appointments {% endblock %}</title>
     {% block additional_styles %}
     <link rel="stylesheet" href="{% static 'css/vet/appointments.css' %}">
     {% endblock additional_styles %}
@@ -19,7 +19,7 @@
         {% block content %}
         <!-- Page to show the medicalRecord of a dog -->
 
-        <h1>MY APPOINTMENTS</h1>
+        <h1>My Appointments</h1>
 
         <div class="schedule-appointment" style="text-align: center;">
             <a href="" class="btn">Schedule Appointment</a>
