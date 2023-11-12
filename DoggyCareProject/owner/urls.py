@@ -7,4 +7,6 @@ urlpatterns = [
     path('clinic_treatments/<int:clinic_id>', views.clinic_treatments, name='clinic_treatments'),
     path('all_treatments/', views.all_treatments, name='all_treatments'),
     path('medical_record_o/<int:dog_id>', views.medical_record_o, name='medical_record_o'),
+    path('appointments_o/', views.appointments_o, name='appointments_o'),
+    path('all_news/', views.all_news, name='all_news'),
 ]

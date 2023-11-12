@@ -1,0 +1,176 @@
+h2 {
+    font-size: 24px; 
+    color: #333;
+    font-weight: bold; 
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: auto;
+    padding-bottom: 5px;
+  }
+
+.title-inside{
+    font-size: 24px; 
+    color: #333;
+    font-weight: bold; 
+    text-align: center;
+    margin-bottom: auto;
+    padding-bottom: 5px;
+}
+
+/* Applies style the form */
+
+.custom-form {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
+/*configure content to fit the screen*/
+@media screen and (max-width: 2000px) {
+.form-container {
+    margin-top: -5px;
+    padding: 2%;
+    background-color: rgba(189, 215, 255, 0.3);
+    border: 2px solid rgb(189, 215, 255);
+    width: 80%;
+    max-width: 600px;
+    min-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/*fields forms style*/
+.fields-container {
+    width: 80%;
+    float: right;
+}
+
+.field {
+    margin-bottom: 26px;
+    position: relative;
+    width: 100%;
+    max-width: 785px;
+}
+
+textarea {
+    max-width: 1700px;
+    width: 100%;
+    max-height: 80px; 
+    resize: none;
+    border: 2px solid #bdd7ff;
+    font-size: 16px;
+    font-family:"Century Gothic";
+    padding-left: 30px;
+    
+}
+textarea:focus {
+    border: 3px solid #03689e;
+    outline: none;
+}
+
+.field label {
+    display: block;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 5px;
+    font-family:"Century Gothic";
+    font-weight: bold;
+    
+}
+
+.field input {
+    outline: none;
+    font-size: 16px;
+    padding-bottom: 5px;
+    font-family:"Century Gothic";
+    border: 2px solid #bdd7ff;
+    border-radius: 4px;
+    height: 30px;
+    padding-left: 30px;
+    width: 100%;
+    padding-top: 3px;
+}
+
+.field input:focus {
+    border: 3px solid #03689e;
+}
+/*icon*/
+.appointment-type-field {
+    outline: none;
+    padding-top: 3px;
+    font-size: 16px;
+    padding-bottom: 5px;
+    font-family: "Century Gothic";
+    border: 2px solid #bdd7ff;
+    border-radius: 4px;
+    height: 40px;
+    padding-left: 30px;
+    max-width: 785px;
+    width: 100%;
+}
+/*icon*/
+.appointment-type-field:focus {
+    border: 3px solid #03689e;
+    outline: none;
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Applies style to the buttons */
+
+.confirm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5%;
+    
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+.submit-button:hover {
+    background-color: #86a7d4;
+}
+
+#cancel-button {
+    padding: 10px 20px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+
+#cancel-button:hover {
+    background-color: #86a7d4;
+}
+
+
+}

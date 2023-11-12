@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <!-- Configuration of the page style with the css file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}New news{% endblock %}</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/vet/new_appointment.css' %}">
+    <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+    {% endblock additional_styles %}
+</head>
+<body>
+    <main>
+        <!-- Access the form to create a new record for any dog with all of the required fields -->
+        {% block content %}
+        <h2>Publish News</h2>
+        <form method="post" enctype="multipart/form-data" class="custom-form">
+            <div class="container"">
+                <div class="form-container">
+                    {% csrf_token %}
+                    <div class="fields-container">
+                        <div class="field">
+                            <label for="{{ form.header.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-heading"></i>
+                            </label>
+                            <label>{{ newform.header.label_tag }}</label>
+                            {{newform.header}}
+                            {% if newform.header.errors %}
+                                <p class="error">{{ newform.header.errors }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="field">
+                            <label for="{{ form.body.id_for_label }}" class="icon">
+                                <i class="fa-regular fa-comment" style="transform: translateY(-30px);"></i>
+                            </label>
+                            <label>{{ newform.body.label_tag }}</label>
+                            {{newform.body}}
+                            {% if newform.body.errors %}
+                                <p class="error">{{ newform.body.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Buttons to confirm changes and back to the last page -->
+            <div class="confirm">
+                <a id="cancel-button" href="{% url 'news' %}">Back</a>
+                <button type="submit" class="submit-button">Confirm</button>
+            </div>
+        </form>
+        {% endblock content %}
+    </main>
+</body>
+</html>

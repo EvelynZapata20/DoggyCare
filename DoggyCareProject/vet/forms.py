@@ -1,17 +1,8 @@
 from django import forms
 from .models import *
 
-class DogRegisterForm(forms.ModelForm):
-    class Meta:
-        model= Dog
-        fields= ['image', 'owner', 'name', 'breed', 'birthdate', 'weight', 'gender']
-        
-#medical record form for the dogs
-class MedicalRecordForm(forms.ModelForm):
-    class Meta:
-        fecha_actual = date.today().strftime('%Y-%m-%d')
-        #types of medical attentions for dogs
-        APPOINTMENT_CHOICES = [
+
+APPOINTMENT_CHOICES = [
         ('allergy evaluation', 'Allergy evaluation'),
         ('annual health exam', 'Annual health exam'),
         ('assessment of serious behavioral problems', 'Assessment of serious behavioral problems'),
@@ -76,6 +67,28 @@ class MedicalRecordForm(forms.ModelForm):
         ('nose and throat surgery', 'Nose and Throat Surgery'),
         ('cardiovascular surgery', 'Cardiovascular Surgery')
         ]
+fecha_actual = date.today().strftime('%Y-%m-%d')
+
+class DogRegisterForm(forms.ModelForm):
+    class Meta:
+        model= Dog
+        fields= ['image', 'owner', 'name', 'breed', 'birthdate', 'weight', 'gender']
+
+class AppointmentForm(forms.ModelForm):
+    class Meta:
+        model= appointment
+        fields= ['date', 'time', 'appointment_type', 'dog','attended']
+        widgets = {
+            'date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'type': 'date', 'max': '2025-01-01' , 'min': fecha_actual}),
+            'time': forms.TimeInput(attrs={'type': 'time', 'min': '06:00', 'max': '19:00'}),
+            'appointment_type': forms.Select(choices=APPOINTMENT_CHOICES, attrs={'class': 'appointment-type-field'}),
+            'dog': forms.Select(attrs={'class':'appointment-type-field'}),
+        }
+        
+#medical record form for the dogs
+class MedicalRecordForm(forms.ModelForm):
+    class Meta:
+                
         model = MedicalRecord
         fields = ['dog', 'date', 'appointmentType', 'symptoms', 'treatment', 'recommendations']
         exclude = ['dog']
@@ -84,15 +97,15 @@ class MedicalRecordForm(forms.ModelForm):
             'recommendations': forms.Textarea(),
             'appointmentType': forms.Select(choices=APPOINTMENT_CHOICES, attrs={'class': 'appointment-type-field'}),
         }
-class AppointmentForm(forms.ModelForm):
-    class Meta:
-        model= appointment
-        fields= ['date', 'time', 'appointment_type', 'dog_owner_id', 'vet_id','dog_id', 'clinic_id']
-        exclude=['dog_id']
-        widgets = {
-            'date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD'}),
-        }
 class vaccinationCardForm(forms.ModelForm):
     class Meta:
         model = vaccination_card
         fields = "__all__"
+
+class NewsForm(forms.ModelForm):
+    class Meta:        
+        model = news
+        fields = ['header', 'body']
+        widgets = {
+            'body': forms.Textarea(),
+        }

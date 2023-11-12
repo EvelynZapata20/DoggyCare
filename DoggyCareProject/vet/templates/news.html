@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <!-- Configuration of the page style with the css file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} News {% endblock %}</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/vet/news.css' %}">
+    <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+    {% endblock additional_styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+
+</head>
+
+<body>
+   <main>
+        {% block content %}
+        <!-- Page to show the appointments of a vet -->
+        <div class="all"  id="start">
+        <h1>Your News</h1>
+            
+        <div class="new-news" style="text-align: center;">
+            <a href="{% url 'new_news' %}" class="btn" >Publish News</a>
+        </div>
+        
+        <!-- show alll the appointments with its respective fields -->
+        <div class="news-list">
+            {% for new in news %}
+            <div class="news-card">
+                <div class="card-content p-3 mx-2">
+                    <span>{{ new.date }}</span>
+                    <p style="text-align: left;"><strong>{{ new.header }}</strong> </p>
+                    <p style="text-align: left;">At: {{ new.time }}</p>
+                    <p style="text-align: left;">{{ new.body }}</p>      
+
+                    <div class="button-container">
+                        <a href="{% url 'manage_news' new_id=new.id %}" class="edit-button">Manage</a>
+                    </div>
+
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        <!--button to go up un the page-->
+        <a href="#start" id="go-up-button"><i class="fa-solid fa-circle-chevron-up fa-bounce" style="color: #bdd7ff; text-shadow: 4px;"></i></a>
+    </div>
+        {% endblock content %}
+    </main>
+
+</body>
+</html>

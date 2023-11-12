@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <!-- Configuration of the page style with the css file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}New Appointment{% endblock %}</title>
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/vet/new_appointment.css' %}">
+    <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+    {% endblock additional_styles %}
+</head>
+<body>
+    <main>
+        <!-- Access the form to create a new record for any dog with all of the required fields -->
+        {% block content %}
+        <h2>Schedule Appointment</h2>
+        <form method="post" enctype="multipart/form-data" class="custom-form">
+            <div class="container"">
+                <div class="form-container">
+                    {% csrf_token %}
+                    <div class="fields-container">
+
+                        <div class="field">
+                            <label for="{{ form.dog.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-dog"></i>
+                            </label>
+                            <label>{{ appointform.dog.label_tag }}</label>
+                            {{appointform.dog}}
+                            {% if appointform.dog.errors %}
+                                <p class="error">{{ appointform.dog.errors }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="field">
+                            <label for="{{ form.date.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </label>
+                            <label>{{ appointform.date.label_tag }}</label>
+                            {{appointform.date}}
+                            {% if appointform.date.errors %}
+                                <p class="error">{{ appointform.date.errors }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="field">
+                            <label for="{{ form.time.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-clock"></i>
+                            </label>
+                            <label>{{ appointform.time.label_tag }}</label>
+                            {{appointform.time}}
+                            {% if appointform.time.errors %}
+                                <p class="error">{{ appointform.time.errors }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div class="field">
+                            <label for="{{ form.appointment_type.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-hand-holding-medical"></i>
+                            </label>
+                            <label>{{ appointform.appointment_type.label_tag }}</label>
+                            {{appointform.appointment_type}}
+                            {% if appointform.appointment_type.errors %}
+                                <p class="error">{{ appointform.appointment_type.errors }}</p>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Buttons to confirm changes and back to the last page -->
+            <div class="confirm">
+                <a id="cancel-button" href="{% url 'owners_select' %}">Back</a>
+                <button type="submit" class="submit-button">Confirm</button>
+            </div>
+        </form>
+        {% endblock content %}
+    </main>
+</body>
+</html>

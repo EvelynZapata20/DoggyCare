@@ -1,3 +1,5 @@
+from datetime import datetime
+from operator import attrgetter
 from pathlib import Path
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
@@ -12,6 +14,7 @@ from accounts.decorators import custom_permission_required, vet_required
 from accounts.decorators import vet_required
 from django.contrib.auth.decorators import login_required
 import json
+from .models import *
 
 # Create your views here.
 
@@ -45,6 +48,26 @@ def delete_treatment(request, treatment_id):
         treatment_.delete()
         return redirect('treatments', clinic_id=clinic_id)
     return render(request, 'edit_treatment.html', {'treatment': treatment_})
+
+#view for delete any appointment
+@login_required 
+@vet_required
+def delete_appointment(request, appointment_id):
+    appointment_ = get_object_or_404(appointment, pk=appointment_id)
+    if request.method == 'POST':
+        appointment_.delete()
+        return redirect('appointment')
+    return render(request, 'manage_appointment.html', {'appointment': appointment_})
+
+#view for delete any new
+@login_required 
+@vet_required
+def delete_news(request, new_id):
+    new_ = get_object_or_404(news, pk=new_id)
+    if request.method == 'POST':
+        new_.delete()
+        return redirect('news')
+    return render(request, 'manage_news.html', {'new': new_})
 
 # Edit the information of a dog
 @login_required 
@@ -107,6 +130,34 @@ def edit_treatment(request, clinic_id, treatment_id):
     else:
         form = treatmentRegisterForm(instance=treatment_)
     return render(request, 'edit_treatment.html', {'clinic': clinic, 'treatment': treatment_, 'form': form})
+
+#view for the edit news function
+@login_required 
+@vet_required
+def manage_news(request, new_id):
+    new_ = get_object_or_404(news, pk=new_id)
+    if request.method == 'POST':
+        form = NewsForm(request.POST, request.FILES, instance=new_)
+        if form.is_valid():
+            form.save()
+            return redirect('manage_news', new_id=new_.id)
+    else:
+        form = NewsForm(instance=new_)
+    return render(request, 'manage_news.html', {'new': new_, 'form': form})
+
+#view for the manage appointment function
+@login_required 
+@vet_required
+def manage_appointment_view(request, appointment_id):
+    appointment_ = get_object_or_404(appointment, pk=appointment_id)
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST, request.FILES, instance=appointment_)
+        if form.is_valid():
+            form.save()
+            return redirect('manage_appointment', appointment_id=appointment_.id)
+    else:
+        form = AppointmentForm(instance=appointment_)
+    return render(request, 'manage_appointment.html', {'appointment': appointment_, 'form': form})
 
 # Register a new dog
 @login_required 
@@ -186,6 +237,58 @@ def new_record(request,dog_id):
         recordform = MedicalRecordForm()
     return render(request, 'new_record.html',{'dog': dog, 'recordform': recordform})
 
+#create a new appointment register for any vet
+@login_required
+@vet_required
+def new_appointment(request, owner_id):
+    if request.method == 'POST':
+        owner = get_object_or_404(Owner, identification=owner_id)
+        appointform = AppointmentForm(request.POST, request.FILES)
+        clinic = get_object_or_404(clinic_info, pk=request.user.vet.clinic)
+        if appointform.is_valid():
+            appointform.instance.vet_id = request.user.vet
+            appointform.instance.clinic_id = clinic
+            appointform.instance.dog_owner_id = owner
+            appointform.instance.attended = False
+            appointform.save()
+            return redirect(reverse('appointment'))
+    else:
+        appointform = AppointmentForm()
+    return render(request, 'new_appointment.html', {'appointform': appointform})
+
+#create a new medical record register based on appointment
+# @login_required
+# @vet_required
+# def add_record(request, dog_id, date, appointment_type):
+#     if request.method == 'POST':
+#         dog = get_object_or_404(Dog, pk=dog_id)
+#         recordform = MedicalRecordForm(request.POST, request.FILES)
+#         if recordform.is_valid():
+#             date_obj = datetime.strptime(date, '%Y-%m-%d').date()
+#             recordform.instance.date = date_obj
+#             recordform.instance.appointmentType = appointment_type
+#             recordform.instance.dog_id = dog
+#             recordform.instance.symptoms = ''
+#             recordform.instance.treatment = ''
+#             recordform.instance.recommendations = ''
+#             recordform.save()
+#             return redirect(reverse('confirm'))
+#     else:
+#         recordform = AppointmentForm()
+#     return render(request, 'confirm.html')
+
+#function to select a owner for the appointment
+@login_required
+@vet_required
+def owners_select(request):
+    if request.method == 'POST':
+        # Get the id of the selected object from the form
+        owner_id = request.POST.get('instance_id')
+        return redirect(reverse('new_appointment', args=[owner_id]))
+
+    owners = Owner.objects.all()
+    return render(request, 'select_owner.html', {'owners': owners})
+
 #create a new treatment register for any clinic, only for the vets with can_manage permission
 @login_required 
 @vet_required
@@ -201,6 +304,22 @@ def new_treatment(request,clinic_id):
     else:
         recordform = treatmentRegisterForm()
     return render(request, 'new_treatment.html',{'clinics': clinic, 'recordform': recordform})
+
+#create a new new register for any vet
+@login_required 
+@vet_required
+def new_news(request):
+    if request.method == 'POST':
+        newform = NewsForm(request.POST, request.FILES)
+        if newform.is_valid():
+            newform.instance.vet = request.user.vet
+            newform.instance.date = datetime.now().date()
+            newform.instance.time = datetime.now().time()
+            newform.save()
+            return redirect(reverse('news'))
+    else:
+        newform = NewsForm()
+    return render(request, 'new_news.html',{'newform': newform})
 
 #show the medical_record registers by different filters, in order from most recent to oldest
 @login_required 
@@ -249,11 +368,22 @@ def treatments(request, clinic_id):
         treatments = treatment.objects.filter(clinic_id=clinic)
     return render(request, 'treatments.html', {'clinics': clinic, 'treatments': treatments, 'user_has_permission': user_has_permission})
 
+
 #show the appointments registers by different filters, in order from oldest to most recent
 @login_required 
 @vet_required
 def appointments(request):
-    return render(request, 'appointments.html', {'appointments': appointments})
+    appointments = appointment.objects.filter(vet_id=request.user.vet)
+    sorted_appointments = sorted(appointments, key=attrgetter('date', 'time'))
+    return render(request, 'appointments.html', {'appointments': sorted_appointments})
+
+#show the published news registers in order from most recent to oldest
+@login_required 
+@vet_required
+def news_view(request):
+    news_ = news.objects.filter(vet_id=request.user.vet)
+    sorted_news = sorted(news_, key=lambda x: (x.date, x.time), reverse=True)
+    return render(request, 'news.html', {'news': sorted_news})
 
 @login_required 
 @vet_required

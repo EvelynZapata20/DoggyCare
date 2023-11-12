@@ -1,6 +1,7 @@
+from operator import attrgetter
 from django.shortcuts import get_object_or_404, render
 from django.db.models import Q
-from vet.models import Dog, MedicalRecord
+from vet.models import Dog, MedicalRecord, appointment, news
 from accounts.models import *
 from accounts.decorators import owner_required
 from django.contrib.auth.decorators import login_required
@@ -87,6 +88,23 @@ def all_treatments(request):
         Q(name__icontains=search_treatment_term)
         )
     return render(request, 'all_treatments.html', {'treatments': treatments})
+
+#show the news registers to the owners
+@login_required 
+@owner_required
+def all_news(request):
+    news_ = news.objects.all()
+    sorted_news = sorted(news_, key=lambda x: (x.date, x.time), reverse=True)
+    return render(request, 'all_news.html', {'news': news_})
+
+#show the news registers to the owners
+@login_required 
+@owner_required
+def appointments_o(request):
+    owner_ = request.user.owner
+    appointments = appointment.objects.filter(dog_owner_id=request.user.owner)
+    sorted_appointments = sorted(appointments, key=attrgetter('date', 'time'))
+    return render(request, 'appointments_o.html', {'appointments': appointments})
 
 
 #show the gog medical record to the owner

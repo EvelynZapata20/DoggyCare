@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+
+<html lang="en">
+    <!-- Configuration of the page style with the css file -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} EDIT MEDICAL RECORD {% endblock %}</title>
+        {% block additional_styles %}
+        <link rel="stylesheet" href="{% static 'css/vet/manage_appointment.css' %}">
+        <!--font awesome for icons-->
+        <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+        {% endblock additional_styles %}
+        {% block additional_scripts %}
+        <script src="{% static 'js/scripts.js' %}"></script>
+        {% endblock additional_scripts %}
+        
+    </head>
+
+    <body>
+        <main>
+            {% block content %}
+            <div class = "all">
+                
+             <h2>EDIT APPOINTMENT</h2>
+             <!-- show all the treatments fields with its current value  -->
+             <form method="post" enctype="multipart/form-data" class="custom-form">
+                
+                    <div class="form-container">
+                        {% csrf_token %}
+                        <div class="fields-container">
+                            <div class="field">
+                                <label for="{{ form.date.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </label>
+                                {{ form.date.label_tag }}
+                                {{ form.date }}
+                                {% if form.date.errors %}
+                                    <p class="error">{{ form.date.errors }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="field">
+                                <label for="{{ form.time.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-clock"></i>
+                                </label>
+                                {{ form.time.label_tag }}
+                                {{ form.time }}
+                                {% if form.time.errors %}
+                                    <p class="error">{{ form.time.errors }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="field">
+                                <label for="{{ form.appointment_type.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-hand-holding-medical"></i>
+                                </label>
+                                {{ form.appointment_type.label_tag }}
+                                {{ form.appointment_type }}
+                                {% if form.appointment_type.errors %}
+                                    <p class="error">{{ form.appointment_type.errors }}</p>
+                                {% endif %}
+                            </div>
+
+
+                            <div class="field", style="align-items: center; text-align: center;">
+                                <span class="bold-text" style="font-weight: bold; text-align: center;">Have you already attended this appointment?</span>
+                                {{ form.attended }}
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+                    <!-- Buttons to confirm changes and back to the last page -->
+                    <div class="button-container">
+                        <a id="cancel-button" href="{% url 'appointment' %}">Back</a>
+                        <button type="submit">Save Changes</button>
+                        <button type="button" id="delete-button">Delete appointment</button>
+                    </div>
+                    
+             </form>
+             <form id="delete-form" method="post" action="{% url 'delete_appointment' appointment.id %}" style="display: none;">
+                {% csrf_token %}
+            </form>
+            </div>
+                
+
+            
+            
+            {% endblock content %}
+        </main>
+        
+    </body>
+</html>

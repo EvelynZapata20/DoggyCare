@@ -20,4 +20,12 @@ urlpatterns = [
     path('delete_treatment/<int:treatment_id>/', views.delete_treatment, name='delete_treatment'),
     path('edit_clinic/<int:clinic_id>/', views.edit_clinic, name='edit_clinic'),
     path('statics/', views.statistics, name='statistics'),
+    path('owners_select/', views.owners_select, name='owners_select'),
+    path('new_appointment/<int:owner_id>/', views.new_appointment, name='new_appointment'),
+    path('manage_appointment/<int:appointment_id>/', views.manage_appointment_view, name='manage_appointment'),
+    path('delete_appointment/<int:appointment_id>/', views.delete_appointment, name='delete_appointment'),
+    path('news/', views.news_view, name='news'),
+    path('new_news/', views.new_news, name='new_news'),
+    path('manage_news/<int:new_id>/', views.manage_news, name='manage_news'),
+    path('delete_news/<int:new_id>/', views.delete_news, name='delete_news'),
 ]

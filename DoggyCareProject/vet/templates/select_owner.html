@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html>
+    <head>
+        <!-- Configuration of the page style with the css file -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Select Owner{% endblock %}</title>
+        {% block additional_styles %}
+        <link rel="stylesheet" href="{% static 'css/vet/select_owner.css' %}">
+        <script src="https://kit.fontawesome.com/b685c17320.js" crossorigin="anonymous"></script>
+        {% endblock additional_styles %}
+    </head>
+<body>
+    {% block content %}
+    <div class="all_container">
+        <form method="post" action="{% url 'owners_select' %}">
+            {% csrf_token %}
+            
+            <!-- Selection field -->
+            <h2 for="instance_select">Select an Owner:</h2>
+            <div class="field">
+                <i class="fa-solid fa-user"></i>
+                <select class="form-control" id="instance_select" name="instance_select">
+                    <option value="">Select an Owner</option>
+                    {% for owner in owners %}
+                        <option value="{{ owner.identification }}">{{ owner.name }}</option>
+                    {% endfor %}
+                </select>
+                <!-- Hidden field to send the id of the selected object -->
+                <input type="hidden" id="instance_id" name="instance_id" value="">
+            </div>
+            
+            
+            
+            
+            <!-- Submit button -->
+            <div class="confirm">
+                <a class="submit-button" id="cancel-button" href="{% url 'appointment' %}">Back</a>
+                <input class="submit-button" type="submit" value="Next">
+            </div>
+            
+        </form>
+    </div>
+    
+
+    <script>
+        // JavaScript to update hidden field when an option is selected
+        document.getElementById('instance_select').addEventListener('change', function() {
+            var selectedOption = this.options[this.selectedIndex];
+            document.getElementById('instance_id').value = selectedOption.value;
+        });
+    </script>
+    {% endblock content %}
+</body>
+</html>

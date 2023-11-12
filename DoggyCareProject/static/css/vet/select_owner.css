@@ -1,0 +1,88 @@
+h2 {
+    font-size: 24px; 
+    color: #333;
+    font-weight: bold; 
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: auto;
+    padding-bottom: 5px;
+  }
+
+/* Applies style the form */
+
+
+
+.all_container {
+    margin-top: -5px;
+    padding: 2%;
+    width: 60%;
+    max-width: 900px;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding-bottom: 20%;
+}
+
+.field {
+    margin-bottom: 26px;
+    position: relative;
+    width: 100%;
+    max-width: 785px;
+}
+
+.form-control {
+    padding: 5px 10px;
+    font-size: 17px;
+    border-radius: 5px;
+    width: 100%;
+    font-family:"Century Gothic";
+    border: 2px solid #bdd7ff;
+    border-radius: 4px;
+    padding-left: 30px;
+}
+
+.form-control:focus{
+    border: 3px solid #03689e;
+    outline: none;}
+
+.fa-solid {
+    position: absolute;
+    left: 10px;
+    font-size: 20px;
+    transform: translateY(8px);
+    color: #333;
+}
+
+
+/* Applies style to the buttons */
+
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #BDD7FF;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+    font-family:"Century Gothic";
+    font-weight: bold;
+    align-self: center;
+}
+
+.submit-button:hover {
+    background-color: #86a7d4;
+}
+
+
+.confirm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+

@@ -1,7 +1,9 @@
 main {
     margin-top: 15px; 
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
+    margin: auto;
 }
+
 
 /* Applies margin to all elements within main */
 main > * {
@@ -9,21 +11,126 @@ main > * {
     margin-bottom: 15px;
 }
 
-h1 {
-    font-size: 28px;
+
+h2 {
+    font-family: "Poppins";
+    font-size: 24px; 
+    color: #333;
+    font-weight: bold; 
     text-align: center;
-    margin: 25px;
+    margin-top: 20px;
+    margin-bottom: auto;
+  }
+
+
+.all {
+    text-align: center;
+    align-items: center;
+
 }
 
 
-.schedule-appointment{
+/* Applies style to the button */
+
+.new-appointment {
     display: flex;
+    font-family: Georgia, serif;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
+    padding-bottom: 15px;
 }
+
+
+/*icon*/
+.fa-circle-chevron-up{
+    position: fixed;
+    bottom: 20px;
+    right: 4rem;
+    width: 2rem;
+    font-size: 50px;
+}
+/*icon*/
+.fa-circle-chevron-up:hover{
+    transform: scale(1.50);
+    transform: translateY(-10%);
+}
+
+
 
 .btn {
     padding: 5px 10px;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: rgb(189, 215, 255);
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family:"Century Gothic";
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #86a7d4;
+}
+
+
+
+/* Applies style to all elements of the medical record visualize */
+
+.appointments-list {
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.appointment-card {
+    border-radius: 8px;
+    box-shadow: 0px 1px 10px #bdd7ff;
+    background-color: rgba(189, 215, 255, 0.3);
+    border: 2px solid rgb(189, 215, 255);
+    overflow: hidden;
+    width: 30%;
+    margin: 20px;
+    float: left;
+    padding: auto;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    font-family:"Century Gothic";
+    
+}
+
+span{
+    font-size: 24px; 
+    color: #000000;
+    font-weight: bold; 
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: auto;
+}
+
+.appointment-card:hover {
+    box-shadow: 10px 10px 30px #bdd7ff;
+    transform: scale(1.05); 
+}
+
+.appointment-card .card-content {
+    padding: 15px;
+    text-align: center;
+    word-wrap: break-word;
+    flex-grow: 1;
+    font-family:"Century Gothic";
+}
+
+
+
+.edit-button {
+    padding: 10px 20px;
+    padding-bottom: 10px;
     font-size: 17px;
     text-decoration: none;
     background-color: #BDD7FF;
@@ -31,8 +138,13 @@ h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 15px;
+    height: 20px;
+    font-family:"Century Gothic";
+    font-weight: bold;
 }
 
-.btn:hover {
+
+.edit-button:hover {
     background-color: #86a7d4;
 }
