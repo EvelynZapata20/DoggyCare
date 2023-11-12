@@ -32,6 +32,18 @@
                     <div class="form-container">
                         {% csrf_token %}
                         <div class="fields-container">
+
+                            <div class="field">
+                                <label for="{{ form.dog.id_for_label }}" class="icon">
+                                    <i class="fa-solid fa-dog"></i>
+                                </label>
+                                {{ form.dog.label_tag }}
+                                {{ form.dog }}
+                                {% if form.dog.errors %}
+                                    <p class="error">{{ form.dog.errors }}</p>
+                                {% endif %}
+                            </div>
+
                             <div class="field">
                                 <label for="{{ form.date.id_for_label }}" class="icon">
                                     <i class="fa-solid fa-calendar-days"></i>

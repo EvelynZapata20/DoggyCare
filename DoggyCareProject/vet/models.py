@@ -78,12 +78,10 @@ class appointment(models.Model):
     dog_owner_id = models.ForeignKey(Owner, on_delete=models.CASCADE,null=True, blank=True)
     vet_id = models.ForeignKey(Vet, on_delete=models.CASCADE,null=True, blank=True)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
-    clinic_id = models.ForeignKey(clinic_info, on_delete=models.CASCADE,null=True, blank=True)
-<<<<<<< HEAD
     attended = models.BooleanField("Attended", default= False)
-=======
+    clinic_id = models.ForeignKey(clinic_info, on_delete=models.CASCADE,null=True, blank=True)
     
->>>>>>> 1785f12e9ca8961b432cff8e84c083841c56b6b8
+    
     def __str__(self):
         return self.name
 

@@ -104,7 +104,7 @@ def appointments_o(request):
     owner_ = request.user.owner
     appointments = appointment.objects.filter(dog_owner_id=request.user.owner)
     sorted_appointments = sorted(appointments, key=attrgetter('date', 'time'))
-    return render(request, 'appointments_o.html', {'appointments': appointments})
+    return render(request, 'appointments_o.html', {'appointments': sorted_appointments})
 
 
 #show the gog medical record to the owner

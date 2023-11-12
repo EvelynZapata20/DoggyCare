@@ -62,7 +62,7 @@
                     <p><strong>Appointment Type:</strong> {{ appointment.appointment_type }}</p>          
 
                     <div class="button-container">
-                        <a href="{% url 'new_record' dog_id=appointment.dog_id %}" class="edit-button">Add Medical Record</a>
+                        <a href="{% url 'new_record' dog_id=appointment.dog.id %}" class="edit-button">Add Medical Record</a>
                     </div>
 
                 </div>
