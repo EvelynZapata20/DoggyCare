@@ -30,3 +30,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+// Event for the star rating
+const starRating = document.querySelectorAll('.star-rating input');
+starRating.forEach(input => {
+    input.addEventListener('mouseenter', function () {
+        input.parentNode.querySelectorAll('label').forEach((label, index) => {
+            label.style.color = index < this.value ? '#FFD700' : '#ddd';
+        });
+    });
+
+    input.addEventListener('mouseleave', function () {
+        input.parentNode.querySelectorAll('label').forEach(label => {
+            label.style.color = label.previousElementSibling && label.previousElementSibling.checked ? '#FFD700' : '#ddd';
+        });
+    });
+});

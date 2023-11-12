@@ -1,0 +1,104 @@
+html{
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: auto;
+    margin: 0;
+}
+
+h1 {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.container {
+    text-align: center;
+    width: 600px; 
+    padding: 10px;
+    background-color: rgba(161, 99, 17, 0.233);
+    box-shadow: 0 0 10px rgb(116, 87, 50);
+    border-radius: 5px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: auto;
+}
+
+.column-container {
+    width: 45%;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    
+}
+
+.star-rating {
+    font-size: 25px;
+    direction: rtl;
+    align-items: center;
+    border: 1px solid rgb(116, 87, 50);
+    background-color: #fff;
+    border-radius: 5px;
+    white-space: nowrap;
+    width: fit-content;
+    text-align: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 0 auto
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.star-rating label:before {
+    content: '\2605';
+    color: #ddd;
+}
+
+.star-rating input:checked ~ label:before {
+    color: #FFD700;
+}
+
+input[type="submit"],
+#cancel-button {
+    font-weight: bold;
+    display: inline-block;
+    background-color: #e0c5a2b9;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover,
+#cancel-button:hover {
+    background-color: rgb(182, 149, 105);
+    text-decoration: none;
+}
