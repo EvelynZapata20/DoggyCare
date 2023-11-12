@@ -60,17 +60,15 @@ class Dog(models.Model):
 
 #define the class medical record with its respective fields
 class MedicalRecord(models.Model):
+    id = models.AutoField(primary_key= True)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
     date = models.DateField(blank = False)
     appointmentType = models.CharField(blank= False, max_length=100)
     symptoms = models.CharField(blank= False, max_length=500)
     treatment = models.CharField(blank= False, max_length=500)
     recommendations = models.CharField(blank= False, max_length=1000)
+    r_rating= models.DecimalField(max_digits=3, decimal_places=2, blank= True, null=True)
     
-    
-    def __str__(self):
-        return self.name
-
 
 class appointment(models.Model):
     id= models.AutoField(primary_key= True)
@@ -81,7 +79,11 @@ class appointment(models.Model):
     vet_id = models.ForeignKey(Vet, on_delete=models.CASCADE,null=True, blank=True)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
     clinic_id = models.ForeignKey(clinic_info, on_delete=models.CASCADE,null=True, blank=True)
+<<<<<<< HEAD
     attended = models.BooleanField("Attended", default= False)
+=======
+    
+>>>>>>> 1785f12e9ca8961b432cff8e84c083841c56b6b8
     def __str__(self):
         return self.name
 
