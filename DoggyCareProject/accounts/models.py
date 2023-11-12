@@ -52,6 +52,7 @@ class Vet(models.Model):
     specialty = models.CharField(max_length=100, choices=SPECIALTY_CHOICES)
     experience = models.PositiveIntegerField()
     clinic = models.IntegerField()
+    rating= models.DecimalField(max_digits=3, decimal_places=2, default=0.0)
     
 # Owner model
 class Owner(models.Model):
@@ -77,12 +78,31 @@ class clinic_info(models.Model):
     phone = models.CharField(blank= False, max_length=50)
     description = models.TextField(blank= False, max_length=400)
     opening_hours = models.CharField(blank= False, max_length=200)
-    rating = models.FloatField(blank= False)
+    rating = models.DecimalField(max_digits=3, decimal_places=2, blank= True, null=True)
     image= models.ImageField(upload_to='images/')
     vet = models.ForeignKey(Vet, on_delete=models.CASCADE,null=True, blank=True)
 
+    def calculate_average_rating(self):
+        vets = Vet.objects.filter(clinic=self.id)
+        total_ratings = 0
+        total_vets = 0
+
+        for vet in vets:
+            if vet.rating > 0:
+                total_ratings += vet.rating
+                total_vets += 1
+
+        if total_vets > 0:
+            average_rating = total_ratings / total_vets
+            self.rating = average_rating
+            self.save(update_fields=['rating'])  
+        else:
+            self.rating = 0.0
+            self.save(update_fields=['rating']) 
+
     def __str__(self):
         return self.name
+
 
 #treatents data
 class treatment(models.Model):

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'vet',
     'owner',
     'accounts',
+    'rating',
 ]
 
 MIDDLEWARE = [
