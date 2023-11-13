@@ -25,7 +25,7 @@
              <!-- show all the medicalRecord fields with its current value  -->
              <form method="post" enctype="multipart/form-data" class="custom-form">
                 
-                    <div id="form-container">
+                    <div class="form-container">
                         {% csrf_token %}
                         <div class="img">
                             <h2>{{dog.name}}</h2>
@@ -48,7 +48,7 @@
                                 <label for="{{ form.appointmentType.id_for_label }}" class="icon">
                                     <i class="fa-solid fa-hand-holding-medical"></i>
                                 </label>
-                                <span class="bold-text" style="font-weight: bold;">Appointment Type:</span>
+                                <label>Appointment Type</label>
                                 {{ form.appointmentType }}
                             </div>
 
