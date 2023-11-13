@@ -61,6 +61,17 @@ h2 {
     padding-left: 40px;
 }
 
+.form-control-select {
+    padding: 5px 10px;
+    font-size: 17px;
+    border-radius: 5px;
+    width: 100%;
+    font-family:"Century Gothic";
+    border: 2px solid #bdd7ff;
+    border-radius: 4px;
+    padding-left: 40px;
+}
+
 .form-control:focus{
     border: 3px solid #03689e;
     outline: none;
@@ -209,4 +220,23 @@ span{
 
 .edit-button:hover {
     background-color: #86a7d4;
+}
+
+
+@media screen and (max-width: 768px) {
+    .search-record-bar {
+        flex-direction: column; /* Change to a column layout for smaller screens */
+        align-items: stretch; /* Stretch items to fill the width */
+    }
+
+    .search_group {
+        width: 80%;
+        margin-bottom: 10px; /* Add margin between elements for better spacing */
+    }
+
+    .form-control {
+        padding-left: 40px; /* Adjust padding for smaller screens */
+    }
+
+    
 }

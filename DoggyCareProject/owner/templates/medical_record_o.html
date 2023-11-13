@@ -60,7 +60,7 @@
 
                     <!-- if the record has a rating, show the rating, else show the button to rate -->
                     {% if record.r_rating %}
-                    <p><strong>Rating:</strong> {{ record.r_rating }} </p>
+                    <p><strong>Rating:</strong> {{ record.r_rating }} <i class="fa-solid fa-star" style="color: #e9cd1c;"></i></p>
                     {% else %}
                         <a href="{% url 'record_rating' record.id %}" class="btn btn-primary">Rate</a>
                     {% endif %}

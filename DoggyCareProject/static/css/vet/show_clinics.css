@@ -1,104 +1,131 @@
-/*subtitles style*/
-
+/* Subtitles style */
 h2 {
-    font-size: 24px; 
+    font-size: 24px;
     color: #333;
-    font-weight: bold; 
+    font-weight: bold;
     text-align: center;
     margin-top: 2%;
     margin-bottom: auto;
-  }
+}
 
-
-.title-inside{
-    font-size: 30px; 
+.title-inside {
+    font-size: 30px;
     color: #333;
-    font-weight: bold; 
+    font-weight: bold;
     text-align: center;
-    font-size: 1.5vw;
-  }
+}
 
-/*all content general style*/
-.all{
+/* All content general style */
+.all {
     display: flex;
+    flex-direction: column; /* Updated to column layout */
     justify-content: center;
     align-items: center;
     margin-bottom: 2%;
-    max-width: 80%; 
+    max-width: 80%;
     width: 100%;
-    height: 45vw;
+    height: auto; /* Updated to allow dynamic height */
     margin: auto;
+    padding-bottom: 5%;
 }
 
-.clinic_image{
-    height: 30vw;
+.clinic_image {
+    width: 100%;
+    max-height: 20%;
     box-shadow: #333;
 }
 
-.img{
+.img {
     border-radius: 10%;
-    width: 17vw;
-    height: 15vw;
+    width: 100%; /* Updated to fill the container width */
+    height: auto;
+    max-width: 100%; /* Updated to prevent excessive width */
+    min-height: 150px;
     object-fit: cover;
     border: 2px solid #bdd7ff;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 }
-/*configure content and info about the clinics*/
+
+/* Configure content and info about the clinics */
 .clinic_container {
     display: flex;
+    flex-direction: column; /* Updated to column layout */
     background-color: rgba(189, 215, 255, 0.3);
     border: 3px solid rgb(189, 215, 255);
     width: 100%;
-    max-width: 1500px;
-    height: 80%;
-    max-height: 1000px;
-    justify-content: center; 
-    font-family:"Century Gothic";
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    justify-content: center;
+    font-family: "Century Gothic";
 }
 
-.left-column {
-    flex: 1; 
-    padding: 10px; 
-    align-items: center;
+.left-column,
+.right-column {
+    flex: 1;
+    padding: 10px;
     text-align: center;
     margin: auto;
 }
 
 .right-column {
-    flex: 1; 
-    padding: 10px;
-    margin: auto;
-    
+    order: 1; /* Updated to switch the order on larger screens */
 }
-.info{
-    font-size: 1.2vw;
-}
-/*buttons style*/
 
+.info {
+    font-size: 20px;
+    text-align: left;
+    height: 100%;
+}
+
+/* Buttons style */
 .clinic-buttons {
-    margin-top: 10px;
-    margin: auto;
-    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Ensure buttons wrap to the next line on smaller screens */
+    margin-top: 1%;
+    padding-bottom: 5%;
 }
-
 
 .btn-cln {
-    padding: 0.8vw 2vw;
-    
-    font-size: 0.9vw;
+    padding: 10px 20px;
+    font-size: 15px;
     text-decoration: none;
-    background-color: #BDD7FF;
+    background-color: #bdd7ff;
     color: #000000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 15px;
-    height: 20px;
-    font-family:"Century Gothic";
+    font-family: "Century Gothic";
     font-weight: bold;
 }
 
-
 .btn-cln:hover {
     background-color: #86a7d4;
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 768px) {
+    .all {
+        flex-direction: row; /* Switch back to row layout */
+        height: auto;
+        padding-bottom: 5%;
+    }
+
+    .clinic_container {
+        flex-direction: row; /* Switch back to row layout */
+        max-height: none;
+    }
+
+    .left-column,
+    .right-column {
+        flex: 1;
+        order: initial;
+    }
+
+    .img {
+        max-width: 50%; /* Adjust as needed */
+    }
 }

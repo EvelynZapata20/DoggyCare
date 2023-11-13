@@ -14,11 +14,11 @@ h2 {
 
 
 .title-inside{
-    font-size: 30px; 
+    font-size:30px; 
     color: #333;
     font-weight: bold; 
     text-align: center;
-    font-size: 1.5vw;
+
   }
 
 /*style for al the content in general*/
@@ -29,7 +29,7 @@ h2 {
     margin-bottom: 2%;
     max-width: 80%; 
     width: 100%;
-    height: 45vw;
+    height: 80%;
     margin: auto;
 }
 
@@ -38,26 +38,36 @@ h2 {
     font-family: Georgia, serif;
     display: flex;
     align-items: center;
-    padding: 0 50px 0;
+    padding: 0 20px; /* Adjust padding for smaller screens */
     width: 80%;
     margin: auto;
-    
 }
 
-.search_group{
+.search_group {
     align-items: center;
     margin: auto;
-    width: 70%;
+    width: 100%; /* Adjust width for smaller screens */
     position: relative;
-    padding-right: 20px;
+    padding-right: 10px; /* Adjust padding for smaller screens */
 }
 
 .form-control {
     padding: 5px 10px;
     font-size: 17px;
     border-radius: 5px;
+    width: 90%;
+    font-family: "Century Gothic";
+    border: 2px solid #e0c5a2;
+    border-radius: 4px;
+    padding-left: 40px;
+}
+
+.form-control-select{
+    padding: 5px 10px;
+    font-size: 17px;
+    border-radius: 5px;
     width: 100%;
-    font-family:"Century Gothic";
+    font-family: "Century Gothic";
     border: 2px solid #e0c5a2;
     border-radius: 4px;
     padding-left: 40px;
@@ -122,13 +132,14 @@ h2 {
     margin-top: 10px;
     margin: auto;
     padding-top: 5%;
+    font-size: 30px;
+    margin-bottom: 5%;
 }
 
 
 .btn-cln {
     padding: 0.8vw 2vw;
-    
-    font-size: 0.9vw;
+    font-size: 30px;
     text-decoration: none;
     background-color: #e0c5a2;
     color: #000000;
@@ -159,6 +170,7 @@ h2 {
     box-shadow: 0px 1px 10px #e0c5a2;
     overflow: hidden;
     width: 25%;
+    min-width: 400px;
     margin: 20px;
     float: left;
     padding: auto;
@@ -169,13 +181,12 @@ h2 {
     transition: transform 0.3s ease;
     background-color: rgba(145, 115, 75, 0.3);;
     border: 2px solid #e0c5a2;
-    height: 53vw;
-    min-height: 600px;
+    min-height: 700px;
 }
 
 
 .txt{
-    font-size: 0.8vw; 
+    font-size: 20px; 
     color: #000000;
     text-align: left;
     margin-top: 20px;
@@ -196,7 +207,7 @@ h2 {
 }
 
 .card-title{
-    font-size: 1vw; 
+    font-size: 30px; 
     color: #333;
     font-weight: bold; 
     text-align: center;
@@ -233,8 +244,8 @@ h2 {
     height: 20px;
     font-family:"Century Gothic";
     font-weight: bold;
-    padding: 0.8vw 2vw;
-    font-size: 0.9vw;
+    padding: 2%;
+    font-size: 15px;
     margin-top: 5px;
 }
 
@@ -248,4 +259,23 @@ h2 {
     display: flex;
     padding-top: 5%;
 
+}
+
+
+@media screen and (max-width: 768px) {
+    .search-clinic-bar {
+        flex-direction: column; /* Change to a column layout for smaller screens */
+        align-items: stretch; /* Stretch items to fill the width */
+    }
+
+    .search_group {
+        width: 100%;
+        margin-bottom: 10px; /* Add margin between elements for better spacing */
+    }
+
+    .form-control {
+        padding-left: 40px; /* Adjust padding for smaller screens */
+    }
+
+    
 }

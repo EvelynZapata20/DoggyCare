@@ -92,17 +92,41 @@ h2 {
     background-color: rgba(189, 215, 255, 0.3);
     border: 2px solid rgb(189, 215, 255);
     overflow: hidden;
-    width: 30%;
     margin: 20px;
-    float: left;
     padding: auto;
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
-    font-family:"Century Gothic";
-    
+    font-family: "Century Gothic";
 }
+
+/* Use the Bootstrap grid system to control the width of cards at different screen sizes */
+@media (min-width: 576px) {
+    .appointment-card {
+        width: 48%; /* Two cards in a row on screens larger than 576px */
+    }
+}
+
+@media (min-width: 768px) {
+    .appointment-card {
+        width: 48%; /* Two cards in a row on screens larger than 768px */
+    }
+}
+
+@media (min-width: 992px) {
+    .appointment-card {
+        width: 30%; /* Three cards in a row on screens larger than 992px */
+    }
+}
+
+@media (min-width: 1200px) {
+    .appointment-card {
+        width: 30%; /* Three cards in a row on screens larger than 1200px */
+    }
+}
+
+
 
 span{
     font-size: 24px; 
