@@ -102,3 +102,23 @@ input[type="submit"]:hover,
     background-color: rgb(182, 149, 105);
     text-decoration: none;
 }
+
+@media only screen and (max-width: 480px) {
+    .container{
+        width: 100%;
+    }
+
+    .column-container {
+            width: 100%; 
+        }
+    
+    .star-rating {
+            width: 85%; 
+            margin: 0;
+            font-size: 24px; 
+        }
+    
+    .star-rating label {
+            margin: 0 2px; 
+        }    
+}

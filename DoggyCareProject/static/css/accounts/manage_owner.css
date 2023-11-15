@@ -95,3 +95,21 @@ button:hover,
     padding-left: 20px;
     padding-right: 20px;
 }
+
+
+@media only screen and (max-width: 480px) {
+    .row,
+    .row-select,
+    .row-date,
+    .form-group {
+        margin: 0 10px;
+        width: 50%;
+        margin-top: 15px;
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .password-change-form{
+        margin-top: 20px;
+    }
+}

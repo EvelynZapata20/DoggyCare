@@ -118,3 +118,30 @@ h2 {
     align-items: center; 
     gap: 10px; 
 }
+
+
+@media only screen and (max-width: 768px) {
+    .dog-card {
+        width: 40%; 
+        margin: 10px; 
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .dog-card {
+        width: 80%; 
+        margin: 10px auto; 
+    }
+
+    .search-bar {
+        padding: 0 10px; 
+    }
+
+    .form-control {
+        margin-right: 0; 
+    }
+
+    .search-filter {
+        width: 20%; 
+    }
+}
