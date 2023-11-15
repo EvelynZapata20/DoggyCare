@@ -96,6 +96,20 @@ class appointment(models.Model):
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE,null=True, blank=True)
     attended = models.BooleanField("Attended", default= False)
     clinic_id = models.ForeignKey(clinic_info, on_delete=models.CASCADE,null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        # Check if there is an appointment at the same date and time
+        existing_appointment = appointment.objects.filter(
+            date=self.date,
+            time=self.time,
+            clinic_id=self.clinic_id,
+            vet_id=self.vet_id
+        ).exclude(id=self.id)  # Exclude the current appointment when updating
+
+        if existing_appointment.exists():
+            raise ValidationError("An appointment already exists at the specified date and time.")
+
+        super(appointment, self).save(*args, **kwargs)
     
     
     def __str__(self):

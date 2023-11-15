@@ -1,6 +1,7 @@
 from datetime import datetime
 from operator import attrgetter
 from pathlib import Path
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.urls import reverse
@@ -246,12 +247,16 @@ def new_appointment(request, owner_id):
         appointform = AppointmentForm(request.POST, request.FILES)
         clinic = get_object_or_404(clinic_info, pk=request.user.vet.clinic)
         if appointform.is_valid():
-            appointform.instance.vet_id = request.user.vet
-            appointform.instance.clinic_id = clinic
-            appointform.instance.dog_owner_id = owner
-            appointform.instance.attended = False
-            appointform.save()
-            return redirect(reverse('appointment'))
+            try:
+                appointform.instance.vet_id = request.user.vet
+                appointform.instance.clinic_id = clinic
+                appointform.instance.dog_owner_id = owner
+                appointform.instance.attended = False
+                appointform.save()
+                return redirect(reverse('appointment'))
+            except ValidationError as e:
+                error_message = str(e)
+                return HttpResponseForbidden(error_message)
     else:
         appointform = AppointmentForm()
     return render(request, 'new_appointment.html', {'appointform': appointform})
@@ -284,7 +289,8 @@ def owners_select(request):
     if request.method == 'POST':
         # Get the id of the selected object from the form
         owner_id = request.POST.get('instance_id')
-        return redirect(reverse('new_appointment', args=[owner_id]))
+        if owner_id:
+            return redirect(reverse('new_appointment', args=[owner_id]))
 
     owners = Owner.objects.all()
     return render(request, 'select_owner.html', {'owners': owners})

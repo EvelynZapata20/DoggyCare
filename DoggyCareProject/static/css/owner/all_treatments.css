@@ -221,3 +221,21 @@ span{
 .edit-button:hover {
     background-color: rgb(145, 115, 75);
 }
+@media screen and (max-width: 768px) {
+    .search-treatment-bar {
+        flex-direction: column; /* Change to a column layout for smaller screens */
+        align-items: stretch; /* Stretch items to fill the width */
+    }
+
+    .search_group {
+        width: 80%;
+        margin-bottom: 10px; /* Add margin between elements for better spacing */
+    }
+
+    .form-control {
+        padding-left: 40px; /* Adjust padding for smaller screens */
+        width: 400px;
+    }
+
+    
+}

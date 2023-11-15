@@ -44,7 +44,7 @@
             
             <div class="search-filter">
                 <i class="fa-solid fa-arrow-down-wide-short"></i>
-                <select class="form-control" name="filterRecord">
+                <select class="form-control-select" name="filterRecord">
                     <option value="all">All</option>
                     <option value="date">YY-MM-DD Date</option>
                     <option value="appointmentType">Appointment Type</option>
@@ -66,6 +66,9 @@
                     <p><strong>Symptoms:</strong> {{ record.symptoms }}</p>
                     <p><strong>Treatment:</strong> {{ record.treatment }}</p>
                     <p><strong>Recommendations:</strong> {{ record.recommendations }}</p>
+                    {% if record.r_rating %}
+                    <p><strong>Rating:</strong> {{ record.r_rating }} <i class="fa-solid fa-star" style="color: #e9cd1c;"></i></p>
+                    {% endif %}
                     
 
                     <div class="button-container">
