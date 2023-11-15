@@ -390,20 +390,20 @@ def news_view(request):
 def vaccination_card(request, dog_id):
     dog = get_object_or_404(Dog, pk=dog_id)
     vaccination_card = get_object_or_404(vaccination, pk=dog.vaccination_card_id)
-    return render(request, 'vaccination_card.html', {'vaccination_card': vaccination_card , 'dog':dog})
+    return render(request, 'vaccination_card.html', {'vac_card': vaccination_card , 'dog':dog})
 
 @login_required 
 @vet_required
-def vaccination_card_edit(request, vac_id):
+def vaccination_card_edit(request, vac_id, dog_id, vaccine):
     vaccination_card = get_object_or_404(vaccination, pk=vac_id)
-    if request.method == 'POST':
-        form = vaccinationCardForm(request.POST, request.FILES, instance=vaccination_card)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('patients'))
-    else:
-        form = vaccinationCardForm()
-    return render(request, 'vaccination_card_edit.html', {'vaccination_card_edit': vaccination_card_edit ,'form':form,})
+    dog = get_object_or_404(Dog, pk=dog_id)
+
+    vaccination_card.pentavalent_1 = True
+    vaccination_card.save()
+
+    redirect('vaccination_card.html')
+    return render(request, 'vaccination_card_edit.html', {'vac_card': vaccination_card , 'dog':dog, 'vaccine':vaccine})
+    
 
 # This function send the dog, vaccination card and the age of the dog for generate the recomendations for each dog
 @login_required 

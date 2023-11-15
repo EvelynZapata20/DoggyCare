@@ -12,7 +12,7 @@ urlpatterns = [
     path('delete_dog/<int:dog_id>/', views.delete_dog, name='delete_dog'),
     path('recomendations/<int:dog_id>/', views.recomendations, name='recomendations'),
     path('vaccination_card/<int:dog_id>/', views.vaccination_card, name='vaccination_card'),
-    path('vaccination_card_edit/<int:vac_id>/', views.vaccination_card_edit, name='vaccination_card_edit'),
+    path('vaccination_card_edit/<int:vac_id>/<int:dog_id>/<int:vaccine>/', views.vaccination_card_edit, name='vaccination_card_edit'),
     path('show_clinic/', views.show_clinic, name='show_clinic'),
     path('treatments/<int:clinic_id>', views.treatments, name='treatments'),
     path('new_treatment/<int:clinic_id>', views.new_treatment, name='new_treatment'),
@@ -28,4 +28,5 @@ urlpatterns = [
     path('new_news/', views.new_news, name='new_news'),
     path('manage_news/<int:new_id>/', views.manage_news, name='manage_news'),
     path('delete_news/<int:new_id>/', views.delete_news, name='delete_news'),
+    
 ]

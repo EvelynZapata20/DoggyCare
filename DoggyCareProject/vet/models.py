@@ -17,16 +17,32 @@ class breed(models.Model):
 
 class vaccination_card(models.Model):
     id = models.AutoField(primary_key= True)
-    rabies = models.BooleanField("Rabies", default= False)
-    CanineDistemper = models.BooleanField("Canine Distemper", default= False)
-    Parvovirus = models.BooleanField("Parvovirus", default= False)
-    Adenovirus = models.BooleanField("Adenovirus(CAV-1)", default= False)
-    Adenovirus_2 = models.BooleanField("Adenovirus(CAV-2)", default= False)
-    Parainfluenza = models.BooleanField("Parainfluenza", default= False)
-    Bordetella = models.BooleanField("Bordetella", default= False)
-    LymeDisease = models.BooleanField("Lyme Disease", default= False)
-    CanineInfluenza = models.BooleanField("Canine Influenza", default= False)
+    pentavalent_1 = models.BooleanField("pentavalent_1", default= False)
+    pentavalent_2 = models.BooleanField("pentavalent_2", default= False)
+    pentavalent_3 = models.BooleanField("pentavalent_3", default= False)
+    pentavalent_4 = models.BooleanField("pentavalent_4", default= False)
+    parvoviruz_1 = models.BooleanField("parvoviruz_1", default= False)
+    coronaviruz_1 = models.BooleanField("coronaviruz_1", default= False)
+    coronaviruz_2 = models.BooleanField("coronaviruz_2", default= False)
+    coronaviruz_3 = models.BooleanField("coronaviruz_3", default= False)
+    coronaviruz_4 = models.BooleanField("coronaviruz_4", default= False)
+    rabies_1 = models.BooleanField("rabies_1", default= False)
+    rabies_2 = models.BooleanField("rabies_2", default= False)
+    kennel_cough_1 = models.BooleanField("kennel_cough_1", default= False)
+    kennel_cough_2 = models.BooleanField("kennel_cough_2", default= False)
+    
+    def __str__(self):
+        return self.name
+    
+class vaccine_info(models.Model):
 
+    vaccine = models.CharField(blank=False, max_length=20)
+    vaccination_card = models.ForeignKey(vaccination_card, on_delete=models.CASCADE,blank=False)
+    vet = models.ForeignKey(Vet, on_delete=models.CASCADE)
+    date = models.DateField(blank=False, validators=[validate_minor])
+    vaccine_brand = models.CharField(blank=False, max_length=20)
+    batch_number = models.IntegerField(blank=False)
+    
     def __str__(self):
         return self.name
 
