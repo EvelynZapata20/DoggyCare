@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-
+from datetime import datetime, timedelta
 
 APPOINTMENT_CHOICES = [
         ('allergy evaluation', 'Allergy evaluation'),
@@ -109,12 +109,14 @@ class vaccinationCardForm(forms.ModelForm):
 
 class VaccineInfo(forms.ModelForm):
     class Meta:
+        fecha_actual = datetime.now().date()
+        fecha_maxima = fecha_actual + timedelta(days=1)
         model = vaccine_info
         fields = ['vaccine','vaccination_card','vet','date','vaccine_brand','batch_number']
         exclude = ['vaccine','vaccination_card','vet']
         widgets = {
             'date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'type': 'date', 'max': fecha_actual, 'min': '2000-01-01'}),
-            'vaccine_brand': forms.Select(choices=BrandsChoices, attrs={'class': 'vaccine-brand'}),
+            'vaccine_brand': forms.Textarea(),
             'batch_number': forms.Textarea(),
         }
 

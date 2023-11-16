@@ -10,6 +10,7 @@ from .models import Dog
 from accounts.models import Vet, clinic_info
 from accounts.forms import *
 from .models import vaccination_card as vaccination
+from .models import vaccine_info 
 import re
 from accounts.decorators import custom_permission_required, vet_required
 from accounts.decorators import vet_required
@@ -413,8 +414,32 @@ def vaccination_card_edit(request, vac_id, dog_id, vaccine):
             return redirect(reverse('vaccination_card', args=[dog_id]))
     else:
         vaccineForm = VaccineInfo()
-
-    vaccination_card.pentavalent_1 = True
+    if vaccine == 1:
+        vaccination_card.pentavalent_1 = True
+    elif vaccine == 2:
+        vaccination_card.parvoviruz_1 = True
+    elif vaccine == 3:
+        vaccination_card.coronaviruz_1 = True
+    elif vaccine == 4:
+        vaccination_card.pentavalent_2 = True
+    elif vaccine == 5:
+        vaccination_card.coronaviruz_2 = True
+    elif vaccine == 6:
+        vaccination_card.kennel_cough_1 = True
+    elif vaccine == 7:
+        vaccination_card.pentavalent_3 = True
+    elif vaccine == 8:
+        vaccination_card.coronaviruz_3 = True
+    elif vaccine == 9:
+        vaccination_card.rabies_1 = True
+    elif vaccine == 10:
+        vaccination_card.pentavalent_4 = True
+    elif vaccine == 11:
+        vaccination_card.coronaviruz_4 = True
+    elif vaccine == 12:
+        vaccination_card.rabies_2 = True
+    elif vaccine == 13:
+        vaccination_card.kennel_cough_2 = True
     vaccination_card.save()
 
     redirect('vaccination_card.html')
@@ -455,3 +480,13 @@ def statistics(request):
     labelsJSON = json.dumps(labels)
     valuesJSON = json.dumps(values)
     return render(request, 'statistics.html', {'dogs': dogs, 'labels' : labelsJSON, 'values' : valuesJSON  })
+
+@login_required 
+@vet_required
+def vaccination_card_info(request, vac_id, dog_id, vaccine_id):
+    info = get_object_or_404(vaccine_info, vaccine = str(vaccine_id), vaccination_card_id = str(vac_id))
+    vaccination_card = get_object_or_404(vaccination, pk=vac_id)
+    dog = get_object_or_404(Dog, pk=dog_id)
+    primary_key = info.vet_id
+    vet = get_object_or_404(User, pk = primary_key)
+    return render(request, 'vaccination_card_info.html', {'vac_card': vaccination_card , 'dog': dog, 'vaccine': vaccine_id, 'info': info, "vet":vet })

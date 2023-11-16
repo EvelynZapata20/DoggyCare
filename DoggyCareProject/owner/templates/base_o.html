@@ -41,6 +41,15 @@
                     <li><a href="{% url 'all_treatments' %}">Treatments</a></li>
                     <li><a href="{% url 'appointments_o' %}">Appointments</a></li>
                     <li><a href="{% url 'all_news' %}">News</a></li>
+                    <li><a href=""  onmouseover="show()" onmouseout="disguise()">Notifications</a></li>
+                    <ul class="submenu" id="submenu-notifications" style="display: none; flex-direction: column; align-items: center;">
+                        <li>
+                            <a href=#>Remember Max appointment on December 2</a>
+                        </li>
+                        <li>
+                            <a href=#>Remember Max appointment on December 16</a>
+                        </li>
+                    </ul>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                 </ul>
             </div>  
@@ -51,6 +60,17 @@
             {% block content %}
             {% endblock content%}
         </main>
+        <script>
+            // Función para mostrar el objeto al hacer clic en el enlace
+            function show() {
+              var objeto = document.getElementById("submenu-notifications");
+              objeto.style.display = "block"; // Cambia 'none' a 'block' para hacerlo visible
+            }
+            function disguise() {
+              var objeto = document.getElementById("submenu-notifications");
+              objeto.style.display = "none"; // Cambia 'none' a 'block' para hacerlo visible
+            }
+          </script>
     </body>
 
     <footer>

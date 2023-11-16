@@ -16,40 +16,68 @@
 
 <body>
     {% block content %}
-        {% if vaccine == 1%}
-            <h1>Pentavalent 1</h1>
-        {% else %}
-            <h1>No identificado</h1>
+        {% if vaccine == 1 %}
+            <h1>Pentavalente 1</h1>
+        {% elif vaccine == 2 %}
+            <h1>Parvovirus 1</h1>
+        {% elif vaccine == 3 %}
+            <h1>Coronavirus 1</h1>
+        {% elif vaccine == 4 %}
+            <h1>Pentavalente 2</h1>
+        {% elif vaccine == 5 %}
+            <h1>Coronavirus 2</h1>
+        {% elif vaccine == 6 %}
+            <h1>Kennel cough 1</h1>
+        {% elif vaccine == 7 %}
+            <h1>Pentavalente 3</h1>
+        {% elif vaccine == 8 %}
+            <h1>Coronavirus 3</h1>
+        {% elif vaccine == 9 %}
+            <h1>Rabies 1</h1>
+        {% elif vaccine == 10 %}
+            <h1>Pentavalente 4</h1>
+        {% elif vaccine == 11 %}
+            <h1>Coronavirus 4</h1>
+        {% elif vaccine == 12 %}
+            <h1>Rabies 2</h1>
+        {% elif vaccine == 13 %}
+            <h1>Kennel cough 2</h1>
         {% endif %}
-    <form method="post" enctype="multipart/form-data" class="custom-form">
-        <div class="container">
-            <div class="form-container">
-                {% csrf_token %}
-                <div class="img" style="padding-right:3%;">
-                    <img src="{% static 'img/DogFootPrint-Gray.png' %}">
+        <form method="post" enctype="multipart/form-data" class="custom-form">
+            <div class="container">
+                <div class="form-container">
+                    {% csrf_token %}
+                    <div class="img" style="padding-right:3%;">
+                        <img src="{% static 'img/Vaccine.png' %}">
+                    </div>
+                    <div class="fields-container">
+                        <div class="field">
+                            <label for="{{ form.date.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </label>{{ form.date.label_tag }}</label>
+                            {{form.date}}
+                        </div>
+                        <div class="field">
+                            <label for="{{ form.vaccine_brand.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-hand-holding-medical"></i>
+                            </label>
+                            <label>Brand of vaccine</label>
+                            {{ form.vaccine_brand }}
+                        </div>
+                        <div class="field">
+                            <label for="{{ form.batch_number.id_for_label }}" class="icon">
+                                <i class="fa-solid fa-hand-holding-medical"></i>
+                            </label>
+                            <label>Batch number</label>
+                            {{ form.batch_number }}
+                        </div>
+                    </div>
                 </div>
-                <div class="field">
-                    <label for="{{ form.date.id_for_label }}" class="icon">
-                        <i class="fa-solid fa-calendar-days"></i>
-                    </label>{{ form.date.label_tag }}</label>
-                    {{form.date}}
-                    {% if recordform.date.errors %}
-                        <p class="error">{{ form.date.errors }}</p>
-                    {% endif %}
-                </div>
-                <div class="field">
-                    <label for="{{ form.appointmentType.id_for_label }}" class="icon">
-                        <i class="fa-solid fa-hand-holding-medical"></i>
-                    </label>
-                    <label>Brand of vaccine</label>
-                    {{ form.vaccinebrand }}
-                    {% if form.vaccinebrand.errors %}
-                        <p class="error">{{ form.vaccinebrand.errors }}</p>
-                    {% endif %}
+                <div class="confirm">
+                    <button type="submit" class="submit-button">Confirm</button>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
     {% endblock content %}
 </body>
 

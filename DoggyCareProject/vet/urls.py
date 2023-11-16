@@ -28,5 +28,7 @@ urlpatterns = [
     path('new_news/', views.new_news, name='new_news'),
     path('manage_news/<int:new_id>/', views.manage_news, name='manage_news'),
     path('delete_news/<int:new_id>/', views.delete_news, name='delete_news'),
+    path('vaccination_card_info/<int:vac_id>/<int:dog_id>/<int:vaccine_id>/', views.vaccination_card_info, name='vaccination_card_info'),
+    
     
 ]

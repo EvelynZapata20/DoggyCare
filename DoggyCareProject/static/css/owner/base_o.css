@@ -160,7 +160,7 @@ footer {
         margin:0;
         padding: 0;
     }
-    .tabs {
+    .tabs{
         width: 120%;
         display: flex;
         justify-content: center;
@@ -177,10 +177,30 @@ footer {
 
     .tabs li {
         text-align: center;
+        position:relative;
         padding-right: 5px;
         padding-left: 5px;
         width: max-content; 
         margin: 1%; 
         box-sizing: border-box; 
     }
+}
+.submenu {
+    margin-top: 3%;
+    margin-left: 25%;
+    position: absolute;
+    background-color: #B69569;
+    display: none;
+}
+
+.submenu li a {
+    display: block;
+    padding: 15px;
+    align-items: left;
+    color: #212121;
+    text-decoration: none;
+}
+
+.menu li:hover .submenu{
+    display: block;
 }

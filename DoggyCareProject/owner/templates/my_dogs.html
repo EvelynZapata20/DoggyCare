@@ -62,8 +62,9 @@
                     <p>Gender: {{ dog.gender }} </p>
                     
                     <div class="card-button">
-                        <a href="" class="btn">Recommendations</a>
+                        <a href="{% url 'recomendations_owner' dog_id=dog.id %}" class="btn">Recommendations</a>
                         <a href="{% url 'medical_record_o' dog_id=dog.id %}" class="btn">Medical Record</a>
+                        <a href="{% url 'vaccination_card_owner' dog_id=dog.id %}" class="btn">Vaccination Card</a>
                     </div>
                 </div>
             </div>

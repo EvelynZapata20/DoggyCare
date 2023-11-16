@@ -41,7 +41,7 @@ class vaccine_info(models.Model):
     vet = models.ForeignKey(Vet, on_delete=models.CASCADE)
     date = models.DateField(blank=False, validators=[validate_minor])
     vaccine_brand = models.CharField(blank=False, max_length=20)
-    batch_number = models.IntegerField(blank=False)
+    batch_number = models.CharField(blank=False, max_length=20)
     
     def __str__(self):
         return self.name

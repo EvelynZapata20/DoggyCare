@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% extends 'base_o.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Configuration of the page style with the css file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Statistics {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300" rel="stylesheet" />
+    {% block additional_styles %}
+    <link rel="stylesheet" href="{% static 'css/owner/vaccination_card_info_owner.css' %}">
+    {% endblock additional_styles %}
+</head>
+
+<body>
+    {% block content %}
+        {% if vaccine == 1 %}
+            <h1>Pentavalente 1</h1>
+        {% elif vaccine == 2 %}
+            <h1>Parvovirus 1</h1>
+        {% elif vaccine == 3 %}
+            <h1>Coronavirus 1</h1>
+        {% elif vaccine == 4 %}
+            <h1>Pentavalente 2</h1>
+        {% elif vaccine == 5 %}
+            <h1>Coronavirus 2</h1>
+        {% elif vaccine == 6 %}
+            <h1>Kennel cough 1</h1>
+        {% elif vaccine == 7 %}
+            <h1>Pentavalente 3</h1>
+        {% elif vaccine == 8 %}
+            <h1>Coronavirus 3</h1>
+        {% elif vaccine == 9 %}
+            <h1>Rabies 1</h1>
+        {% elif vaccine == 10 %}
+            <h1>Pentavalente 4</h1>
+        {% elif vaccine == 11 %}
+            <h1>Coronavirus 4</h1>
+        {% elif vaccine == 12 %}
+            <h1>Rabies 2</h1>
+        {% elif vaccine == 13 %}
+            <h1>Kennel cough 2</h1>
+        {% endif %}
+        <div class="container">
+            <div class="form-container">
+                <div class="img" style="padding-right:3%;">
+                    <img src="{% static 'img/Vaccine.png' %}">
+                </div>
+                <div class="fields-container">
+                    <div class="field">
+                        <label for="{{ form.date.id_for_label }}" class="icon">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </label>
+                        <h3>Vet</h3>
+                        {{vet.username}}
+                    </div>
+                    <div class="field">
+                        <label for="{{ form.date.id_for_label }}" class="icon">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </label>
+                        <h3>Date</h3>
+                        {{info.date}}
+                    </div>
+                    <div class="field">
+                        <label for="{{ form.vaccine_brand.id_for_label }}" class="icon">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </label>
+                        <h3>Brand of vaccine</h3>
+                        {{ info.vaccine_brand }}
+                    </div>
+                    <div class="field">
+                        <label for="{{ form.batch_number.id_for_label }}" class="icon">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </label>
+                        <h3>Batch number</h3>
+                        {{ info.batch_number }}
+                    </div>
+                </div>
+            </div>
+            <div class="confirm">
+                <a href="{% url 'vaccination_card_owner' dog_id=dog.id  %}" class="submit-button">Back</a>
+            </div>
+        </div>
+    {% endblock content %}
+</body>
+
+</html>

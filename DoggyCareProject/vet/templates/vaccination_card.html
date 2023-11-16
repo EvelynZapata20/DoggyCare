@@ -64,28 +64,55 @@
             <tr>
                 <td>8 Week</td>
                 <td>
+                    {% if vac_card.pentavalent_1 == False %}
                     <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 1 %}" method="post">
                         {% csrf_token %}
-                        {% if vac_card.pentavalent_1 == False %}
-                            <button id="Open" type="submit">
-                                <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                            </button>
-                        {% else %}
-                            <button id=>
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 1 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
                                 <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
                             </button>
-                        {% endif %}
                     </form>
+                    {% endif %}
                 </td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.parvoviruz_1 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 2 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 2 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.coronaviruz_1 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 3 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 3 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td></td>
                 <td></td>
@@ -93,65 +120,185 @@
             <tr>
                 <td>12 Week</td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.pentavalent_2 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 4 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 4 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td></td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.coronaviruz_2 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 5 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 5 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td></td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.kennel_cough_1 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 6 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 6 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
             </tr>
             <tr>
                 <td>16 Week</td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.pentavalent_3 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 7 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 7 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td></td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.coronaviruz_3 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 8 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 8 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.rabies_1 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 9 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 9 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td></td>
             </tr>
             <tr>
                 <td>19 Week</td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.pentavalent_4 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 10 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 10 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td></td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.coronaviruz_4 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 11 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 11 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.rabies_2 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 12 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 12 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
                 <td>
-                    <button>
-                        <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
-                    </button>
+                    {% if vac_card.kennel_cough_2 == False %}
+                    <form action="{% url 'vaccination_card_edit' vac_card.id dog.id 13 %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <img src="{% static 'img/DogFootPrint-Gray.png' %}" width="25%" height="25%">
+                        </button>
+                    </form> 
+                    {% else %}
+                    <form action="{% url 'vaccination_card_info' vac_card.id dog.id 13 %}" method="post">
+                        {% csrf_token %}
+                            <button type="submit">
+                                <img src="{% static 'img/DogFootPrint-Green.png' %}" width="25%" height="25%">
+                            </button>
+                    </form>
+                    {% endif %}
                 </td>
             </tr>
         </table>

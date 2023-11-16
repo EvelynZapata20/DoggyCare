@@ -5,6 +5,8 @@ from vet.models import Dog, MedicalRecord, appointment, news
 from accounts.models import *
 from accounts.decorators import owner_required
 from django.contrib.auth.decorators import login_required
+from vet.models import vaccination_card as vaccination
+from vet.models import vaccine_info
 
 # Create your views here.
 @login_required 
@@ -135,3 +137,26 @@ def medical_record_o(request, dog_id):
     else:
         medical_record = MedicalRecord.objects.filter(dog=dog).order_by('-date')
     return render(request, 'medical_record_o.html', {'dog': dog, 'medical_records': medical_record})
+
+@login_required 
+def vaccination_card_owner(request, dog_id):
+    dog = get_object_or_404(Dog, pk=dog_id)
+    vaccination_card = get_object_or_404(vaccination, pk=dog.vaccination_card_id)
+    return render(request, 'vaccination_card_owner.html', {'vac_card': vaccination_card , 'dog':dog})
+
+@login_required 
+def vaccination_card_info_owner(request, vac_id, dog_id, vaccine_id):
+    info = get_object_or_404(vaccine_info, vaccine = str(vaccine_id), vaccination_card_id = str(vac_id))
+    vaccination_card = get_object_or_404(vaccination, pk=vac_id)
+    dog = get_object_or_404(Dog, pk=dog_id)
+    primary_key = info.vet_id
+    vet = get_object_or_404(User, pk = primary_key)
+    return render(request, 'vaccination_card_info_owner.html', {'vac_card': vaccination_card , 'dog': dog, 'vaccine': vaccine_id, 'info': info, "vet":vet })
+
+@login_required 
+def recomendations_owner(request, dog_id):
+    dog = get_object_or_404(Dog, pk=dog_id)
+    vaccination_card = dog.vaccination_card_id
+    vac_card = get_object_or_404(vaccination, pk=vaccination_card)
+    age = dog.calculate_age()
+    return render(request, 'recomendations_owner.html', {'dog': dog,'vac_card': vac_card, 'age': age,})
