@@ -67,6 +67,11 @@ APPOINTMENT_CHOICES = [
         ('nose and throat surgery', 'Nose and Throat Surgery'),
         ('cardiovascular surgery', 'Cardiovascular Surgery')
         ]
+
+BrandsChoices = ["Nobivac","Duramune","Vanguard","Canigen","Puppy DPV","Rabisin","Bronchi-Shield",
+    "LymeVax","Galaxy","Ultra Duramune","Solo-Jec","Fel-O-Guard","Recombitek","NeoPar","Pfizer",
+    "Merck","Bayer","Boehringer Ingelheim","Zoetis","Elanco","Virbac","Merial","Other"]
+
 fecha_actual = date.today().strftime('%Y-%m-%d')
 
 class DogRegisterForm(forms.ModelForm):
@@ -101,6 +106,18 @@ class vaccinationCardForm(forms.ModelForm):
     class Meta:
         model = vaccination_card
         fields = "__all__"
+
+class VaccineInfo(forms.ModelForm):
+    class Meta:
+        model = vaccine_info
+        fields = ['vaccine','vaccination_card','vet','date','vaccine_brand','batch_number']
+        exclude = ['vaccine','vaccination_card','vet']
+        widgets = {
+            'date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'type': 'date', 'max': fecha_actual, 'min': '2000-01-01'}),
+            'vaccine_brand': forms.Select(choices=BrandsChoices, attrs={'class': 'vaccine-brand'}),
+            'batch_number': forms.Textarea(),
+        }
+
 
 class NewsForm(forms.ModelForm):
     class Meta:        

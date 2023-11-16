@@ -21,6 +21,35 @@
         {% else %}
             <h1>No identificado</h1>
         {% endif %}
+    <form method="post" enctype="multipart/form-data" class="custom-form">
+        <div class="container">
+            <div class="form-container">
+                {% csrf_token %}
+                <div class="img" style="padding-right:3%;">
+                    <img src="{% static 'img/DogFootPrint-Gray.png' %}">
+                </div>
+                <div class="field">
+                    <label for="{{ form.date.id_for_label }}" class="icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </label>{{ form.date.label_tag }}</label>
+                    {{form.date}}
+                    {% if recordform.date.errors %}
+                        <p class="error">{{ form.date.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="field">
+                    <label for="{{ form.appointmentType.id_for_label }}" class="icon">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                    </label>
+                    <label>Brand of vaccine</label>
+                    {{ form.vaccinebrand }}
+                    {% if form.vaccinebrand.errors %}
+                        <p class="error">{{ form.vaccinebrand.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </form>
     {% endblock content %}
 </body>
 

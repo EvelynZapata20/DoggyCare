@@ -403,12 +403,22 @@ def vaccination_card(request, dog_id):
 def vaccination_card_edit(request, vac_id, dog_id, vaccine):
     vaccination_card = get_object_or_404(vaccination, pk=vac_id)
     dog = get_object_or_404(Dog, pk=dog_id)
+    if request.method == 'POST':
+        vaccineForm = VaccineInfo(request.POST, request.FILES)
+        if vaccineForm.is_valid():
+            vaccineForm.instance.vaccine = vaccine
+            vaccineForm.instance.vaccination_card = vaccination_card
+            vaccineForm.instance.vet = request.user.vet
+            vaccineForm.save()
+            return redirect(reverse('vaccination_card', args=[dog_id]))
+    else:
+        vaccineForm = VaccineInfo()
 
     vaccination_card.pentavalent_1 = True
     vaccination_card.save()
 
     redirect('vaccination_card.html')
-    return render(request, 'vaccination_card_edit.html', {'vac_card': vaccination_card , 'dog':dog, 'vaccine':vaccine})
+    return render(request, 'vaccination_card_edit.html', {'vac_card': vaccination_card , 'dog':dog, 'vaccine':vaccine, 'form':vaccineForm })
     
 
 # This function send the dog, vaccination card and the age of the dog for generate the recomendations for each dog
