@@ -42,7 +42,7 @@ To run DoggyCare:
 
 ## Google Cloud Implementation
 
-In case the server has been enabled by the creators, you can access DoggyCare by entering the following IP address in your web browser:
+If the server has been activated by the administrators, you can access DoggyCare by entering the following IP address in your web browser:
 
     
     http://34.42.58.33
