@@ -44,8 +44,8 @@ To run DoggyCare:
 
 In case the server has been enabled by the creators, you can access DoggyCare by entering the following IP address in your web browser:
 
-   ```shell
-   http://34.42.58.33
+    
+    http://34.42.58.33
 
 
 You are now ready to enjoy DoggyCare!
